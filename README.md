@@ -26,6 +26,8 @@ cd /your/project/folder
 wget --no-check-certificate https://raw.githubusercontent.com/manifestinteractive/facing-app/stable/shell_scripts/install.sh -O - | sh
 ```
 
+__NOTE__: You will need to modify `./www/config.js` to your projects specifications.
+
 Manual Installation
 ---
 
@@ -77,6 +79,14 @@ cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 sudo rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 ```
+
+### Copy Config File:
+
+```bash
+cp www/config.dist.js www/config.js
+```
+
+__NOTE__: You will need to modify `./www/config.js` to your projects specifications.
 
 ### Build Application & Launch in iOS Simulator:
 
