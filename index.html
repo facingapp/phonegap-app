@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/trunk.css">
+        <link rel="stylesheet" type="text/css" href="css/animations.css">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Facing</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="slide">
+                <ul id="navToggle" class="burger slide">
+                    <li></li><li></li><li></li>
+                </ul>
+	            <div class="reset-gui">
+		            <a href="#" class="force-reset-gui"><i class="fa fa-times"></i></a>
+	            </div>
+            </header>
+
+            <nav class="slide">
+                <ul class="menu">
+                    <li><a href="#" data-panel="home" class="active" ><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
+	                <li><a href="#" data-panel="map"><i class="fa fa-crosshairs fa-fw"></i> Map</a></li>
+                    <li><a href="#" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
+                    <li><a href="#" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
+	                <li><a href="#" data-panel="dev-log"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
+                </ul>
+            </nav>
+
+            <div class="content slide">
+                <div class="logo animated fadeInDown"></div>
+
+                <div id="home" class="panel active">
+
+                    <div class="location-marker self"></div>
+                    <div class="location-marker friend"></div>
+
+	                <div class="io">
+		                <div class="status">
+			                <i class="fa fa-circle-o-notch fa-fw fa-spin"></i>
+		                </div>
+	                </div>
+
+                    <a href="#" class="find-a-friend tooltip animated flipInX default"></a>
+	                <div class="information">
+		                <div class="welcome">
+			                <i class="fa fa-chevron-up"></i>&nbsp; Tap to Choose a Friend &nbsp;<i class="fa fa-chevron-up"></i>
+		                </div>
+		                <div class="status">
+			                <div class="message">
+				                <i class="fa fa-circle-o-notch fa-fw fa-spin"></i> Loading
+			                </div>
+		                </div>
+		                <div class="contact-options animated fadeInUp">
+			                <a href="#" id="sms" class="contact-option">
+				                <i class="fa fa-comment fa-fw"></i> <span>SMS</span>
+			                </a>
+			                <a href="#" id="email" class="contact-option">
+				                <i class="fa fa-envelope fa-fw"></i> <span>Email</span>
+			                </a>
+			                <a href="#" id="clipboard" class="contact-option">
+				                <i class="fa fa-external-link-square fa-fw"></i> <span>Link</span>
+			                </a>
+		                </div>
+	                </div>
+
+	                <div class="pulse1"></div>
+	                <div class="pulse2"></div>
+                </div>
+
+	            <div id="map" class="panel">
+		            <div class="header-section"></div>
+	            </div>
+
+                <div id="my-data" class="panel">
+	                <div class="header-section"></div>
+	                <div class="push-header me">
+                        <div class="compass">
+                            <h3>My Compass</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+
+                        <div class="geolocation">
+                            <h3>My Geolocation</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+
+                        <div class="acceleration">
+                            <h3>My Acceleration</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="friends-data" class="panel">
+	                <div class="header-section"></div>
+	                <div class="push-header friend">
+                        <div class="compass">
+                            <h3>Friends Compass</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+
+                        <div class="geolocation">
+                            <h3>Friends Geolocation</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+
+                        <div class="acceleration">
+                            <h3>Friends Acceleration</h3>
+                            <ul class="data"><li>Loading Data ...</li></ul>
+                        </div>
+                    </div>
+                </div>
+
+	            <div id="dev-log" class="panel">
+		            <div class="header-section"></div>
+		            <div class="push-header output">
+			            <div><a href="#" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
+		                <ul></ul>
+			            <div class="push"></div>
+	                </div>
+	            </div>
+
+            </div>
+
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/gui.js"></script>
+        <script>
+	    (function(d, script){
+
+		    try {
+			    script = d.createElement('script');
+			    script.type = 'text/javascript';
+			    script.src = (config.app.env == 'dev')
+					    ? config.app.dev.socket.js
+					    : config.app.prod.socket.js;
+			    script.async = true;
+			    script.onload = function(){
+				    app.initialize();
+				    gui.initialize();
+			    };
+			    script.onerror = function(){
+				    app.initialize();
+				    gui.initialize();
+			    };
+			    d.getElementsByTagName('head')[0].appendChild(script);
+		    }
+		    catch(err)
+		    {
+			    app.util.debug('error', err.message);
+		    }
+
+        }(document));
+        </script>
+    </body>
+</html>
