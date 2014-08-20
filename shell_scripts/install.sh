@@ -11,14 +11,14 @@ echo "Creating PhoneGap Project:"
 echo " "
 
 cordova create facing com.manifestinteractive.com Facing
-cordova platform add ios
-cordova platform add android
 
 echo " "
 echo "Installing Require Plugins:"
 echo " "
 
 cd facing
+cordova platform add ios
+cordova platform add android
 cordova plugin add com.google.cordova.admob
 cordova plugin add org.apache.cordova.battery-status
 cordova plugin add org.apache.cordova.console

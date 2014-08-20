@@ -16,32 +16,14 @@
         Manifest Interactive
     </author>
 
-    <!-- Bulk of this config.xml came from https://github.com/phonegap/phonegap-start -->
-
-    <!--
-        If you do not want any permissions to be added to your app, add the
-        following tag to your config.xml; you will still have the INTERNET
-        permission on your app, which PhoneGap requires.
-
-    <preference name="permissions"                value="none"/>
-    -->
-
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version" value="3.5.0" />
     <preference name="Orientation" value="portrait" />
-    <!--<preference name="target-device"  value="universal" /> -->
+    <preference name="target-device"  value="universal" />
     <preference name="Fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="prerendered-icon" value="true" />
-    <!--<preference name="stay-in-webview" value="false" /> -->
-    <!--<preference name="ios-statusbarstyle" value="black-translucent" /> -->
-    <!--<preference name="detect-data-types" value="true" /> -->
-    <!--<preference name="exit-on-suspend" value="false" /> -->
-    <!--<preference name="show-splash-screen-spinner" value="true" /> -->
-    <!--<preference name="auto-hide-splash-screen" value="false" /> -->
-    <!--<preference name="disable-cursor" value="false" /> -->
-    <!--<preference name="android-minSdkVersion" value="7" /> -->
-    <!--<preference name="android-installLocation" value="auto" /> -->
+    <preference name="show-splash-screen-spinner" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackgroundColor" value="0xff222222" />
     <preference name="HideKeyboardFormAccessoryBar" value="true"/>
