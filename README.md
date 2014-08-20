@@ -18,14 +18,14 @@ $ sudo npm install -g phonegap cordova ios-sim ios-deploy
 ```bash
 $ cd /your/project/folder
 $ cordova create facing com.manifestinteractive.com Facing
-$ cordova platform add ios
-$ cordova platform add android
 ```
 
 ### Installing Require Plugins:
 
 ```bash
 $ cd facing
+$ cordova platform add ios
+$ cordova platform add android
 $ cordova plugin add com.google.cordova.admob
 $ cordova plugin add org.apache.cordova.battery-status
 $ cordova plugin add org.apache.cordova.console
