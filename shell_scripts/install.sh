@@ -49,6 +49,12 @@ sudo rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 
 echo " "
+echo "Copy Config File:"
+echo " "
+
+cp www/config.dist.js www/config.js
+
+echo " "
 echo "Build Application & Launch in iOS Simulator:"
 echo " "
 
