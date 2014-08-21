@@ -79,6 +79,7 @@ var app = {
 				navigator.splashscreen.hide();
 			}, 2000);
 
+			gui.initialize();
 			app.hardware.start();
 		},
 		pause: function()
@@ -140,19 +141,19 @@ var app = {
 		{
 			if(typeof analytics !== 'undefined')
 			{
+				app.util.debug('debug', 'Initializing Analytics');
 				analytics.startTrackerWithId(config.google.analytics);
 				analytics.trackView(config.app.title);
-				analytics.setUserId('my-user-id');
+				analytics.setUserId(device.uuid);
 			}
 		},
 		event: function(category, action, label, value)
 		{
 			if(typeof analytics !== 'undefined')
 			{
+				app.util.debug('debug', 'Event: ' + category + ' | ' + action + ' | ' + label);
 				analytics.trackEvent(category, action, label, value);
 			}
-
-			app.util.debug('debug', 'Event: ' + category + ' | ' + action + ' | ' + label);
 		}
 	},
 	io:
@@ -733,7 +734,7 @@ var app = {
 
 				if(typeof AdMob !== 'undefined')
 				{
-					AdMob.hideBanner(app.ad.remove.success, app.ad.remove.error);
+					AdMob.removeBanner(app.ad.remove.success, app.ad.remove.error);
 				}
 			},
 			success: function()

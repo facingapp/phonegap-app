@@ -147,11 +147,9 @@
 			    script.async = true;
 			    script.onload = function(){
 				    app.initialize();
-				    gui.initialize();
 			    };
 			    script.onerror = function(){
 				    app.initialize();
-				    gui.initialize();
 			    };
 			    d.getElementsByTagName('head')[0].appendChild(script);
 		    }

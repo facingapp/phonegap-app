@@ -12,6 +12,27 @@ var gui = {
 	{
 		app.util.debug('log', 'Setting up GUI');
 
+		gui.prepareDevice();
+		gui.handle.navigation();
+		gui.handle.contacts();
+		gui.animate();
+	},
+	prepareDevice: function()
+	{
+		app.util.debug('log', 'Preparing Device');
+
+		if(typeof StatusBar !== 'undefined')
+		{
+			app.util.debug('log', 'Hiding Status Bar');
+			StatusBar.hide();
+		}
+
+		var platform = (typeof device !== 'undefined' && typeof device.platform !== 'undefined')
+			? device.platform
+			: 'desktop';
+
+		$('html').addClass(platform.toLowerCase());
+
 		// Force Width & Height on Elements that need it
 		gui.resize();
 
@@ -26,26 +47,6 @@ var gui = {
 		{
 			$('.content').append('<div class="dev"><\/div>');
 		}
-
-		gui.prepareDevice();
-		gui.handle.navigation();
-		gui.handle.contacts();
-		gui.animate();
-	},
-	prepareDevice: function()
-	{
-		app.util.debug('log', 'Preparing Device');
-
-		if(typeof StatusBar !== 'undefined')
-		{
-			StatusBar.hide();
-		}
-
-		var platform = (typeof device !== 'undefined' && typeof device.platform !== 'undefined')
-			? device.platform
-			: 'desktop';
-
-		$('html').addClass(platform.toLowerCase());
 	},
 	handle:
 	{
