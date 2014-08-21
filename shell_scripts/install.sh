@@ -4,7 +4,7 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-sudo npm install -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy
 
 echo " "
 echo "Creating PhoneGap Project:"
@@ -58,6 +58,4 @@ echo " "
 echo "Build Application & Launch in iOS Simulator:"
 echo " "
 
-phonegap build ios
-phonegap build android
 cordova emulate ios

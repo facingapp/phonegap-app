@@ -35,7 +35,7 @@ Manual Installation
 
 ```bash
 cd /your/project/folder
-sudo npm install -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy
 ```
 
 ### Creating PhoneGap Project:
@@ -91,7 +91,5 @@ cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 ### Build Application & Launch in iOS Simulator:
 
 ```bash
-phonegap build ios
-phonegap build android
 cordova emulate ios
 ```
