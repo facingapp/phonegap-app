@@ -29,13 +29,45 @@ module.exports = function(grunt) {
 					'src/js/gui/**/*.js'
 				],
 				dest: 'assets/js/gui.js',
+			},
+			lib: {
+				src: [
+					'src/js/lib/*.js'
+				],
+				dest: 'assets/js/lib.js',
 			}
 		},
 		watch: {
-			files: ['Gruntfile.js', 'src/js/*'],
-			tasks: ['app', 'gui'],
-			options: {
-				spawn: false
+			app: {
+				files: [
+					'src/js/app.js',
+					'src/js/app/*.js',
+					'src/js/app/**/*.js'
+				],
+				tasks: ['app'],
+				options: {
+					spawn: false
+				}
+			},
+			gui: {
+				files: [
+					'src/js/gui.js',
+					'src/js/gui/*.js',
+					'src/js/gui/**/*.js'
+				],
+				tasks: ['gui'],
+				options: {
+					spawn: false
+				}
+			},
+			lib: {
+				files: [
+					'src/js/lib/*.js'
+				],
+				tasks: ['lib'],
+				options: {
+					spawn: false
+				}
 			}
 		},
 		jshint: {
@@ -50,7 +82,8 @@ module.exports = function(grunt) {
 				},
 			},
 			app: ['src/app/*.js', 'src/app/**/*.js'],
-			gui: ['src/gui/*.js', 'src/gui/**/*.js']
+			gui: ['src/gui/*.js', 'src/gui/**/*.js'],
+			lib: ['src/lib/*.js']
 		}
 	});
 
@@ -60,4 +93,5 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('app', ['jshint:app', 'concat:app']);
 	grunt.registerTask('gui', ['jshint:gui', 'concat:gui']);
+	grunt.registerTask('lib', ['jshint:lib', 'concat:lib']);
 };
