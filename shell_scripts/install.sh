@@ -25,17 +25,14 @@ echo "Setup Grunt:"
 echo " "
 
 cd www
-npm update grunt-contrib-watch --save-dev
-npm update grunt-contrib-concat --save-dev
-npm update grunt-contrib-jshint --save-dev
-npm update jshint-stylish --save-dev 
-cd ../
+npm install
+cd -
 
 echo " "
 echo "Copy Config File:"
 echo " "
 
-cp www/js/config.dist.js www/js/config.js
+cp www/assets/js/config.dist.js www/assets/js/config.js
 
 echo " "
 echo "Installing Require Plugins:"

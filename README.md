@@ -33,7 +33,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/manifestinteractiv
 
 ### NOTE:
 
-You will need to modify `./www/js/config.js` to your projects specifications.  Also, you will still need to make the changes listed below in the __iOS Build Settings__.
+You will need to modify `./www/assets/js/config.js` to your projects specifications.  Also, you will still need to make the changes listed below in the __iOS Build Settings__.
 
 Manual Installation:
 ---
@@ -63,20 +63,17 @@ git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 
 ```bash
 cd www
-npm update grunt-contrib-watch --save-dev
-npm update grunt-contrib-concat --save-dev
-npm update grunt-contrib-jshint --save-dev
-npm update jshint-stylish --save-dev
-cd ../
+npm install
+cd -
 ```
 
 ### Copy Config File:
 
 ```bash
-cp www/js/config.dist.js www/js/config.js
+cp www/assets/js/config.dist.js www/assets/js/config.js
 ```
 
-__NOTE__: You will need to modify `./www/js/config.js` to your projects specifications.
+__NOTE__: You will need to modify `./www/assets/js/config.js` to your projects specifications.
 
 ### Installing Required Plugins:
 
