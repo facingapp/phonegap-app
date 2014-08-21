@@ -11,6 +11,7 @@ echo "Creating PhoneGap Project:"
 echo " "
 
 phonegap create facing com.manifestinteractive.com Facing
+cd facing
 
 echo " "
 echo "Clone Facing App Repository:"
@@ -29,7 +30,6 @@ echo " "
 echo "Installing Require Plugins:"
 echo " "
 
-cd facing
 cordova platform add ios
 cordova platform add android
 cordova plugin add com.google.cordova.admob

@@ -42,6 +42,7 @@ sudo npm install -g phonegap cordova ios-sim ios-deploy
 
 ```bash
 cordova create facing com.manifestinteractive.com Facing
+cd facing
 ```
 
 ### Clone Facing App Repository:
@@ -62,7 +63,6 @@ __NOTE__: You will need to modify `./www/config.js` to your projects specificati
 ### Installing Required Plugins:
 
 ```bash
-cd facing
 cordova platform add ios
 cordova platform add android
 cordova plugin add com.google.cordova.admob
