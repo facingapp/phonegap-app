@@ -42,7 +42,7 @@ Manual Installation:
 
 ```bash
 cd /your/project/folder
-sudo npm update -g phonegap cordova grunt-cli
+npm update -g phonegap cordova grunt-cli
 ```
 
 ### Creating PhoneGap Project:
@@ -168,14 +168,14 @@ This also means that you __SHOULD NOT__ be edting files in the `assets/js` folde
 To take advantage of Grunt during the development process, you just need to run the following command to watch for any file changes setup to rebuild the scripts used in the app.
 
 ```bash
-cd /your/project/folder/facing/www
+cd /path/to/facing/www
 grunt watch
 ```
 
 If you do not want to watch for live file changes, you can use the following to rebuild the JS code as needed.
 
 ```bash
-cd /your/project/folder/facing/www
+cd /path/to/facing/www
 grunt app
 grunt gui
 ```
