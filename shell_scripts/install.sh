@@ -4,7 +4,7 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-sudo npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
+npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
 
 echo " "
 echo "Creating PhoneGap Project:"
@@ -17,7 +17,7 @@ echo " "
 echo "Clone Facing App Repository:"
 echo " "
 
-sudo rm -fr www
+rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 
 echo " "
