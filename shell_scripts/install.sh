@@ -13,6 +13,19 @@ echo " "
 phonegap create facing com.manifestinteractive.com Facing
 
 echo " "
+echo "Clone Facing App Repository:"
+echo " "
+
+sudo rm -fr www
+git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+
+echo " "
+echo "Copy Config File:"
+echo " "
+
+cp www/js/config.dist.js www/js/config.js
+
+echo " "
 echo "Installing Require Plugins:"
 echo " "
 
@@ -40,19 +53,6 @@ cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
-
-echo " "
-echo "Clone Facing App Repository:"
-echo " "
-
-sudo rm -fr www
-git clone -b stable https://github.com/manifestinteractive/facing-app.git www
-
-echo " "
-echo "Copy Config File:"
-echo " "
-
-cp www/js/config.dist.js www/js/config.js
 
 echo " "
 echo "Build Application & Launch in iOS Simulator:"
