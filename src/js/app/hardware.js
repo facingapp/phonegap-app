@@ -1,0 +1,3 @@
+app.hardware = {
+    timer: null
+};

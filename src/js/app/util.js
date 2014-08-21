@@ -1,0 +1,3 @@
+app.util = {
+    enableDebug: true
+};

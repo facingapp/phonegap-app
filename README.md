@@ -46,7 +46,7 @@ Manual Installation:
 
 ```bash
 cd /your/project/folder
-sudo npm update -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
 ```
 
 ### Creating PhoneGap Project:
