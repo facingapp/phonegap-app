@@ -25,10 +25,10 @@ echo "Setup Grunt:"
 echo " "
 
 cd www
-npm install grunt-contrib-watch --save-dev
-npm install grunt-contrib-concat --save-dev
-npm install grunt-contrib-jshint --save-dev
-npm install jshint-stylish --save-dev 
+npm update grunt-contrib-watch --save-dev
+npm update grunt-contrib-concat --save-dev
+npm update grunt-contrib-jshint --save-dev
+npm update jshint-stylish --save-dev 
 cd ../
 
 echo " "
