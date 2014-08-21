@@ -37,14 +37,14 @@ alias build-facing-ios="__make_header 'Rebuilding ACA Ratequote'; cd-facing-app;
 alias build-facing-android="__make_header 'Rebuilding ACA Ratequote'; cd-facing-app; cordova build android; cd -;"
 
 # Emulate Commands
-alias emulate-facing-ios-iphone="__make_header 'Launching iPhone Simulator'; killall \"iPhone Simulator\"; cd-facing-app; cordova emulate ios --target=\"iPhone\"; __debug_ios; cd -;"
-alias emulate-facing-ios-iphone-retina-3_5-inch="__make_header 'Launching iPhone Retina 3.5 Inch Simulator'; killall \"iPhone Simulator\"; cd-facing-app; cordova emulate ios --target=\"iPhone (Retina 3.5-inch)\"; __debug_ios; cd -;"
-alias emulate-facing-ios-iphone-retina-4-inch="__make_header 'Launching iPhone Retina 4 Inch Simulator'; killall \"iPhone Simulator\"; cd-facing-app; cordova emulate ios --target=\"iPhone (Retina 4-inch)\"; __debug_ios; cd -;"
-alias emulate-facing-ios-ipad="__make_header 'Launching iPad Simulator'; killall \"iPhone Simulator\"; cd-facing-app; cordova emulate ios --target=\"iPad\"; __debug_ios; cd -;"
-alias emulate-facing-ios-ipad-retina="__make_header 'Launching iPad Retina Simulator'; killall \"iPhone Simulator\"; cd-facing-app; cordova emulate ios --target=\"iPad (Retina)\"; __debug_ios; cd -;"
+alias emulate-facing-ios-iphone="__make_header 'Launching iPhone Simulator'; killall \"iPhone Simulator\"; cd-facing-app; phonegap build ios; cordova emulate ios --target=\"iPhone\"; __debug_ios; cd -;"
+alias emulate-facing-ios-iphone-retina-3_5-inch="__make_header 'Launching iPhone Retina 3.5 Inch Simulator'; killall \"iPhone Simulator\"; cd-facing-app; phonegap build ios; cordova emulate ios --target=\"iPhone (Retina 3.5-inch)\"; __debug_ios; cd -;"
+alias emulate-facing-ios-iphone-retina-4-inch="__make_header 'Launching iPhone Retina 4 Inch Simulator'; killall \"iPhone Simulator\"; cd-facing-app; phonegap build ios; cordova emulate ios --target=\"iPhone (Retina 4-inch)\"; __debug_ios; cd -;"
+alias emulate-facing-ios-ipad="__make_header 'Launching iPad Simulator'; killall \"iPhone Simulator\"; cd-facing-app; phonegap build ios; cordova emulate ios --target=\"iPad\"; __debug_ios; cd -;"
+alias emulate-facing-ios-ipad-retina="__make_header 'Launching iPad Retina Simulator'; killall \"iPhone Simulator\"; cd-facing-app; phonegap build ios; cordova emulate ios --target=\"iPad (Retina)\"; __debug_ios; cd -;"
 
-alias emulate-facing-android-nexus7="__make_header 'Launching Android Nexus 7 Emulator'; killall emulator64-arm; cd-facing-app; cordova emulate android --target=\"Nexus7\"; __debug_android; cd -;"
-alias emulate-facing-android-galaxy-s5="__make_header 'Launching Android Nexus 7 Emulator'; killall emulator64-arm; cd-facing-app; cordova emulate android --target=\"Galaxy_S5\"; __debug_android; cd -;"
+alias emulate-facing-android-nexus7="__make_header 'Launching Android Nexus 7 Emulator'; killall emulator64-arm; cd-facing-app; phonegap build android; cordova emulate android --target=\"Nexus7\"; __debug_android; cd -;"
+alias emulate-facing-android-galaxy-s5="__make_header 'Launching Android Nexus 7 Emulator'; killall emulator64-arm; cd-facing-app; phonegap build android; cordova emulate android --target=\"Galaxy_S5\"; __debug_android; cd -;"
 
 alias serve-facing="__make_header 'Starting Facing PhoneGap Server'; cd-facing-app; phonegap serve;"
 

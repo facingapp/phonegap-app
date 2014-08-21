@@ -10,7 +10,7 @@ echo " "
 echo "Creating PhoneGap Project:"
 echo " "
 
-cordova create facing com.manifestinteractive.com Facing
+phonegap create facing com.manifestinteractive.com Facing
 
 echo " "
 echo "Installing Require Plugins:"
@@ -52,11 +52,12 @@ echo " "
 echo "Copy Config File:"
 echo " "
 
-cp www/config.dist.js www/config.js
+cp www/js/config.dist.js www/js/config.js
 
 echo " "
 echo "Build Application & Launch in iOS Simulator:"
 echo " "
 
-cordova build ios
+phonegap build ios
+phonegap build android
 cordova emulate ios
