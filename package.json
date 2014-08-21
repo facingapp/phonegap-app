@@ -1,5 +1,5 @@
 {
-  "name": "Facing App",
+  "name": "FacingApp",
   "description": "Facing App PhoneGap Application",
   "homepage": "https://youfacing.me",
   "version": "0.3.0",
@@ -19,8 +19,9 @@
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-jshint": "*",
     "grunt-contrib-watch": "*",
+    "grunt-contrib-concat": "*",
     "jshint-stylish": "^0.4.0"
   }
 }
