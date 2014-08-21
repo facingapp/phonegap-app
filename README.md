@@ -55,7 +55,7 @@ cd facing
 ### Clone Facing App Repository:
 
 ```bash
-sudo rm -fr www
+rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 ```
 

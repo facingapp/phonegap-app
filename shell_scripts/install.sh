@@ -17,7 +17,7 @@ echo " "
 echo "Clone Facing App Repository:"
 echo " "
 
-sudo rm -fr www
+rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 
 echo " "
