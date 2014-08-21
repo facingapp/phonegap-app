@@ -64,6 +64,8 @@ git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 ```bash
 cd www
 npm install
+grunt app
+grunt gui
 cd -
 ```
 

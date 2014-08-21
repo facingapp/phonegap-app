@@ -26,6 +26,8 @@ echo " "
 
 cd www
 npm install
+grunt app
+grunt gui
 cd -
 
 echo " "
