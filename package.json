@@ -3,7 +3,7 @@
   "description": "Facing App PhoneGap Application",
   "homepage": "https://youfacing.me",
   "version": "0.3.0",
-  "license": "GPL-2.0+",
+  "license": "GPL-3.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/manifestinteractive/facing-app.git#stable"

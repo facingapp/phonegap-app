@@ -9,7 +9,8 @@ module.exports = function(grunt) {
 					' * @link <%= pkg.homepage %>\n' +
 					' * @author <%= pkg.author.name %> <<%= pkg.author.email %>>\n' +
 					' * @version <%= pkg.version %>\n' +
-					' * @license Released under the <%= pkg.license %> license\n' +
+					' * @license This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.\n' +
+					' * @copyright Copyright (C) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>\n' +
 					' * @builddate <%= grunt.template.today("yyyy-mm-dd") %>\n' +
 					' */\n'
 			},

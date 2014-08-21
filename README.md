@@ -1,5 +1,11 @@
 ![Facing Logo](https://raw.githubusercontent.com/manifestinteractive/facing/master/assets/logo/rectangle/logo_rectangle.jpg)
 
+Requirements
+===
+
+* [PhoneGap v3.5+](http://phonegap.com/install/)
+* [Xcode](http://docs.phonegap.com/en/3.5.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide)
+* [Android SDK](http://docs.phonegap.com/en/3.5.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide)
 
 Facing App Installation
 ===
@@ -61,6 +67,17 @@ cd facing
 ```bash
 sudo rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+```
+
+### Setup Grunt:
+
+```bash
+cd www
+npm install grunt-contrib-watch --save-dev
+npm install grunt-contrib-concat --save-dev
+npm install grunt-contrib-jshint --save-dev
+npm install jshint-stylish --save-dev
+cd ../
 ```
 
 ### Copy Config File:
@@ -140,3 +157,11 @@ Since the device uses Orientation for calculations, things get weird if we do no
 ### Building on Actual Devices
 
 While you are making the changes above, you can also set your Team Identity if you happen to be an iOS developer.  Just select your account from the Team section and this will be used for building on native devices.
+
+
+License
+===
+
+![License](http://www.gnu.org/graphics/lgplv3-147x51.png "LGPL v3 license")
+
+**Facing** is currently licensed under the LGPL v3 license.

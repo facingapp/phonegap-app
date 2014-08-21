@@ -2,7 +2,8 @@
  * @link https://youfacing.me
  * @author Manifest Interactive, LLC, <hello@manifestinteractive.com>
  * @version 0.3.0
- * @license Released under the GPL-2.0+ license
+ * @license This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+ * @copyright Copyright (C) 2014 Manifest Interactive, LLC,
  * @builddate 2014-08-21
  */
 var app = {
