@@ -83,7 +83,7 @@ module.exports = function(grunt) {
 			},
 			app: ['src/app/*.js', 'src/app/**/*.js'],
 			gui: ['src/gui/*.js', 'src/gui/**/*.js'],
-			gui: ['src/lib/*.js']
+			lib: ['src/lib/*.js']
 		}
 	});
 
