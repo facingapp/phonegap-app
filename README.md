@@ -35,19 +35,34 @@ Manual Installation
 
 ```bash
 cd /your/project/folder
-sudo npm install -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy
 ```
 
 ### Creating PhoneGap Project:
 
 ```bash
 cordova create facing com.manifestinteractive.com Facing
+cd facing
 ```
+
+### Clone Facing App Repository:
+
+```bash
+sudo rm -fr www
+git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+```
+
+### Copy Config File:
+
+```bash
+cp www/js/config.dist.js www/js/config.js
+```
+
+__NOTE__: You will need to modify `./www/config.js` to your projects specifications.
 
 ### Installing Required Plugins:
 
 ```bash
-cd facing
 cordova platform add ios
 cordova platform add android
 cordova plugin add com.google.cordova.admob
@@ -73,24 +88,8 @@ cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 ```
 
-### Clone Facing App Repository:
-
-```bash
-sudo rm -fr www
-git clone -b stable https://github.com/manifestinteractive/facing-app.git www
-```
-
-### Copy Config File:
-
-```bash
-cp www/config.dist.js www/config.js
-```
-
-__NOTE__: You will need to modify `./www/config.js` to your projects specifications.
-
 ### Build Application & Launch in iOS Simulator:
 
 ```bash
-cordova build ios
 cordova emulate ios
 ```

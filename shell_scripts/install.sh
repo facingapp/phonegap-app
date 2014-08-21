@@ -4,19 +4,32 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-sudo npm install -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy
 
 echo " "
 echo "Creating PhoneGap Project:"
 echo " "
 
 phonegap create facing com.manifestinteractive.com Facing
+cd facing
+
+echo " "
+echo "Clone Facing App Repository:"
+echo " "
+
+sudo rm -fr www
+git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+
+echo " "
+echo "Copy Config File:"
+echo " "
+
+cp www/js/config.dist.js www/js/config.js
 
 echo " "
 echo "Installing Require Plugins:"
 echo " "
 
-cd facing
 cordova platform add ios
 cordova platform add android
 cordova plugin add com.google.cordova.admob
@@ -42,22 +55,7 @@ cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 
 echo " "
-echo "Clone Facing App Repository:"
-echo " "
-
-sudo rm -fr www
-git clone -b stable https://github.com/manifestinteractive/facing-app.git www
-
-echo " "
-echo "Copy Config File:"
-echo " "
-
-cp www/js/config.dist.js www/js/config.js
-
-echo " "
 echo "Build Application & Launch in iOS Simulator:"
 echo " "
 
-phonegap build ios
-phonegap build android
 cordova emulate ios
