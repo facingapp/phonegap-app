@@ -7,3 +7,5 @@ RewriteRule ^/?$ "https\:\/\/youfacing\.me\/" [R=301,L]
 
 RewriteCond %{HTTP_USER_AGENT} libwww-perl.*
 RewriteRule .* – [F,L]
+
+Redirect 301 /cordova.js /assets/js/cordova.fake.js

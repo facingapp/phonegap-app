@@ -9,7 +9,7 @@
 # git clone this repository to a directory of your choosing, then
 # in terminal enter the following command:
 #
-#    $ cp /path/to/mi-dev-tools/shell_scripts/mi.sh.dist /Users/`whoami`/.ssh/facingapp.sh
+#    $ cp ./shell_scripts/facingapp.sh /Users/`whoami`/.ssh/facingapp.sh
 #
 # With a local copy of the file, you can make any changes you need before moving onto the next step.
 #
@@ -21,15 +21,18 @@
 #
 #    $ source /Users/`whoami`/.ssh/facingapp.sh
 #
-# You may also want to make symbolic links for consistent project paths across machines
+# Now to see the available commands you have, you can run
 #
-#    $ ln -fs /real/path/to/project /usr/local/project
+#    $ facingapp list
+#
+# To automatically run an emulator for iOS & start the debugger, you can run this:
+#
+#    $ emulate-facing-ios-iphone-retina-4-inch
 
-# Get User
-USER=`whoami`
 
-# Quickly Jump to Project Directories
-alias cd-facing-app="cd /Volumes/Storage/Github/facing-app/facing"
+# IMPORTANT: Set this one as the other commands will use it
+# Absolut Path to Facing PhoneGap Application
+alias cd-facing-app="cd /path/to/facing"
 
 # Build Commands
 alias build-facing="__make_header 'Rebuilding ACA Ratequote'; cd-facing-app; cordova build; cd -;"

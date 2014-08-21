@@ -5,11 +5,11 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
-        <link rel="stylesheet" type="text/css" href="css/reset.css">
-        <link rel="stylesheet" type="text/css" href="css/trunk.css">
-        <link rel="stylesheet" type="text/css" href="css/animations.css">
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/trunk.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/animations.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/index.css">
         <title>Facing</title>
     </head>
     <body>
@@ -131,10 +131,10 @@
 
         </div>
         <script src="cordova.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/config.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/gui.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/config.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/gui.js"></script>
         <script>
 	    (function(d, script){
 
@@ -147,11 +147,9 @@
 			    script.async = true;
 			    script.onload = function(){
 				    app.initialize();
-				    gui.initialize();
 			    };
 			    script.onerror = function(){
 				    app.initialize();
-				    gui.initialize();
 			    };
 			    d.getElementsByTagName('head')[0].appendChild(script);
 		    }
@@ -161,6 +159,11 @@
 		    }
 
         }(document));
+
+        if(config.app.env == 'dev')
+        {
+            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+        }
         </script>
     </body>
 </html>

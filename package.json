@@ -1,0 +1,26 @@
+{
+  "name": "Facing App",
+  "description": "Facing App PhoneGap Application",
+  "homepage": "https://youfacing.me",
+  "version": "0.3.0",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/manifestinteractive/facing-app.git#stable"
+  },
+  "author": {
+    "name": "Manifest Interactive, LLC,",
+    "email": "hello@manifestinteractive.com",
+    "url": "http://manifestinteractive.com"
+  },
+  "bugs": {
+    "url": "https://github.com/manifestinteractive/facing-app/issues",
+    "email": "hello@youfacing.me"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-contrib-watch": "*",
+    "jshint-stylish": "^0.4.0"
+  }
+}

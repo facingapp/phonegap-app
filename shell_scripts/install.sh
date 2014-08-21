@@ -4,7 +4,7 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-sudo npm update -g phonegap cordova ios-sim ios-deploy
+sudo npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
 
 echo " "
 echo "Creating PhoneGap Project:"
@@ -19,6 +19,17 @@ echo " "
 
 sudo rm -fr www
 git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+
+echo " "
+echo "Setup Grunt:"
+echo " "
+
+cd www
+npm install grunt-contrib-watch --save-dev
+npm install grunt-contrib-concat --save-dev
+npm install grunt-contrib-jshint --save-dev
+npm install jshint-stylish --save-dev 
+cd ../
 
 echo " "
 echo "Copy Config File:"
