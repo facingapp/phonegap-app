@@ -162,6 +162,8 @@ While you are making the changes above, you can also set your Team Identity if y
 License
 ===
 
-![License](http://www.gnu.org/graphics/lgplv3-147x51.png "LGPL v3 license")
+![OSI Approved License](http://opensource.org/trademarks/opensource/OSI-Approved-License-100x137.png "OSI Approved License")
+
+![LGPL v3 license](http://www.gnu.org/graphics/lgplv3-147x51.png "LGPL v3 license")
 
 **Facing** is currently licensed under the LGPL v3 license.
