@@ -1,0 +1,71 @@
+#dev-log
+{
+    .panel ul
+    {
+        max-width: 100%;
+    }
+    .clear-log
+    {
+        display: block;
+        color: #fff;
+        font-family: monospace;
+        font-size: 14px;
+        height: 30px;
+        line-height: 30px;
+        background: rgba(0, 0, 0, .5);
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .output
+    {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 3;
+        margin-top: 60px;
+        background-color: rgba(0, 0, 0, 0.75);
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+        color: #fff;
+
+        .push
+        {
+            display: block;
+            width: 100%;
+            height: 100px;
+        }
+
+        ul {
+            color: lime;
+            line-height: 20px;
+            margin-top: 15px;
+            margin-left: 17px;
+            font-family: monospace;
+            font-size: 14px;
+
+            li {
+
+                &.log
+                {
+                    color: dodgerblue;
+                }
+                &.warn
+                {
+                    color: darkorange;
+                }
+                &.error
+                {
+                    color: red;
+                }
+                &.debug
+                {
+                    color: lime;
+                }
+            }
+        }
+    }
+}

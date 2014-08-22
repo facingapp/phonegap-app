@@ -9,7 +9,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 /* jshint node:true *//* global define */
-'use strict';
+//'use strict';
 
 
 /**

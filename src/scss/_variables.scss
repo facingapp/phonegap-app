@@ -1,0 +1,16 @@
+// Base Colors
+$base-orange: #f79022 !default;
+$base-blue: #89cedd !default;
+$base-grey: #595a5c !default;
+
+// Setup sizes for GUI elements
+$size-friend: 200px;
+$size-friend-large: 350px;
+$size-marker: 16px;
+
+// Set which animations to include
+$use-fadeInUp: true;
+$use-fadeInDown: true;
+$use-flipInX: true;
+$use-swing: true;
+$use-fadeOutDown: true;

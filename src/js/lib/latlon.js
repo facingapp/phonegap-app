@@ -4,7 +4,7 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 /* jshint node:true *//* global define */
-'use strict';
+//'use strict';
 if (typeof module!='undefined' && module.exports) var Geo = require('./geo'); // CommonJS (Node.js)
 
 

@@ -68,30 +68,56 @@ module.exports = function(grunt) {
 				options: {
 					spawn: false
 				}
+			},
+			main: {
+				files: [
+					'src/scss/*.scss'
+				],
+				tasks: ['css-main'],
+				options: {
+					spawn: false
+				}
 			}
 		},
 		jshint: {
 			options: {
-				reporter: require('jshint-stylish'),
-				curly: true,
-				eqeqeq: true,
-				eqnull: true,
-				browser: true,
-				globals: {
-					jQuery: true
-				},
+				reporter: require('jshint-stylish')
 			},
 			app: ['src/app/*.js', 'src/app/**/*.js'],
 			gui: ['src/gui/*.js', 'src/gui/**/*.js'],
 			lib: ['src/lib/*.js']
+		},
+		sass: {
+			main: {
+				files: {
+					'assets/css/main.css': 'src/scss/main.scss'
+				}
+			},
+			fa: {
+				files: [{
+					expand: true,
+					cwd: 'src/scss/font-awesome',
+					src: ['font-awesome.scss'],
+					dest: 'assets/css/',
+					ext: '.css'
+				}]
+			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-sass');
 
-	grunt.registerTask('app', ['jshint:app', 'concat:app']);
-	grunt.registerTask('gui', ['jshint:gui', 'concat:gui']);
-	grunt.registerTask('lib', ['jshint:lib', 'concat:lib']);
+	grunt.registerTask('js-app', ['jshint:app', 'concat:app']);
+	grunt.registerTask('js-gui', ['jshint:gui', 'concat:gui']);
+	grunt.registerTask('js-lib', ['jshint:lib', 'concat:lib']);
+	grunt.registerTask('js', ['js-app', 'js-gui', 'js-lib']);
+
+	grunt.registerTask('css-main', ['sass:main']);
+	grunt.registerTask('css-fa', ['sass:fa']);
+	grunt.registerTask('css', ['css-main', 'css-fa']);
+
+	grunt.registerTask('default', ['js', 'css']);
 };
