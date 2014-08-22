@@ -26,8 +26,8 @@ echo " "
 
 cd www
 npm install
-gem install
-grunt sass
+gem install sass
+grunt
 cd -
 
 echo " "

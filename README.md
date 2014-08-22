@@ -48,7 +48,7 @@ npm update -g phonegap cordova grunt-cli
 ### \#2. Creating PhoneGap Project:
 
 ```bash
-cordova create facing com.manifestinteractive.com Facing
+phonegap create facing com.manifestinteractive.com Facing
 cd facing
 ```
 
@@ -64,7 +64,7 @@ git clone -b stable https://github.com/manifestinteractive/facing-app.git www
 ```bash
 cd www
 npm install
-grunt sass
+gem install sass
 grunt
 cd -
 ```
@@ -163,7 +163,7 @@ To help speed up development, there are a few tools in `./shell_scripts` that yo
 
 This project uses Grunt to package separate development files together.  This makes the development process easier as large components are broken up into logical smaller files.
 
-This also means that you __SHOULD NOT__ be edting files in the `assets/js` folder as these files are built from grunt.
+This also means that you __SHOULD NOT__ be edting files in either `assets/js` or `assets/css` folders as these files are built from grunt.
 
 To take advantage of Grunt during the development process, you just need to run the following command to watch for any file changes setup to rebuild the scripts used in the app.
 
@@ -172,12 +172,12 @@ cd /path/to/facing/www
 grunt watch
 ```
 
-If you do not want to watch for live file changes, you can use the following to rebuild the JS code as needed.
+If you do not want to watch for live file changes, you can use the following to repackage code as needed.
 
 ```bash
 cd /path/to/facing/www
-grunt app
-grunt gui
+grunt js
+grunt css
 ```
 
 ### \#3. Live Reload:
