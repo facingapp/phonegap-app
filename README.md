@@ -48,7 +48,7 @@ npm update -g phonegap cordova grunt-cli
 ### \#2. Creating PhoneGap Project:
 
 ```bash
-cordova create facing com.manifestinteractive.com Facing
+phonegap create facing com.manifestinteractive.com Facing
 cd facing
 ```
 
