@@ -47,3 +47,4 @@ syntax: regexp
 /nbproject/
 .idea
 node_modules
+.sass-cache
