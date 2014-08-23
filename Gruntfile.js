@@ -44,7 +44,7 @@ module.exports = function(grunt) {
 					'src/js/app/*.js',
 					'src/js/app/**/*.js'
 				],
-				tasks: ['app'],
+				tasks: ['js-app'],
 				options: {
 					spawn: false
 				}
@@ -55,7 +55,7 @@ module.exports = function(grunt) {
 					'src/js/gui/*.js',
 					'src/js/gui/**/*.js'
 				],
-				tasks: ['gui'],
+				tasks: ['js-gui'],
 				options: {
 					spawn: false
 				}
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
 				files: [
 					'src/js/lib/*.js'
 				],
-				tasks: ['lib'],
+				tasks: ['js-lib'],
 				options: {
 					spawn: false
 				}

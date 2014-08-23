@@ -8,11 +8,17 @@ app.events.deviceReady = function()
     {
         app.uuid = device.uuid;
     }
+	else
+    {
+	    app.uuid = app.util.generateGUID(); // Fake UUID
+    }
 
-    setTimeout(function() {
-        navigator.splashscreen.hide();
-    }, 2000);
+	if(typeof navigator.splashscreen !== 'undefined')
+	{
+		setTimeout(function(){
+			navigator.splashscreen.hide();
+		}, 2000);
+	}
 
     gui.initialize();
-    app.hardware.start();
 };

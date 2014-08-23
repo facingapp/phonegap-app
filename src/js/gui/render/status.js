@@ -5,6 +5,9 @@ gui.render.status = function(message, fadeout)
 
     if(fadeout === true)
     {
-        elm.fadeOut('slow');
+	    clearTimeout(gui.render.timeout.hideStatus);
+	    gui.render.timeout.hideStatus = setTimeout(function(){
+	        elm.fadeOut('slow');
+        }, 1000);
     }
 };

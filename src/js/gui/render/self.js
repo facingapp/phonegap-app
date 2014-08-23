@@ -1,6 +1,14 @@
 gui.render.self = {
 
-    debug: function()
+    // Establish Field of View Degrees from Center ( http://en.wikipedia.org/wiki/Visual_field )
+	visualField: {
+		left: 100,
+	    right: 100,
+	    up: 60,
+	    down: 75
+    },
+
+	debug: function()
     {
         if(typeof app.user_data.acceleration !== 'undefined')
         {

@@ -1,11 +1,16 @@
 gui.reset = function()
 {
-    app.ad.remove.banner();
+	// Leave Shared Space
+	app.io.leaveSpace();
+
+	app.ad.remove.banner();
+
+	$('#home .background').removeClass('blurIn blurOut').addClass('blurOut');
 
     $('.reset-gui').fadeOut();
     $('.logo').removeClass('animated fadeInDown fadeOut');
     $('.find-a-friend').attr('style', '').removeClass('animated flipInX no-image contact');
-    $('.contact-options').hide();
+    $('.contact-options').removeClass('fadeOut').hide();
     gui.render.status('', true);
     $('.me .acceleration ul').html('');
     $('.me .geolocation ul').html('');
@@ -14,15 +19,15 @@ gui.reset = function()
     $('.friend .geolocation ul').html('');
     $('.friend .compass ul').html('');
     $('.welcome').removeClass('animated fadeInUp fadeOutDown').hide();
+	$('.location-marker').fadeOut();
 
     setTimeout(function(){
+	    $('#home .background').removeClass('blurIn blurOut');
         $('.find-a-friend').addClass('default animated flipInX');
-        $('.logo').removeClass('fadeLogo').addClass('animated fadeInDown').show();
+        $('.logo').removeClass('fadeLogo fadeLogoGuidance').addClass('animated fadeInDown').show();
     }, 100);
 
     gui.animate();
-
-    // @todo: kill any open socket connections
 
     app.util.debug('log', 'GUI Reset');
 };

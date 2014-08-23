@@ -6,15 +6,22 @@
 @import "home";
 @import "devlog";
 
-body {
- 	-webkit-backface-visibility: hidden; // Addresses a small issue in webkit: http://bit.ly/NEdoDq
+html, body
+{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
+
 .animated
 {
  	@include animate-prefixer(animation-duration, $base-duration);
  	@include animate-prefixer(animation-fill-mode, both);
 }
-
+.devonly
+{
+    visibility: hidden;
+}
 .reset-gui
 {
     position: absolute;
@@ -52,6 +59,13 @@ body {
   -moz-animation: fadeLogo 2s;
   animation: fadeLogo 2s;
   opacity: 0.35;
+}
+.fadeLogoGuidance
+{
+    -webkit-animation: fadeLogoGuidance 2s;
+    -moz-animation: fadeLogoGuidance 2s;
+    animation: fadeLogoGuidance 2s;
+    opacity: 0.1;
 }
 .panel
 {
@@ -201,234 +215,84 @@ body {
 }
 
 
-@-webkit-keyframes pulse1 {
+@include keyframes(pulse1) {
     0% {
-        -webkit-transform: scale(1);
-        opacity: 0;
-        z-index: 1;
-    }
-
-    50% {
-        -webkit-transform: scale(1);
-        opacity: 0;
-        z-index: 1;
-    }
-
-    60% {
-        -webkit-transform: scale(1);
-        opacity: .2;
-        z-index: 1;
-    }
-
-    70% {
-        -webkit-transform: scale(1.15);
-        opacity: .35;
-        z-index: 1;
-    }
-
-    80% {
-        -webkit-transform: scale(1.25);
-        opacity: .2;
-        z-index: 1;
-    }
-
-    100% {
-        -webkit-transform: scale(1.4);
-        opacity: 0;
-        z-index: 1;
-    }
-}
-
-@-moz-keyframes pulse1 {
-    0% {
-        -moz-transform: scale(1);
+        @include transform(scale(1));
         opacity: 0;
     }
 
     50% {
-        -moz-transform: scale(1);
+        @include transform(scale(1));
         opacity: 0;
     }
 
     60% {
-        -moz-transform: scale(1);
-        opacity: .2;
-    }
-
-    70% {
-        -moz-transform: scale(1.15);
-        opacity: .35;
-    }
-
-    80% {
-        -moz-transform: scale(1.25);
-        opacity: .2;
-    }
-
-    100% {
-        -moz-transform: scale(1.4);
-        opacity: 0;
-    }
-}
-
-@keyframes pulse1 {
-    0% {
-        transform: scale(1);
-        opacity: 0;
-        z-index: 1;
-    }
-
-    50% {
-        transform: scale(1);
-        opacity: 0;
-        z-index: 1;
-    }
-
-    60% {
-        transform: scale(1);
+        @include transform(scale(1));
         opacity: .1;
-        z-index: 1;
     }
 
     70% {
-        transform: scale(1.15);
+        @include transform(scale(1.15));
         opacity: .25;
-        z-index: 1;
     }
 
     80% {
-        transform: scale(1.25);
+        @include transform(scale(1.25));
         opacity: .1;
-        z-index: 1;
     }
 
     100% {
-        transform: scale(1.4);
+        @include transform(scale(1.4));
         opacity: 0;
-        z-index: 1;
     }
 }
 
-@-webkit-keyframes pulse2 {
+@include keyframes(pulse2) {
     0% {
-        -webkit-transform: scale(.6);
+        @include transform(scale(0.6));
         opacity: 0;
     }
 
     40% {
-        -webkit-transform: scale(.8);
+        @include transform(scale(0.8));
         opacity: .05;
     }
 
     50% {
-        -webkit-transform: scale(1);
+        @include transform(scale(1));
         opacity: .1;
     }
 
     60% {
-        -webkit-transform: scale(1.1);
+        @include transform(scale(1.1));
         opacity: .3;
     }
 
     80% {
-        -webkit-transform: scale(1.2);
+        @include transform(scale(1.2));
         opacity: .1;
     }
 
     100% {
-        -webkit-transform: scale(1.3);
+        @include transform(scale(1.3));
         opacity: 0;
     }
 }
 
-@-moz-keyframes pulse2 {
-    0% {
-        -moz-transform: scale(.6);
-        opacity: 0;
-    }
-
-    40% {
-        -moz-transform: scale(.8);
-        opacity: .05;
-    }
-
-    50% {
-        -moz-transform: scale(1);
-        opacity: .1;
-    }
-
-    60% {
-        -moz-transform: scale(1.1);
-        opacity: .3;
-    }
-
-    80% {
-        -moz-transform: scale(1.2);
-        opacity: .1;
-    }
-
-    100% {
-        -moz-transform: scale(1.3);
-        opacity: 0;
-    }
-}
-
-@keyframes pulse2 {
-    0% {
-        transform: scale(.6);
-        opacity: 0;
-    }
-
-    40% {
-        transform: scale(.8);
-        opacity: .05;
-    }
-
-    50% {
-        transform: scale(1);
-        opacity: .1;
-    }
-
-    60% {
-        transform: scale(1.1);
-        opacity: .3;
-    }
-
-    80% {
-        transform: scale(1.2);
-        opacity: .1;
-    }
-
-    100% {
-        transform: scale(1.3);
-        opacity: 0;
-    }
-}
-
-
-@-webkit-keyframes fadeLogo {
-    0% {
+@include keyframes(fadeLogo) {
+    from {
         opacity: 1;
     }
-    100% {
+    to {
         opacity: 0.35;
     }
 }
 
-@-moz-keyframes fadeLogo {
-    0% {
-        opacity: 1;
-    }
-    100% {
+@include keyframes(fadeLogoGuidance) {
+    from {
         opacity: 0.35;
     }
-}
-
-@keyframes fadeLogo {
-    0% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0.35;
+    to {
+        opacity: 0.1;
     }
 }

@@ -18,7 +18,8 @@ gui.handle.contacts = function()
         {
             navigator.contacts.pickContact(function(contact)
             {
-                console.log(JSON.stringify(contact));
+	            app.io.friend = contact;
+	            console.log(JSON.stringify(contact));
                 gui.render.contact.update(contact);
 
             }, function(err){ gui.render.contact.reset(err); });
@@ -83,6 +84,8 @@ gui.handle.contacts = function()
                 "categories"   : null,
                 "urls"         : null
             };
+
+	        app.io.friend = fake_contact;
 
             gui.render.contact.update(fake_contact);
         }
