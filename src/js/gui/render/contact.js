@@ -184,6 +184,12 @@ gui.render.contact = {
         {
             contact_image.css('background-image', 'url("' + contact.photos[0].value + '")');
         }
+        else if(email !== '')
+        {
+	        contact_image.css('background-image', '');
+	        contact_image.addClass('no-image');
+	        contact_image.css('background-image', 'url("https://secure.gravatar.com/avatar/'+ md5(email) +'?s=350&r=pg&d=404")');
+        }
         else
         {
             contact_image.css('background-image', '');

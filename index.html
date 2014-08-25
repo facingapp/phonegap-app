@@ -192,5 +192,53 @@
         <script src="assets/js/lib.js"></script>
         <script src="assets/js/app.js"></script>
         <script src="assets/js/gui.js"></script>
+        <script>
+        // Inject Environment Specific Socket Script
+	    (function(d, script){
+
+	        try {
+		        script = d.createElement('script');
+		        script.type = 'text/javascript';
+		        script.src = (config.app.env == 'dev')
+				        ? config.app.dev.socket.js
+				        : config.app.prod.socket.js;
+		        script.async = false;
+
+		        // Wait for Onload Event Before initializing
+		        script.onload = function(){
+			        app.initialize();
+		        };
+
+		        // There was a problem, but we're setup to handle it within the app
+		        script.onerror = function(){
+			        app.initialize(false);
+		        };
+
+		        d.getElementsByTagName('head')[0].appendChild(script);
+	        }
+	        catch(err)
+	        {
+		        app.util.debug('error', err.message);
+	        }
+
+        }(document));
+
+        if(config.app.env == 'dev')
+        {
+	        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+        }
+
+        // Handler for Custom facing:// protocol
+        function handleOpenURL(url) {
+	        var invite_code = url.replace('facing://invite/', '');
+	        app.io.joinSpace(invite_code, 'guest');
+        }
+
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
+
+        window.onbeforeunload = function(){
+	        app.io.leaveSpace();
+        }
+        </script>
     </body>
 </html>

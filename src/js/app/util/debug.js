@@ -39,5 +39,8 @@ app.util.debug = function(level, message)
         message = JSON.stringify(message);
     }
 
-    gui.render.debug(level, message);
+	if(gui && gui.render && gui.render.debug)
+	{
+		gui.render.debug(level, message);
+	}
 };
