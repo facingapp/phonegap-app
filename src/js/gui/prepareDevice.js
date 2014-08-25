@@ -2,6 +2,9 @@ gui.prepareDevice = function()
 {
     app.util.debug('log', 'Preparing Device');
 
+	var random = Math.floor((Math.random() * 5) + 1);
+	$('.background').addClass('bg' + random);
+
     if(typeof StatusBar !== 'undefined')
     {
         app.util.debug('log', 'Hiding Status Bar');

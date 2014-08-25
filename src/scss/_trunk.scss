@@ -32,7 +32,6 @@ a
 
     .background
     {
-        background: url(../img/bg.jpg) center center no-repeat;
         background-size: cover;
         width: 100%;
         height: 100%;
@@ -42,6 +41,28 @@ a
         bottom: 0;
         left: 0;
         z-index: 0;
+        background-color: $base-grey;
+
+        &.bg1
+        {
+            background: url(../img/bg/bg1.jpg) center center no-repeat $base-grey;
+        }
+        &.bg2
+        {
+            background: url(../img/bg/bg2.jpg) center center no-repeat $base-grey;
+        }
+        &.bg3
+        {
+            background: url(../img/bg/bg3.jpg) center center no-repeat $base-grey;
+        }
+        &.bg4
+        {
+            background: url(../img/bg/bg4.jpg) center center no-repeat $base-grey;
+        }
+        &.bg5
+        {
+            background: url(../img/bg/bg5.jpg) center center no-repeat $base-grey;
+        }
 
 
         @include filter(blur(0));
