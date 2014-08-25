@@ -1,1 +1,3 @@
-gui.render = {};
+gui.render = {
+	timeout: {}
+};

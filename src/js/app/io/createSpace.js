@@ -1,9 +1,30 @@
-app.io.createSpace = function(invite_code)
+app.io.createSpace = function(roomName)
 {
-    if(app.socket && app.socket.emit)
-    {
-        app.socket.emit('createSpace', invite_code, app.uuid);
-    }
+	// Prepare Socket Connection
+	app.io.space = roomName;
+	app.io.name = app.uuid;
+	app.io.mode = 'host';
 
-    app.stats.event('Socket', 'Create', 'New Space ' + invite_code + ' created by ' + app.uuid);
+	if(app.socket && app.socket.emit)
+    {
+	    app.socket.emit('check', roomName, function(data) {
+		    if(data.result)
+		    {
+			    app.util.debug('log', roomName + ' already exists');
+		    }
+		    else if (roomName.length > 0)
+			{
+				app.socket.emit('createRoom', roomName, function(data){
+					if(data.success)
+					{
+						app.stats.event('Socket', 'Create', data.message + ' ' + app.io.name);
+					}
+					else
+					{
+						app.stats.event('Socket', 'Create', app.io.name + ', ' + data.message);
+					}
+				});
+		    }
+	    });
+    }
 };

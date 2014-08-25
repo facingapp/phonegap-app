@@ -1,7 +1,7 @@
 app.ad.create = {
     banner: function()
     {
-        if(config.app.paidApp === true)
+        if(typeof AdMob === 'undefined' || config.app.paidApp === true)
         {
             return false;
         }

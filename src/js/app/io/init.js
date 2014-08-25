@@ -1,6 +1,8 @@
 app.io.init = function()
 {
-    app.util.debug('log', 'Socket Initialized');
+	app.socket.emit('joinserver', app.uuid, app.platform);
+
+	app.util.debug('log', 'Socket Initialized');
 
     app.socket.on('connect', function(){
 
@@ -56,6 +58,42 @@ app.io.init = function()
         app.util.debug('error', 'Socket Error');
         app.stats.event('Socket', 'Status', 'Error');
     });
+
+	app.socket.on('sendRoomID', function (data) {
+		app.io.space = data.id;
+		app.stats.event('Socket', 'Status', 'Private Room Created ' + app.io.space);
+	});
+
+	// We Received an Confirmation that Someone Joined the Private Space
+	app.socket.on('joinedSpace', function(space, name, mode)
+	{
+		app.util.debug('log', name + ' has joined ' + space + ' as ' + mode);
+
+		// Host Joining Their Own App
+		if(space === app.io.space && name === app.io.name && mode === 'host')
+		{
+			app.util.debug('log', 'Host Joining Their Own App');
+		}
+		// Host Joining Guests App
+		else if(space === app.io.space && name !== app.io.name && mode === 'host')
+		{
+			app.util.debug('log', 'Host Joining Guests App');
+		}
+
+
+
+		// Guest Joining Their Own App
+		if(space === app.io.space && name === app.io.name && mode === 'guest')
+		{
+			app.util.debug('log', 'Guest Joining Their Own App');
+		}
+		// Guest Joining Hosts App
+		else if(space === app.io.space && name !== app.io.name && mode === 'guest')
+		{
+			app.util.debug('log', 'Guest Joining Hosts App');
+			gui.render.startGuidance();
+		}
+	});
 
     app.socket.on('receiveData', function(name, data)
     {

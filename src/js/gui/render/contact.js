@@ -19,10 +19,6 @@ gui.render.contact = {
             return false;
         }
 
-        // Communicate with Socket that we want to initiate a session
-        app.io.createSpace(invite_code);
-        app.io.joinSpace(invite_code);
-
         // Add data attributes to links for later use
         $('.contact-option').data('invite_code', invite_code);
         $('.contact-option').data('firstname', first_name);
@@ -66,6 +62,7 @@ gui.render.contact = {
                 else
                 {
                     app.util.debug('warn', 'Device Unable to Send SMS');
+	                gui.render.waitForFiend('SMS', invite_code, first_name);
                 }
 
                 return false;
@@ -134,6 +131,7 @@ gui.render.contact = {
                 {
                     $('#email').attr('href', 'mailto:' + email + '?subject=' + encodeURIComponent('Facing App Invite') + '&body=' + encodeURIComponent(message)).show();
                     app.util.debug('warn', 'Device Unable to Send SMS');
+	                gui.render.waitForFiend('Email', invite_code, first_name);
                 }
             });
 
@@ -171,6 +169,7 @@ gui.render.contact = {
             else
             {
                 app.util.debug('warn', 'Unable to Copy to Device Clipboard');
+	            gui.render.waitForFiend('Clipboard', invite_code, first_name);
             }
 
             return false;
@@ -184,6 +183,12 @@ gui.render.contact = {
         if(contact && contact.photos && contact.photos[0].value !== '')
         {
             contact_image.css('background-image', 'url("' + contact.photos[0].value + '")');
+        }
+        else if(email !== '')
+        {
+	        contact_image.css('background-image', '');
+	        contact_image.addClass('no-image');
+	        contact_image.css('background-image', 'url("https://secure.gravatar.com/avatar/'+ md5(email) +'?s=350&r=pg&d=404")');
         }
         else
         {

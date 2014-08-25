@@ -5,13 +5,17 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
-        <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+
+	    <!--// Styles ( Managed by Grunt in ./src/scss folder ) //-->
+	    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <title>Facing</title>
     </head>
     <body>
         <div class="container">
-            <header class="slide">
+
+	        <!--// Start Header //-->
+	        <header class="slide">
                 <ul id="navToggle" class="burger slide">
                     <li></li><li></li><li></li>
                 </ul>
@@ -19,63 +23,113 @@
 		            <a href="#" class="force-reset-gui"><i class="fa fa-times"></i></a>
 	            </div>
             </header>
+	        <!--// End Header //-->
 
+	        <!--// Start Menu //-->
             <nav class="slide">
                 <ul class="menu">
                     <li><a href="#" data-panel="home" class="active" ><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
 	                <li><a href="#" data-panel="map"><i class="fa fa-crosshairs fa-fw"></i> Map</a></li>
-                    <li><a href="#" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
-                    <li><a href="#" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
-	                <li><a href="#" data-panel="dev-log"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
+	                <li><a href="#" data-panel="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
+	                <li><a href="#" data-panel="about"><i class="fa fa-info fa-fw"></i> About</a></li>
+
+	                <li class="devonly spacer"><a href="#" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
+                    <li class="devonly"><a href="#" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
+	                <li class="devonly"><a href="#" data-panel="dev-log"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
                 </ul>
             </nav>
+	        <!--// End Menu //-->
 
-            <div class="content slide">
-                <div class="logo animated fadeInDown"></div>
+	        <!--// Start Content //-->
+	        <div class="content slide">
 
-                <div id="home" class="panel active">
+		        <div class="logo animated fadeInDown"></div>
 
-                    <div class="location-marker self"></div>
+		        <!--// Start Facing //-->
+		        <div id="home" class="panel active">
+
+			        <!--// Start Location Markers //-->
+			        <div class="location-marker self"></div>
                     <div class="location-marker friend"></div>
+			        <!--// End Location Markers //-->
 
-	                <div class="io">
+			        <!--// Start Socket Status //-->
+			        <div class="io">
 		                <div class="status">
 			                <i class="fa fa-circle-o-notch fa-fw fa-spin"></i>
 		                </div>
 	                </div>
+			        <!--// End Socket Status //-->
 
-                    <a href="#" class="find-a-friend animated flipInX default"></a>
+			        <!--// Start Find a Friend Button //-->
+			        <a href="#" class="find-a-friend animated flipInX default"></a>
+			        <div class="pulse1"></div>
+			        <div class="pulse2"></div>
+			        <!--// End Find a Friend Button //-->
+
+			        <!--// Start Information Well //-->
 	                <div class="information">
+
+		                <!--// Start Welcome Message //-->
 		                <div class="welcome">
 			                <i class="fa fa-chevron-up"></i>&nbsp; Tap to Choose a Friend &nbsp;<i class="fa fa-chevron-up"></i>
 		                </div>
+		                <!--// End Welcome Message //-->
+
+		                <!--// Start Main Status Bar //-->
 		                <div class="status">
 			                <div class="message">
 				                <i class="fa fa-circle-o-notch fa-fw fa-spin"></i> Loading
 			                </div>
 		                </div>
+		                <!--// End Main Status Bar //-->
+
+		                <!--// Start Contact Options //-->
 		                <div class="contact-options animated fadeInUp">
+
 			                <a href="#" id="sms" class="contact-option">
 				                <i class="fa fa-comment fa-fw"></i> <span>SMS</span>
 			                </a>
+
 			                <a href="#" id="email" class="contact-option">
 				                <i class="fa fa-envelope fa-fw"></i> <span>Email</span>
 			                </a>
+
 			                <a href="#" id="clipboard" class="contact-option">
 				                <i class="fa fa-external-link-square fa-fw"></i> <span>Link</span>
 			                </a>
 		                </div>
+		                <!--// End Contact Options //-->
 	                </div>
+			        <!--// End Information Well //-->
 
-	                <div class="pulse1"></div>
-	                <div class="pulse2"></div>
+			        <div class="background"></div>
                 </div>
+		        <!--// End Facing //-->
 
-	            <div id="map" class="panel">
+		        <!--// Start Map //-->
+		        <div id="map" class="panel">
 		            <div class="header-section"></div>
+			        <div class="background"></div>
 	            </div>
+		        <!--// End Map //-->
 
-                <div id="my-data" class="panel">
+		        <!--// Start Help //-->
+		        <div id="help" class="panel">
+			        <div class="header-section"></div>
+			        <div class="background"></div>
+		        </div>
+		        <!--// End Help //-->
+
+		        <!--// Start About //-->
+		        <div id="about" class="panel">
+			        <div class="header-section"></div>
+			        <div class="background"></div>
+		        </div>
+		        <!--// End About //-->
+
+		        <!--// Start Developer Content //-->
+                <div id="my-data" class="panel devonly">
 	                <div class="header-section"></div>
 	                <div class="push-header me">
                         <div class="compass">
@@ -93,9 +147,10 @@
                             <ul class="data"><li>Loading Data ...</li></ul>
                         </div>
                     </div>
+	                <div class="background"></div>
                 </div>
 
-                <div id="friends-data" class="panel">
+                <div id="friends-data" class="panel devonly">
 	                <div class="header-section"></div>
 	                <div class="push-header friend">
                         <div class="compass">
@@ -113,53 +168,76 @@
                             <ul class="data"><li>Loading Data ...</li></ul>
                         </div>
                     </div>
+	                <div class="background"></div>
                 </div>
 
-	            <div id="dev-log" class="panel">
+	            <div id="dev-log" class="panel devonly">
 		            <div class="header-section"></div>
 		            <div class="push-header output">
 			            <div><a href="#" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
 		                <ul></ul>
 			            <div class="push"></div>
 	                </div>
+		            <div class="background"></div>
 	            </div>
+		        <!--// End Developer Content //-->
 
             </div>
-
+	        <!--// End Content //-->
         </div>
+
+        <!--// Scripts ( lib, app & gui are managed by Grunt in ./src/js folder ) //-->
         <script src="cordova.js"></script>
         <script src="assets/js/config.js"></script>
         <script src="assets/js/lib.js"></script>
         <script src="assets/js/app.js"></script>
         <script src="assets/js/gui.js"></script>
         <script>
+        // Inject Environment Specific Socket Script
 	    (function(d, script){
 
-		    try {
-			    script = d.createElement('script');
-			    script.type = 'text/javascript';
-			    script.src = (config.app.env == 'dev')
-					    ? config.app.dev.socket.js
-					    : config.app.prod.socket.js;
-			    script.async = true;
-			    script.onload = function(){
-				    app.initialize();
-			    };
-			    script.onerror = function(){
-				    app.initialize();
-			    };
-			    d.getElementsByTagName('head')[0].appendChild(script);
-		    }
-		    catch(err)
-		    {
-			    app.util.debug('error', err.message);
-		    }
+	        try {
+		        script = d.createElement('script');
+		        script.type = 'text/javascript';
+		        script.src = (config.app.env == 'dev')
+				        ? config.app.dev.socket.js
+				        : config.app.prod.socket.js;
+		        script.async = false;
+
+		        // Wait for Onload Event Before initializing
+		        script.onload = function(){
+			        app.initialize();
+		        };
+
+		        // There was a problem, but we're setup to handle it within the app
+		        script.onerror = function(){
+			        app.initialize(false);
+		        };
+
+		        d.getElementsByTagName('head')[0].appendChild(script);
+	        }
+	        catch(err)
+	        {
+		        app.util.debug('error', err.message);
+	        }
 
         }(document));
 
         if(config.app.env == 'dev')
         {
-            document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+	        document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>');
+        }
+
+        // Handler for Custom facing:// protocol
+        function handleOpenURL(url) {
+	        var invite_code = url.replace('facing://invite/', '');
+	        app.io.joinSpace(invite_code, 'guest');
+        }
+
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
+
+        window.onbeforeunload = function(){
+	        app.io.leaveSpace();
         }
         </script>
     </body>
