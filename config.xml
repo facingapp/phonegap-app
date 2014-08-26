@@ -9,7 +9,7 @@
     <name>Facing</name>
 
     <description>
-        GPS & Compass Frameworks to Connect People to Each Other http://youfacing.me
+        100% Open Source iOS &amp; Android App to locate those you can't seem to find, even though they were right next to you. ( True 3D Location Tracking )
     </description>
 
     <author href="http://manifestinteractive.com" email="hello@manifestinteractive.com">
@@ -29,6 +29,7 @@
     <preference name="HideKeyboardFormAccessoryBar" value="true"/>
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="BackupWebStorage" value="local" />
+    <preference name="android-minSdkVersion" value="19" />
 
     <gap:config-file platform="ios" parent="UIStatusBarHidden">
         <true/>
@@ -37,6 +38,10 @@
     <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
         <false/>
     </gap:config-file>
+
+    <gap:config-file platform="android" parent="/manifest">
+        <application debuggable="true" />
+    </gap:config-file>-->
 
     <!-- Plugins -->
 

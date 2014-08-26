@@ -58,7 +58,7 @@ html, body
   -webkit-animation: fadeLogo 2s;
   -moz-animation: fadeLogo 2s;
   animation: fadeLogo 2s;
-  opacity: 0.35;
+  opacity: 0.5;
 }
 .fadeLogoGuidance
 {
@@ -284,15 +284,124 @@ html, body
         opacity: 1;
     }
     to {
-        opacity: 0.35;
+        opacity: 0.5;
     }
 }
 
 @include keyframes(fadeLogoGuidance) {
     from {
-        opacity: 0.35;
+        opacity: 0.5;
     }
     to {
         opacity: 0.1;
+    }
+}
+
+@include keyframes(cloud1) {
+    0% {
+        @include transform(translate(-1500px, 0));
+    }
+    10% {
+        @include transform(translate(-1200px, 50px));
+    }
+    20% {
+        @include transform(translate(-900px, 0));
+    }
+    30% {
+        @include transform(translate(-600px, -50px));
+    }
+    40% {
+        @include transform(translate(-300px, 0));
+    }
+    50% {
+        @include transform(translate(0, 50px));
+    }
+    60% {
+        @include transform(translate(300px, 0));
+    }
+    70% {
+        @include transform(translate(600px, -50px));
+    }
+    80% {
+        @include transform(translate(900px, 0));
+    }
+    90% {
+        @include transform(translate(1200px, 50px));
+    }
+    100% {
+        @include transform(translate(1500px ,0));
+        top:-300px;
+    }
+}
+@include keyframes(cloud2) {
+    0% {
+        @include transform(translate(-1500px, 0));
+    }
+    10% {
+        @include transform(translate(-1200px, 50px));
+    }
+    20% {
+        @include transform(translate(-900px, 0));
+    }
+    30% {
+        @include transform(translate(-600px, -50px));
+    }
+    40% {
+        @include transform(translate(-300px, 0));
+    }
+    50% {
+        @include transform(translate(0, 50px));
+    }
+    60% {
+        @include transform(translate(300px, 0));
+    }
+    70% {
+        @include transform(translate(600px, -50px));
+    }
+    80% {
+        @include transform(translate(900px, 0));
+    }
+    90% {
+        @include transform(translate(1200px, 50px));
+    }
+    100% {
+        @include transform(translate(1500px ,0));
+        top:-300px;
+    }
+}
+@include keyframes(cloud3) {
+    0% {
+        @include transform(translate(-1500px, 0));
+    }
+    10% {
+        @include transform(translate(-1200px, 50px));
+    }
+    20% {
+        @include transform(translate(-900px, 0));
+    }
+    30% {
+        @include transform(translate(-600px, -50px));
+    }
+    40% {
+        @include transform(translate(-300px, 0));
+    }
+    50% {
+        @include transform(translate(0, 50px));
+    }
+    60% {
+        @include transform(translate(300px, 0));
+    }
+    70% {
+        @include transform(translate(600px, -50px));
+    }
+    80% {
+        @include transform(translate(900px, 0));
+    }
+    90% {
+        @include transform(translate(1200px, 50px));
+    }
+    100% {
+        @include transform(translate(1500px ,0));
+        top:-300px;
     }
 }

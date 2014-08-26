@@ -24,7 +24,7 @@ gui.render.contact = {
         $('.contact-option').data('firstname', first_name);
 
         // Update GUI
-        gui.render.status('Find ' + name);
+        gui.render.status('<i class="fa fa-chevron-down"></i>&nbsp; Contact '+ name +' &nbsp;<i class="fa fa-chevron-down"></i>');
 
         // Remove Previous Event Bindings
         $('#clipboard, #sms, #email').off();
@@ -186,9 +186,11 @@ gui.render.contact = {
         }
         else if(email !== '')
         {
+	        var default_image = encodeURIComponent('https://raw.githubusercontent.com/manifestinteractive/facing-app/stable/assets/img/no-image-350.jpg');
+
 	        contact_image.css('background-image', '');
 	        contact_image.addClass('no-image');
-	        contact_image.css('background-image', 'url("https://secure.gravatar.com/avatar/'+ md5(email) +'?s=350&r=pg&d=404")');
+	        contact_image.css('background-image', 'url("https://secure.gravatar.com/avatar/'+ md5(email) +'?s=350&r=pg&d='+ default_image +'")');
         }
         else
         {

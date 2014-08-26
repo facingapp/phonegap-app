@@ -32,7 +32,6 @@ a
 
     .background
     {
-        background-size: cover;
         width: 100%;
         height: 100%;
         position: absolute;
@@ -40,28 +39,34 @@ a
         right: 0;
         bottom: 0;
         left: 0;
-        z-index: 0;
-        background-color: $base-grey;
+        z-index: -10000;
+        background: url(../img/bg/bg1.jpg) center center no-repeat $base-grey;
+        background-size: cover;
 
         &.bg1
         {
             background: url(../img/bg/bg1.jpg) center center no-repeat $base-grey;
+            background-size: cover;
         }
         &.bg2
         {
             background: url(../img/bg/bg2.jpg) center center no-repeat $base-grey;
+            background-size: cover;
         }
         &.bg3
         {
             background: url(../img/bg/bg3.jpg) center center no-repeat $base-grey;
+            background-size: cover;
         }
         &.bg4
         {
             background: url(../img/bg/bg4.jpg) center center no-repeat $base-grey;
+            background-size: cover;
         }
         &.bg5
         {
             background: url(../img/bg/bg5.jpg) center center no-repeat $base-grey;
+            background-size: cover;
         }
 
 
@@ -88,6 +93,7 @@ header
     height: 60px;
     position: relative;
     background-color: rgba(0,0,0,0.5);
+    z-index: 5000;
 
     h1 {
         color: #9aa6af;
@@ -119,6 +125,7 @@ header
             background-color: #fff;
             border-radius: 3px;
             margin: 5px 0;
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.25);
         }
     }
 }
@@ -154,7 +161,7 @@ ul.menu a
 {
     text-transform: uppercase;
 }
-@media only screen and (max-width: 780px)
+@media only screen and (max-width: 1024px)
 {
     header
     {

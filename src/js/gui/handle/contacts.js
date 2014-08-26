@@ -8,6 +8,7 @@ gui.handle.contacts = function()
 
         clearTimeout(gui.timeout.welcomeIn);
         clearTimeout(gui.timeout.welcomeOut);
+	    clearInterval(gui.timeout.welcome);
 
         $('.contact-options').hide();
         $('.contact-option').removeClass('animated swing');
@@ -25,6 +26,8 @@ gui.handle.contacts = function()
             }, function(err){ gui.render.contact.reset(err); });
 
             app.stats.event('Navigation', 'Contact', 'Picking Contact');
+
+	        return false;
         }
         else
         {
@@ -88,6 +91,8 @@ gui.handle.contacts = function()
 	        app.io.friend = fake_contact;
 
             gui.render.contact.update(fake_contact);
+
+	        return false;
         }
 
         return false;
@@ -107,7 +112,7 @@ gui.handle.contacts = function()
 
         var position = -(user_shuffle * width);
 
-        friends.css({ 'background-position': position + 'px 0' });
+        friends.attr('style', '').css('background-position', position + 'px 0px');
     }, 4000);
 
     $('.force-reset-gui').on(gui.touchEvents, function(){
