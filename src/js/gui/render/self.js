@@ -28,8 +28,8 @@ gui.render.self = {
 		// degrees
 
 		var pointer = $('.self-marker');
-		var pointer_width = pointer.width();
-		var pointer_height = pointer.height();
+		var pointer_width = 24;
+		var pointer_height = 24;
 
 		var center_x = ( gui.screen.width / 2 );
 		var center_y = ( gui.screen.height / 2 );
@@ -37,7 +37,7 @@ gui.render.self = {
 		var left = 0;
 		var top = center_y - ( pointer_height / 2 );
 
-		if(correction.degrees < 0)
+		if(correction.degrees <= 0)
 		{
 			left = gui.render.self.visualField.right - (center_x - ( pointer_width / 2 )) * ( Math.abs(correction.degrees) / 180 );
 		}
@@ -50,9 +50,9 @@ gui.render.self = {
 		{
 			left = 0;
 		}
-		if(left > (gui.screen.width - pointer_width))
+		if(left > gui.screen.width)
 		{
-			left = (gui.screen.width - pointer_width);
+			left = gui.screen.width;
 		}
 
 		console.log(correction.degrees + ' : ' + left);

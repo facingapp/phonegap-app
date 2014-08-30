@@ -120,13 +120,20 @@ app.io.init = function()
 
 	    if(user.user_mode === 'guest' && app.io.mode === 'guest' || user.user_mode === 'host' && app.io.mode === 'host')
 	    {
-		    gui.render.self.draw(user, data);
-		    gui.render.self.debug(user, data);
+		    window.cancelAnimationFrame(gui.timeout.animation);
+		    gui.timeout.animation = window.requestAnimationFrame(function(){
+			    gui.render.self.draw(user, data);
+			    gui.render.self.debug(user, data);
+		    });
+
 	    }
 	    else
 	    {
-		    gui.render.friend.draw(user, data);
-		    gui.render.friend.debug(user, data);
+		    window.cancelAnimationFrame(gui.timeout.animation);
+		    gui.timeout.animation = window.requestAnimationFrame(function(){
+			    gui.render.friend.draw(user, data);
+			    gui.render.friend.debug(user, data);
+		    });
 	    }
     });
 };
