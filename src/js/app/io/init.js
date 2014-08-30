@@ -125,7 +125,6 @@ app.io.init = function()
 			    gui.render.self.draw(user, data);
 			    gui.render.self.debug(user, data);
 		    });
-
 	    }
 	    else
 	    {

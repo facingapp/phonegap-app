@@ -60,11 +60,6 @@ gui.render.self = {
 		var width = pointer_width;
 		var height = pointer_height;
 
-		if(left > (gui.screen.width - 30))
-		{
-			left = (gui.screen.width - 30);
-		}
-
 		if(left < 5 || left > ((gui.screen.width - pointer_width) - 20))
 		{
 			width = 10;
@@ -74,12 +69,12 @@ gui.render.self = {
 			width = 20;
 		}
 
-		pointer.animate({
+		pointer.stop(true, true).animate({
 			left: left,
 			top: top,
 			width: width,
-			height: height,
-		});
+			height: height
+		}, 100);
 	},
 	debug: function(user, data)
     {
