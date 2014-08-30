@@ -21,6 +21,6 @@ app.hardware.start = function()
 	            app.socket.emit('send', JSON.stringify(app.user_data));
             }
 
-        }, 1000);
+        }, 100);
     }
 };

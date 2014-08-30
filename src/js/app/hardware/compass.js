@@ -2,7 +2,7 @@ app.hardware.compass = {
 
     obj: null,
     settings: {
-        frequency: 1000
+        frequency: 100
     },
     start: function()
     {
