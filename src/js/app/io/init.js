@@ -1,6 +1,8 @@
 app.io.init = function()
 {
-	app.socket.emit('joinserver', app.uuid, app.platform);
+	app.socket.emit('joinserver', app.uuid, app.platform, function(server_response){
+
+	});
 
 	app.util.debug('log', 'Socket Initialized');
 
@@ -80,34 +82,51 @@ app.io.init = function()
 			app.util.debug('log', 'Host Joining Guests App');
 		}
 
-
-
 		// Guest Joining Their Own App
 		if(space === app.io.space && name === app.io.name && mode === 'guest')
 		{
 			app.util.debug('log', 'Guest Joining Their Own App');
+			gui.render.startGuidance('guest');
 		}
 		// Guest Joining Hosts App
 		else if(space === app.io.space && name !== app.io.name && mode === 'guest')
 		{
 			app.util.debug('log', 'Guest Joining Hosts App');
-			gui.render.startGuidance();
+			gui.render.startGuidance('host');
 		}
 	});
 
-    app.socket.on('receiveData', function(name, data)
+    app.socket.on('receiveData', function(user, data)
     {
-        if(name !== app.uuid)
+		/*
+		    device: "desktop"
+		    inroom: "XXXXXX"
+		    name: "45B46737-7046-114D-087B-586E060B6FD3"
+		    owns: null
+		    user_id: "45B46737-7046-114D-087B-586E060B6FD3"
+		    user_mode: "guest"
+	    */
+
+	    var obj = JSON.parse(data);
+
+	    if(user.user_mode === 'guest')
         {
-            gui.render.friend(data);
-
-            clearTimeout(app.timeout.io);
-            app.timeout.io = setTimeout(function(){
-                gui.render.io('<i class="fa fa-map-marker"></i>', true);
-            }, 0);
-
-            app.util.debug('log', 'Socket Received Data');
-            app.util.debug('log', data);
+	        app.io.location.guest = obj;
         }
+	    else if(user.user_mode === 'host')
+	    {
+		    app.io.location.host = obj;
+	    }
+
+	    if(user.user_mode === 'guest' && app.io.mode === 'guest' || user.user_mode === 'host' && app.io.mode === 'host')
+	    {
+		    gui.render.self.draw(user, data);
+		    gui.render.self.debug(user, data);
+	    }
+	    else
+	    {
+		    gui.render.friend.draw(user, data);
+		    gui.render.friend.debug(user, data);
+	    }
     });
 };

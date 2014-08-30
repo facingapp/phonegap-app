@@ -3,6 +3,9 @@ gui.reset = function()
 	// Leave Shared Space
 	app.io.leaveSpace();
 
+	// Startup Hardware
+	app.hardware.stop();
+
 	app.ad.remove.banner();
 
 	if($('#home .background').hasClass('blurIn'))

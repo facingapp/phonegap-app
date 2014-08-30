@@ -1,8 +1,5 @@
 app.io.joinSpace = function(roomName, mode)
 {
-	// Startup Hardware
-	app.hardware.start();
-
 	// Prepare Socket Connection
 	app.io.space = roomName;
 	app.io.name = app.uuid;
@@ -10,8 +7,20 @@ app.io.joinSpace = function(roomName, mode)
 
 	if(app.socket && app.socket.emit)
     {
-        app.socket.emit('joinRoom', app.io.space, app.io.name, app.io.mode);
-    }
+	    app.stats.event('Socket', 'Join', app.io.name + ' joined Server');
 
-    app.stats.event('Socket', 'Join', app.io.name + ' joined ' + app.io.space + ' as ' + app.io.mode);
+	    app.socket.emit('joinRoom', app.io.space, app.io.name, app.io.mode, function(join_response){
+		    if(join_response.success === true)
+		    {
+			    app.stats.event('Socket', 'Join', app.io.name + ' joined ' + app.io.space + ' as ' + app.io.mode);
+		    }
+		    else
+		    {
+			    app.stats.event('Socket', 'Join', app.io.name + ' ' + join_response.message);
+
+			    app.notification.alert(join_response.message, function(){}, 'Connection Error', 'OK');
+		    }
+	    });
+
+    }
 };

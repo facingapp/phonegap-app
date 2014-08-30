@@ -187,3 +187,30 @@ if (typeof String.prototype.trim == 'undefined') {
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 if (typeof module != 'undefined' && module.exports) module.exports = Geo; // CommonJS
 if (typeof define == 'function' && define.amd) define([], function() { return Geo; }); // AMD
+
+/** Extend Number object with method to format significant digits of a number,
+ *  using decimal rather than exponential (scientific) notation */
+if (typeof Number.prototype.toPrecisionDecimal == 'undefined') {
+	Number.prototype.toPrecisionDecimal = function(precision) {
+
+		// use standard toPrecision method
+		var n = this.toPrecision(precision);
+
+		// ... but replace +ve exponential format with trailing zeros
+		n = n.replace(/(.+)e\+(.+)/, function(n, sig, exp) {
+			sig = sig.replace(/\./, '');       // remove decimal from significand
+			var l = sig.length - 1;
+			while (exp-- > l) sig = sig + '0'; // append zeros from exponent
+			return sig;
+		});
+
+		// ... and replace -ve exponential format with leading zeros
+		n = n.replace(/(.+)e-(.+)/, function(n, sig, exp) {
+			sig = sig.replace(/\./, '');       // remove decimal from significand
+			while (exp-- > 1) sig = '0' + sig; // prepend zeros from exponent
+			return '0.' + sig;
+		});
+
+		return n;
+	}
+}

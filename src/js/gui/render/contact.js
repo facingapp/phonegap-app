@@ -114,7 +114,7 @@ gui.render.contact = {
                             // User has No Email Service, alert them just in case its a new phone or something
                             else
                             {
-                                navigator.notification.alert(
+	                            app.notification.alert(
                                     'You do not have any Email Clients setup to send Email.',
                                     function(){},
                                     'Unable to Send Email',
@@ -157,7 +157,7 @@ gui.render.contact = {
             {
                 cordova.plugins.clipboard.copy(text);
 
-                navigator.notification.alert(
+	            app.notification.alert(
                     text,
                     function(){
                         gui.render.waitForFiend('Clipboard', invite_code, first_name);

@@ -68,15 +68,6 @@ gui.handle.navigation = function()
             app.ad.remove.banner();
         }
 
-        if(panel === 'my-data' || panel === 'friends-data')
-        {
-            //app.hardware.start();
-        }
-        else
-        {
-            //app.hardware.stop();
-        }
-
         return false;
     });
 

@@ -4,11 +4,11 @@ app.events.deviceReady = function()
 
     app.initialized = true;
 
-    if(typeof device !== 'undefined')
+    if(app.uuid === null && typeof device !== 'undefined')
     {
         app.uuid = device.uuid;
     }
-	else
+	else if(app.uuid === null)
     {
 	    app.uuid = app.util.generateGUID(); // Fake UUID
     }

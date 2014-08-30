@@ -7,7 +7,7 @@ app.events.networkOffline = function()
         gui.render.io('<i class="fa fa-exclamation-triangle fa-fw"></i>');
     }, 0);
 
-    navigator.notification.alert(
+	app.notification.alert(
         'You won\'t be able to use Facing without a Network Connecting.',
         function(){},
         'Device Offline',
