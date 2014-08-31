@@ -6,22 +6,26 @@ app.hardware.start = function()
         app.hardware.compass.start();
         app.hardware.geolocation.start();
 
-	    clearInterval(app.hardware.timer);
-        app.hardware.timer = setInterval(function(){
+	    window.cancelAnimationFrame(app.hardware.timer);
 
-            if(typeof app.user_data.accelerometer !== 'undefined' && typeof app.user_data.compass !== 'undefined' && typeof app.user_data.geolocation !== 'undefined')
-            {
-	            app.socket.emit('send', JSON.stringify(app.user_data));
-            }
-	        else
-            {
-	            app.user_data = (app.io.mode === 'guest') ?
-		            fake_data.guest.user_data :
-		            fake_data.host.user_data;
+	    function sendData()
+	    {
+		    if(typeof app.user_data.accelerometer !== 'undefined' && typeof app.user_data.compass !== 'undefined' && typeof app.user_data.geolocation !== 'undefined')
+		    {
+			    app.socket.emit('send', JSON.stringify(app.user_data));
+		    }
+		    else
+		    {
+			    app.user_data = (app.io.mode === 'guest') ?
+				    fake_data.guest.user_data :
+				    fake_data.host.user_data;
 
-	            app.socket.emit('send', JSON.stringify(app.user_data));
-            }
+			    app.socket.emit('send', JSON.stringify(app.user_data));
+		    }
 
-        }, 250);
+		    app.hardware.timer = window.requestAnimationFrame(sendData);
+	    }
+
+	    app.hardware.timer = window.requestAnimationFrame(sendData);
     }
 };

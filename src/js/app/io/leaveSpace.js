@@ -5,6 +5,8 @@ app.io.leaveSpace = function()
         app.socket.emit('leaveRoom', app.io.space);
     }
 
+	window.cancelAnimationFrame(app.hardware.timer);
+
 	// Stop Hardware
 	app.hardware.stop();
 

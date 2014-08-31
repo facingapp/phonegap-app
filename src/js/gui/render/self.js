@@ -66,8 +66,14 @@ gui.render.self = {
 			left = ( gui.screen.width - pointer_width );
 		}
 
+		// Fix position of marker for when we know we need to add squish
+		if(left > center_x)
+		{
+			left = left + (pointer_width - width);
+		}
+
 		pointer.css({
-			left  : left + (pointer_width - width),
+			left  : left,
 			top   : top,
 			width : width,
 			height: pointer_height
