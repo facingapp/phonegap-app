@@ -7,9 +7,6 @@ gui.render.startGuidance = function(user)
 			return false;
 		}
 
-		// Startup Hardware
-		app.hardware.start();
-
 		//
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
 		gui.render.status('<i class="fa fa-check fa-fw"></i> '+ app.io.friend.name.givenName + ' has Connected', true);
@@ -25,9 +22,6 @@ gui.render.startGuidance = function(user)
 	{
 		// Allow user to Stop
 		$('.reset-gui').fadeIn();
-
-		// Startup Hardware
-		app.hardware.start();
 
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
 		gui.render.status('<i class="fa fa-check fa-fw"></i> You are Now Connected', true);

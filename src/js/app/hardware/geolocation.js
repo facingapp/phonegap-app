@@ -4,7 +4,7 @@ app.hardware.geolocation = {
     settings:
     {
         maximumAge: 500,
-        timeout: 1500,
+        timeout: 10000,
         enableHighAccuracy: true
     },
     start: function()

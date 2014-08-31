@@ -35,7 +35,7 @@
 
 	                <li class="devonly spacer"><a href="javascript:void(0);" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
                     <li class="devonly"><a href="javascript:void(0);" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
-	                <li class="devonly"><a href="javascript:void(0);" data-panel="dev-log"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
+	                <li class="devonly"><a href="javascript:void(0);" data-panel="dev-log" id="trigger-console"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
                 </ul>
             </nav>
 	        <!--// End Menu //-->
@@ -114,6 +114,9 @@
 		        <!--// Start Map //-->
 		        <div id="map" class="panel">
 		            <div class="header-section"></div>
+			        <div class="push-header panel-content">
+				        Map
+			        </div>
 			        <div class="background"></div>
 	            </div>
 		        <!--// End Map //-->
@@ -121,6 +124,9 @@
 		        <!--// Start Help //-->
 		        <div id="help" class="panel">
 			        <div class="header-section"></div>
+			        <div class="push-header panel-content">
+				        Help
+			        </div>
 			        <div class="background"></div>
 		        </div>
 		        <!--// End Help //-->
@@ -128,6 +134,9 @@
 		        <!--// Start About //-->
 		        <div id="about" class="panel">
 			        <div class="header-section"></div>
+			        <div class="push-header panel-content">
+				        About Facing
+			        </div>
 			        <div class="background"></div>
 		        </div>
 		        <!--// End About //-->
@@ -135,7 +144,7 @@
 		        <!--// Start Developer Content //-->
                 <div id="my-data" class="panel devonly">
 	                <div class="header-section"></div>
-	                <div class="push-header me">
+	                <div class="push-header me panel-content">
                         <div class="compass">
                             <h3>My Compass</h3>
                             <ul class="data"><li>Loading Data ...</li></ul>
@@ -156,7 +165,7 @@
 
                 <div id="friends-data" class="panel devonly">
 	                <div class="header-section"></div>
-	                <div class="push-header friend">
+	                <div class="push-header friend panel-content">
                         <div class="compass">
                             <h3>Friends Compass</h3>
                             <ul class="data"><li>Loading Data ...</li></ul>
@@ -177,9 +186,9 @@
 
 	            <div id="dev-log" class="panel devonly">
 		            <div class="header-section"></div>
-		            <div class="push-header output">
-			            <div><a href="javascript:void(0);" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
-		                <ul></ul>
+		            <div class="clear-wrapper"><a href="javascript:void(0);" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
+		            <div class="push-header output panel-content">
+			            <ul></ul>
 			            <div class="push"></div>
 	                </div>
 		            <div class="background"></div>
@@ -233,9 +242,10 @@
         }
 
         // Handler for Custom facing:// protocol
-        function handleOpenURL(url) {
-	        var invite_code = url.replace('facing://invite/', '');
-	        app.io.joinSpace(invite_code, 'guest');
+        function handleOpenURL(url)
+        {
+	        // This will set an internal flag to launch during app.initialize
+	        app.launch_invite_code = url.replace('facing://invite/', '');
         }
 
         (function() {
@@ -264,7 +274,10 @@
         }());
 
         window.onbeforeunload = function(){
-	        app.io.leaveSpace();
+	        if(app.io.space)
+	        {
+		        app.io.leaveSpace();
+	        }
         }
         </script>
     </body>

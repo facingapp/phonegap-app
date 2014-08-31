@@ -1,9 +1,5 @@
 app.io.init = function()
 {
-	app.socket.emit('joinserver', app.uuid, app.platform, function(server_response){
-
-	});
-
 	app.util.debug('log', 'Socket Initialized');
 
     app.socket.on('connect', function(){
@@ -12,6 +8,26 @@ app.io.init = function()
         app.timeout.io = setTimeout(function(){
             gui.render.io('<i class="fa fa-check"></i>', true);
         }, 0);
+
+	    if(app.uuid === null && typeof device !== 'undefined')
+	    {
+		    app.uuid = device.uuid;
+	    }
+	    else if(app.uuid === null)
+	    {
+		    app.uuid = app.util.generateGUID(); // Fake UUID
+	    }
+
+	    app.io.name = app.uuid;
+	    app.io.mode = 'guest';
+
+	    app.socket.emit('joinserver', app.uuid, app.platform, function(server_response){
+		    if(server_response.success === false)
+		    {
+			    app.stats.event('Socket', 'Error', server_response.message);
+			    app.notification.alert(server_response.message, function(){}, 'Connection Error', 'OK');
+		    }
+	    });
 
         app.util.debug('log', 'Socket Connected');
         app.stats.event('Socket', 'Status', 'Connected');
@@ -107,6 +123,9 @@ app.io.init = function()
 		    user_mode: "guest"
 	    */
 
+//	    app.io.name = user.name;
+//	    app.io.mode = user.user_mode;
+
 	    var obj = JSON.parse(data);
 
 	    if(user.user_mode === 'guest')
@@ -120,19 +139,13 @@ app.io.init = function()
 
 	    if(user.user_mode === 'guest' && app.io.mode === 'guest' || user.user_mode === 'host' && app.io.mode === 'host')
 	    {
-		    window.cancelAnimationFrame(gui.timeout.animation);
-		    gui.timeout.animation = window.requestAnimationFrame(function(){
-			    gui.render.self.draw(user, data);
-			    gui.render.self.debug(user, data);
-		    });
+		    gui.render.self.draw();
+		    gui.render.self.debug(user, obj);
 	    }
 	    else
 	    {
-		    window.cancelAnimationFrame(gui.timeout.animation);
-		    gui.timeout.animation = window.requestAnimationFrame(function(){
-			    gui.render.friend.draw(user, data);
-			    gui.render.friend.debug(user, data);
-		    });
+		    //gui.render.friend.draw(user, data);
+		    gui.render.friend.debug(user, obj);
 	    }
     });
 };

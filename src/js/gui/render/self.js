@@ -1,13 +1,13 @@
 gui.render.self = {
 
-    // Establish Field of View Degrees from Center ( http://en.wikipedia.org/wiki/Visual_field )
+	// Establish Field of View Degrees from Center ( http://en.wikipedia.org/wiki/Visual_field )
 	visualField: {
-		left: 100,
-	    right: 100,
-	    up: 60,
-	    down: 75
-    },
-	draw: function(user, data)
+		left : 100,
+		right: 100,
+		up   : 60,
+		down : 75
+	},
+	draw: function()
 	{
 		app.calc.geo.getDistance();
 
@@ -15,8 +15,6 @@ gui.render.self = {
 		var geo = (app.io.mode === 'guest') ?
 			app.calc.geo.guest :
 			app.calc.geo.host;
-
-		//console.log(geo);
 
 		if(geo.bearing === null || app.user_data.compass.magnetic_heading === null)
 		{
@@ -37,77 +35,76 @@ gui.render.self = {
 		var left = 0;
 		var top = center_y - ( pointer_height / 2 );
 
-		if(correction.degrees <= 0)
+		// User is facing to far left, and needs to turn right
+		if(correction.degrees < 0)
 		{
-			left = gui.render.self.visualField.right - (center_x - ( pointer_width / 2 )) * ( Math.abs(correction.degrees) / 180 );
+			left = center_x - ( Math.abs(correction.degrees) * (center_x/gui.render.self.visualField.right) );
 		}
-		else
+		// User is facing to far right, and needs to turn left
+		else if(correction.degrees > 0)
 		{
-			left = gui.render.self.visualField.left + (center_x - ( pointer_width / 2 )) * ( Math.abs(correction.degrees) / 180 );
+			left = center_x + ( Math.abs(correction.degrees) * (center_x/gui.render.self.visualField.left) );
 		}
+
+		// use to animate left and right edge smooshiness
+		var max_offscreen = ( 180 * (center_x/gui.render.self.visualField.right)) - center_x;
+		var current_offscreen_left = (left < 0) ? Math.abs(left) : 0;
+		var current_offscreen_right = (left > gui.screen.width) ? (left - gui.screen.width) : 0;
+		var max_squish = 14;
+
+
+		var width = pointer_width - (max_squish * (max_squish / (max_squish * (max_offscreen/(current_offscreen_left+current_offscreen_right)))));
+
+		// If
 
 		if(left < 0)
 		{
 			left = 0;
 		}
-		if(left > gui.screen.width)
+		if(left > ( gui.screen.width - pointer_width ))
 		{
-			left = gui.screen.width;
+			left = ( gui.screen.width - pointer_width );
 		}
 
-		console.log(correction.degrees + ' : ' + left);
-
-		var width = pointer_width;
-		var height = pointer_height;
-
-		if(left < 5 || left > ((gui.screen.width - pointer_width) - 20))
-		{
-			width = 10;
-		}
-		else if(left < 10 || left > ((gui.screen.width - pointer_width) - 40))
-		{
-			width = 20;
-		}
-
-		pointer.stop(true, true).animate({
-			left: left,
-			top: top,
-			width: width,
-			height: height
-		}, 100);
+		pointer.css({
+			left  : left + (pointer_width - width),
+			top   : top,
+			width : width,
+			height: pointer_height
+		});
 	},
 	debug: function(user, data)
-    {
-        if(typeof data.acceleration !== 'undefined')
-        {
-            var acceleration = '' +
-                '<li><strong>X</strong>:&nbsp; ' + data.acceleration.x + '</li>' +
-                '<li><strong>Y</strong>:&nbsp; ' + data.acceleration.y + '</li>' +
-                '<li><strong>Z</strong>:&nbsp; ' + data.acceleration.z + '</li>';
+	{
+		if(typeof data.acceleration !== 'undefined')
+		{
+			var acceleration = '' +
+				'<li><strong>X</strong>:&nbsp; ' + data.acceleration.x + '</li>' +
+				'<li><strong>Y</strong>:&nbsp; ' + data.acceleration.y + '</li>' +
+				'<li><strong>Z</strong>:&nbsp; ' + data.acceleration.z + '</li>';
 
-            $('.me .acceleration ul').html(acceleration);
-        }
+			$('.me .acceleration ul').html(acceleration);
+		}
 
-        if(typeof data.geolocation !== 'undefined')
-        {
-            var geolocation = '' +
-                '<li><strong>Latitude</strong>:&nbsp; ' + data.geolocation.latitude + ' &deg;</li>' +
-                '<li><strong>Longitude</strong>:&nbsp; ' + data.geolocation.longitude + ' &deg;</li>' +
-                '<li><strong>Altitude</strong>:&nbsp; ' + data.geolocation.altitude + '</li>' +
-                '<li><strong>Accuracy</strong>:&nbsp; ' + data.geolocation.accuracy + '</li>' +
-                '<li><strong>Heading</strong>:&nbsp; ' + data.geolocation.heading + '</li>' +
-                '<li><strong>Speed</strong>:&nbsp; ' + data.geolocation.speed + '</li>';
+		if(typeof data.geolocation !== 'undefined')
+		{
+			var geolocation = '' +
+				'<li><strong>Latitude</strong>:&nbsp; ' + data.geolocation.latitude + ' &deg;</li>' +
+				'<li><strong>Longitude</strong>:&nbsp; ' + data.geolocation.longitude + ' &deg;</li>' +
+				'<li><strong>Altitude</strong>:&nbsp; ' + data.geolocation.altitude + '</li>' +
+				'<li><strong>Accuracy</strong>:&nbsp; ' + data.geolocation.accuracy + '</li>' +
+				'<li><strong>Heading</strong>:&nbsp; ' + data.geolocation.heading + '</li>' +
+				'<li><strong>Speed</strong>:&nbsp; ' + data.geolocation.speed + '</li>';
 
-            $('.me .geolocation ul').html(geolocation);
-        }
+			$('.me .geolocation ul').html(geolocation);
+		}
 
-        if(typeof data.compass !== 'undefined')
-        {
-            var compass = '' +
-                '<li><strong>Direction</strong>:&nbsp; ' + data.compass.direction + '</li>' +
-                '<li><strong>Magnetic Heading</strong>:&nbsp; ' + data.compass.magnetic_heading + ' &deg;</li>';
+		if(typeof data.compass !== 'undefined')
+		{
+			var compass = '' +
+				'<li><strong>Direction</strong>:&nbsp; ' + data.compass.direction + '</li>' +
+				'<li><strong>Magnetic Heading</strong>:&nbsp; ' + data.compass.magnetic_heading + ' &deg;</li>';
 
-            $('.me .compass ul').html(compass);
-        }
-    }
+			$('.me .compass ul').html(compass);
+		}
+	}
 };

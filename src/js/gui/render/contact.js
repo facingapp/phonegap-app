@@ -4,6 +4,8 @@ gui.render.contact = {
     {
         app.stats.event('Navigation', 'Contact', 'Displaying Selected Contact');
 
+	    clearTimeout(gui.render.timeout.hideStatus);
+
         // Allow user to Stop
         $('.reset-gui').fadeIn();
 

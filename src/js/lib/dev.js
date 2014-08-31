@@ -2,13 +2,13 @@ var fake_data = {
 	host: {
 		user_data: {
 			acceleration: {
-				x: 0.0,
-				y: 0.0,
-				z: 0.0
+				x: 0.18941611977796963,
+				y: 13.795011596605141,
+				z: 1.7098997777770906
 			},
 			compass: {
 				direction: 'N',
-				magnetic_heading: 360.000
+				magnetic_heading: 359.00
 			},
 			geolocation: {
 				latitude: 38.6244972,
@@ -23,13 +23,13 @@ var fake_data = {
 	guest: {
 		user_data: {
 			acceleration: {
-				x: 0.0,
-				y: 0.0,
-				z: 0.0
+				x: 0.6459774420389147,
+				y: -8.611446421506374,
+				z: -2.8358355851547357
 			},
 			compass: {
 				direction: 'W',
-				magnetic_heading: 270.000
+				magnetic_heading: 270.00
 			},
 			geolocation: {
 				latitude: 38.6247717,

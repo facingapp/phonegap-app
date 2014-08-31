@@ -29,6 +29,11 @@ gui.prepareDevice = function()
 
     if(config.app.env === 'dev')
     {
-        $('.content').append('<div class="dev"><\/div>');
+        $('.content').append('<div class="dev" id="dev-btn"><\/div>');
+	    $('#dev-btn').on(gui.touchEvents, function(){
+		    $('#navToggle').trigger('mousedown');
+		    $('#trigger-console').trigger('mousedown');
+		    return false;
+	    });
     }
 };

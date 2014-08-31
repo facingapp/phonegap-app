@@ -6,6 +6,7 @@ app.hardware.start = function()
         app.hardware.compass.start();
         app.hardware.geolocation.start();
 
+	    clearInterval(app.hardware.timer);
         app.hardware.timer = setInterval(function(){
 
             if(typeof app.user_data.accelerometer !== 'undefined' && typeof app.user_data.compass !== 'undefined' && typeof app.user_data.geolocation !== 'undefined')
@@ -21,6 +22,6 @@ app.hardware.start = function()
 	            app.socket.emit('send', JSON.stringify(app.user_data));
             }
 
-        }, 100);
+        }, 250);
     }
 };

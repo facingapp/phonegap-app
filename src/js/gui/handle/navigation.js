@@ -60,11 +60,21 @@ gui.handle.navigation = function()
 
         if(panel === 'home')
         {
-            gui.reset();
+            // reset interface if we're not currently sharing data
+	        if(app.sharing_data === false)
+            {
+	            gui.reset();
+            }
+	        else
+	        {
+		        $('.reset-gui').fadeIn();
+	        }
+
+	        $('.dev').show();
         }
         else
         {
-            $('.logo').hide();
+            $('.logo, .reset-gui, .dev').hide();
             app.ad.remove.banner();
         }
 

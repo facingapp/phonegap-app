@@ -6,6 +6,7 @@ app.io.createSpace = function(roomName)
 		    if(data.result)
 		    {
 			    app.util.debug('log', roomName + ' already exists');
+			    app.notification.alert('Unable to Create Connection.', function(){}, 'Connection Error', 'OK');
 		    }
 		    else if (roomName.length > 0)
 			{
@@ -14,14 +15,20 @@ app.io.createSpace = function(roomName)
 					{
 						// Prepare Socket Connection
 						app.io.space = roomName;
-						app.io.name = app.uuid;
 						app.io.mode = 'host';
+
+						app.sharing_data = true;
+
+						// Startup Hardware
+						app.hardware.start();
 
 						app.stats.event('Socket', 'Create', data.message + ' ' + app.io.name);
 					}
 					else
 					{
 						app.stats.event('Socket', 'Create', app.io.name + ', ' + data.message);
+
+						app.notification.alert(data.message, function(){}, 'Connection Error', 'OK');
 					}
 				});
 		    }

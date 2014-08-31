@@ -30,6 +30,17 @@ a
     height: 100%;
     display: none;
 
+    .panel-content
+    {
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+
     .background
     {
         width: 100%;

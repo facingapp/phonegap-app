@@ -1,8 +1,17 @@
 #dev-log
 {
+    background-color: #19252c;
+
     .panel ul
     {
         max-width: 100%;
+    }
+    .clear-wrapper
+    {
+        position: absolute;
+        width: 100%;
+        top: 60px;
+        left: 0;
     }
     .clear-log
     {
@@ -12,22 +21,21 @@
         font-size: 14px;
         height: 30px;
         line-height: 30px;
-        background: rgba(0, 0, 0, .5);
         text-align: center;
         text-transform: uppercase;
+        background-color: rgba(0,0,0,0.25);
     }
     .output
     {
         width: 100%;
         height: 100%;
         position: absolute;
-        top: 0;
+        top: 30px;
         left: 0;
         bottom: 0;
         right: 0;
         z-index: 3;
         margin-top: 60px;
-        background-color: rgba(0, 0, 0, 0.75);
         overflow: scroll;
         -webkit-overflow-scrolling: touch;
         color: #fff;
@@ -36,19 +44,31 @@
         {
             display: block;
             width: 100%;
-            height: 100px;
+            height: 110px;
         }
 
         ul {
             color: lime;
             line-height: 20px;
             margin-top: 15px;
-            margin-left: 17px;
+            margin-left: 30px;
+            margin-right: 20px;
             font-family: monospace;
             font-size: 14px;
+            list-style: none;
 
             li {
 
+                text-indent: -5px;
+                display: inline-block;
+
+                &:before
+                {
+                    content: "\f105";
+                    font-family: 'FontAwesome';
+                    position: relative;
+                    left: -14px;
+                }
                 &.log
                 {
                     color: dodgerblue;
