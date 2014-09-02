@@ -1,5 +1,7 @@
 gui.render.waitForFiend = function(button_id, invite_code, firstname)
 {
+	clearTimeout(gui.render.timeout.hideStatus);
+
 	// Communicate with Socket that we want to initiate a session
 	app.io.createSpace(invite_code);
 

@@ -3,7 +3,7 @@ app.hardware.accelerometer = {
     obj: null,
     settings:
     {
-        frequency: 1000
+        frequency: 100
     },
     start: function()
     {

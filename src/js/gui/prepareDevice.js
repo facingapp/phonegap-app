@@ -2,9 +2,6 @@ gui.prepareDevice = function()
 {
     app.util.debug('log', 'Preparing Device');
 
-	var random = Math.floor((Math.random() * 5) + 1);
-	$('.background').addClass('bg' + random);
-
     if(typeof StatusBar !== 'undefined')
     {
         app.util.debug('log', 'Hiding Status Bar');
@@ -29,6 +26,11 @@ gui.prepareDevice = function()
 
     if(config.app.env === 'dev')
     {
-        $('.content').append('<div class="dev"><\/div>');
+        $('.content').append('<div class="dev" id="dev-btn"><\/div>');
+	    $('#dev-btn').on(gui.touchEvents, function(){
+		    $('#navToggle').trigger('mousedown');
+		    $('#trigger-console').trigger('mousedown');
+		    return false;
+	    });
     }
 };

@@ -5,8 +5,15 @@ app.io.leaveSpace = function()
         app.socket.emit('leaveRoom', app.io.space);
     }
 
+	window.cancelAnimationFrame(app.hardware.timer);
+
+	// Stop Hardware
+	app.hardware.stop();
+
 	app.stats.event('Socket', 'Join', app.io.name + ' left ' + app.io.space + ' as ' + app.io.mode);
 
 	app.io.space = null;
 	app.io.mode = null;
+
+	app.sharing_data = false;
 };

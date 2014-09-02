@@ -41,7 +41,6 @@ echo "Installing Require Plugins:"
 echo " "
 
 cordova platform add ios
-cordova platform add android
 cordova plugin add com.google.cordova.admob
 cordova plugin add org.apache.cordova.battery-status
 cordova plugin add org.apache.cordova.console
@@ -63,6 +62,7 @@ cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
+cordova plugin add plugin.google.maps --variable API_KEY_FOR_IOS="AIzaSyAs4v_dLlLjwLsQhyES4GU8EMuKtRtnsIU"
 
 echo " "
 echo "Build Application & Launch in iOS Simulator:"

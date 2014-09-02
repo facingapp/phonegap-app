@@ -3,9 +3,15 @@ gui.reset = function()
 	// Leave Shared Space
 	app.io.leaveSpace();
 
+	// Startup Hardware
+	app.hardware.stop();
+
 	app.ad.remove.banner();
 
-	$('#home .background').removeClass('blurIn blurOut').addClass('blurOut');
+	if($('#home .background').hasClass('blurIn'))
+	{
+		$('#home .background').removeClass('blurIn blurOut').addClass('blurOut');
+	}
 
     $('.reset-gui').fadeOut();
     $('.logo').removeClass('animated fadeInDown fadeOut');

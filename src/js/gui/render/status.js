@@ -8,6 +8,6 @@ gui.render.status = function(message, fadeout)
 	    clearTimeout(gui.render.timeout.hideStatus);
 	    gui.render.timeout.hideStatus = setTimeout(function(){
 	        elm.fadeOut('slow');
-        }, 1000);
+        }, 3000);
     }
 };

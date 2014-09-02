@@ -1,24 +1,29 @@
+/**
+ *
+ * @returns {boolean}
+ */
 app.events.deviceReady = function()
 {
     app.stats.event('App', 'Event', 'Device Ready');
 
+	if(app.initialized === true)
+	{
+		return false;
+	}
+
     app.initialized = true;
 
-    if(typeof device !== 'undefined')
+    if(app.uuid === null && typeof device !== 'undefined')
     {
         app.uuid = device.uuid;
     }
-	else
+	else if(app.uuid === null)
     {
-	    app.uuid = app.util.generateGUID(); // Fake UUID
+	    app.uuid = app.util.generateGUID();
     }
 
-	if(typeof navigator.splashscreen !== 'undefined')
-	{
-		setTimeout(function(){
-			navigator.splashscreen.hide();
-		}, 2000);
-	}
+	app.io.name = app.uuid;
+	app.io.mode = 'guest';
 
     gui.initialize();
 };

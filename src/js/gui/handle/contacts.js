@@ -8,6 +8,7 @@ gui.handle.contacts = function()
 
         clearTimeout(gui.timeout.welcomeIn);
         clearTimeout(gui.timeout.welcomeOut);
+	    clearInterval(gui.timeout.welcome);
 
         $('.contact-options').hide();
         $('.contact-option').removeClass('animated swing');
@@ -25,6 +26,8 @@ gui.handle.contacts = function()
             }, function(err){ gui.render.contact.reset(err); });
 
             app.stats.event('Navigation', 'Contact', 'Picking Contact');
+
+	        return false;
         }
         else
         {
@@ -32,65 +35,12 @@ gui.handle.contacts = function()
             app.stats.event('Navigation', 'Contact Error', 'Device Does Not Support Contacts');
             app.util.debug('debug', 'Generating Fake Contact for Dev Purposes');
 
-            app.uuid = 'B734FE43-F4FD-C884-A901-3ADD585D0C41'; // Fake GUID
+	        app.io.friend = fake_data.contact;
 
-            var fake_contact = {
-                "id"           : 1,
-                "rawId"        : null,
-                "displayName"  : null,
-                "name"         : {
-                    "givenName"      : "John",
-                    "formatted"      : "John Doe",
-                    "middleName"     : null,
-                    "familyName"     : "Doe",
-                    "honorificPrefix": null,
-                    "honorificSuffix": null
-                },
-                "nickname"     : null,
-                "phoneNumbers" : [
-                    {
-                        "type" : "home",
-                        "value": "(123) 456-7890",
-                        "id"   : 0,
-                        "pref" : false
-                    },
-                    {
-                        "type" : "work",
-                        "value": "(987) 654-3210",
-                        "id"   : 1,
-                        "pref" : false
-                    }
-                ],
-                "emails"       : [
-                    {
-                        "type" : "home",
-                        "value": "fake.home.email@gmail.com",
-                        "id"   : 0,
-                        "pref" : false
-                    },
-                    {
-                        "type" : "work",
-                        "value": "fake.work.email@gmail.com",
-                        "id"   : 1,
-                        "pref" : false
-                    }
-                ],
-                "addresses"    : null,
-                "ims"          : null,
-                "organizations": null,
-                "birthday"     : null,
-                "note"         : null,
-                "photos"       : null,
-                "categories"   : null,
-                "urls"         : null
-            };
+            gui.render.contact.update(app.io.friend);
 
-	        app.io.friend = fake_contact;
-
-            gui.render.contact.update(fake_contact);
+	        return false;
         }
-
-        return false;
     });
 
     var user_shuffle = 0;
@@ -107,7 +57,7 @@ gui.handle.contacts = function()
 
         var position = -(user_shuffle * width);
 
-        friends.css({ 'background-position': position + 'px 0' });
+        friends.attr('style', '').css('background-position', position + 'px 0px');
     }, 4000);
 
     $('.force-reset-gui').on(gui.touchEvents, function(){

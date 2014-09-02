@@ -10,6 +10,8 @@ gui.handle.navigation = function()
         event.stopPropagation();
         event.preventDefault();
 
+	    app.tour.stop();
+
         if (content.hasClass('open'))
         {
             $(items).removeClass('open').addClass('close');
@@ -24,6 +26,21 @@ gui.handle.navigation = function()
         return false;
     });
 
+	$('#trigger-tour').on(gui.touchEvents, function() {
+
+		setTimeout(function(){
+			app.tour.start();
+		}, 300);
+
+		$('nav a').removeClass('active');
+		$('.panel').removeClass('active');
+
+		$('#facing-home').addClass('active');
+		$('#home').addClass('active');
+
+		return false;
+	});
+
     content.on(gui.touchEvents, function(){
         if (content.hasClass('open'))
         {
@@ -35,6 +52,7 @@ gui.handle.navigation = function()
     $('nav a').on(gui.touchEvents, function(){
 
         var panel = $(this).data('panel');
+	    var tour = $(this).data('tour');
         var label = $(this).html();
 
         // Do nothing if user clicks tab for current panel
@@ -60,21 +78,22 @@ gui.handle.navigation = function()
 
         if(panel === 'home')
         {
-            gui.reset();
-        }
-        else
-        {
-            $('.logo').hide();
-            app.ad.remove.banner();
-        }
+            // reset interface if we're not currently sharing data
+	        if(app.sharing_data === false)
+            {
+	            gui.reset();
+            }
+	        else
+	        {
+		        $('.reset-gui').fadeIn();
+	        }
 
-        if(panel === 'my-data' || panel === 'friends-data')
-        {
-            //app.hardware.start();
+	        $('.dev').show();
         }
         else
         {
-            //app.hardware.stop();
+            $('.logo, .reset-gui, .dev').hide();
+            app.ad.remove.banner();
         }
 
         return false;

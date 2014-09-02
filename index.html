@@ -20,7 +20,7 @@
                     <li></li><li></li><li></li>
                 </ul>
 	            <div class="reset-gui">
-		            <a href="#" class="force-reset-gui"><i class="fa fa-times"></i></a>
+		            <a href="javascript:void(0);" class="force-reset-gui"><i class="fa fa-times"></i></a>
 	            </div>
             </header>
 	        <!--// End Header //-->
@@ -28,14 +28,14 @@
 	        <!--// Start Menu //-->
             <nav class="slide">
                 <ul class="menu">
-                    <li><a href="#" data-panel="home" class="active" ><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
-	                <li><a href="#" data-panel="map"><i class="fa fa-crosshairs fa-fw"></i> Map</a></li>
-	                <li><a href="#" data-panel="help"><i class="fa fa-question fa-fw"></i> Help</a></li>
-	                <li><a href="#" data-panel="about"><i class="fa fa-info fa-fw"></i> About</a></li>
+                    <li><a href="javascript:void(0);" data-panel="home" class="active" id="facing-home"><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
+	                <li><a href="javascript:void(0);" data-panel="map"><i class="fa fa-crosshairs fa-fw"></i> Map</a></li>
+	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question fa-fw"></i> Help</a></li>
+	                <li><a href="javascript:void(0);" data-panel="about"><i class="fa fa-info fa-fw"></i> About</a></li>
 
-	                <li class="devonly spacer"><a href="#" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
-                    <li class="devonly"><a href="#" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
-	                <li class="devonly"><a href="#" data-panel="dev-log"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
+	                <li class="devonly spacer"><a href="javascript:void(0);" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
+                    <li class="devonly"><a href="javascript:void(0);" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
+	                <li class="devonly"><a href="javascript:void(0);" data-panel="dev-log" id="trigger-console"><i class="fa fa-terminal fa-fw"></i> Console</a></li>
                 </ul>
             </nav>
 	        <!--// End Menu //-->
@@ -49,8 +49,8 @@
 		        <div id="home" class="panel active">
 
 			        <!--// Start Location Markers //-->
-			        <div class="location-marker self"></div>
-                    <div class="location-marker friend"></div>
+			        <div class="location-marker self self-marker"></div>
+                    <div class="location-marker friend friend-marker"></div>
 			        <!--// End Location Markers //-->
 
 			        <!--// Start Socket Status //-->
@@ -62,7 +62,7 @@
 			        <!--// End Socket Status //-->
 
 			        <!--// Start Find a Friend Button //-->
-			        <a href="#" class="find-a-friend animated flipInX default"></a>
+			        <a href="javascript:void(0);" class="find-a-friend animated flipInX default"></a>
 			        <div class="pulse1"></div>
 			        <div class="pulse2"></div>
 			        <!--// End Find a Friend Button //-->
@@ -72,7 +72,7 @@
 
 		                <!--// Start Welcome Message //-->
 		                <div class="welcome">
-			                <i class="fa fa-chevron-up"></i>&nbsp; Tap to Choose a Friend &nbsp;<i class="fa fa-chevron-up"></i>
+			                <i class="fa fa-chevron-up"></i>&nbsp; Tap Circle to Choose a Friend &nbsp;<i class="fa fa-chevron-up"></i>
 		                </div>
 		                <!--// End Welcome Message //-->
 
@@ -87,22 +87,26 @@
 		                <!--// Start Contact Options //-->
 		                <div class="contact-options animated fadeInUp">
 
-			                <a href="#" id="sms" class="contact-option">
+			                <a href="javascript:void(0);" id="sms" class="contact-option">
 				                <i class="fa fa-comment fa-fw"></i> <span>SMS</span>
 			                </a>
 
-			                <a href="#" id="email" class="contact-option">
+			                <a href="javascript:void(0);" id="email" class="contact-option">
 				                <i class="fa fa-envelope fa-fw"></i> <span>Email</span>
 			                </a>
 
-			                <a href="#" id="clipboard" class="contact-option">
+			                <a href="javascript:void(0);" id="clipboard" class="contact-option">
 				                <i class="fa fa-external-link-square fa-fw"></i> <span>Link</span>
 			                </a>
 		                </div>
 		                <!--// End Contact Options //-->
 	                </div>
 			        <!--// End Information Well //-->
-
+			        <div class="clouds">
+				        <div class="cloud1"></div>
+				        <div class="cloud2"></div>
+				        <div class="cloud3"></div>
+			        </div>
 			        <div class="background"></div>
                 </div>
 		        <!--// End Facing //-->
@@ -110,81 +114,114 @@
 		        <!--// Start Map //-->
 		        <div id="map" class="panel">
 		            <div class="header-section"></div>
-			        <div class="background"></div>
+			        <div class="push-header panel-content">
+				        <div id="map_canvas"></div>
+			        </div>
 	            </div>
 		        <!--// End Map //-->
-
-		        <!--// Start Help //-->
-		        <div id="help" class="panel">
-			        <div class="header-section"></div>
-			        <div class="background"></div>
-		        </div>
-		        <!--// End Help //-->
 
 		        <!--// Start About //-->
 		        <div id="about" class="panel">
 			        <div class="header-section"></div>
-			        <div class="background"></div>
+			        <div class="push-header panel-content">
+				        About Facing
+			        </div>
 		        </div>
 		        <!--// End About //-->
 
 		        <!--// Start Developer Content //-->
                 <div id="my-data" class="panel devonly">
 	                <div class="header-section"></div>
-	                <div class="push-header me">
+	                <div class="push-header me panel-content panel-data">
                         <div class="compass">
-                            <h3>My Compass</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">My</span> Compass</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
 
                         <div class="geolocation">
-                            <h3>My Geolocation</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">My</span> Geolocation</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
 
                         <div class="acceleration">
-                            <h3>My Acceleration</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">My</span> Acceleration</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
                     </div>
-	                <div class="background"></div>
                 </div>
 
                 <div id="friends-data" class="panel devonly">
 	                <div class="header-section"></div>
-	                <div class="push-header friend">
+	                <div class="push-header friend panel-content panel-data">
                         <div class="compass">
-                            <h3>Friends Compass</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">Friends</span> Compass</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
 
                         <div class="geolocation">
-                            <h3>Friends Geolocation</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">Friends</span> Geolocation</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
 
                         <div class="acceleration">
-                            <h3>Friends Acceleration</h3>
-                            <ul class="data"><li>Loading Data ...</li></ul>
+                            <h3><span class="mode">Friends</span> Acceleration</h3>
+                            <ul class="data"><li><strong>Loading</strong>:&nbsp; Waiting for Data</li></ul>
                         </div>
                     </div>
-	                <div class="background"></div>
                 </div>
 
 	            <div id="dev-log" class="panel devonly">
 		            <div class="header-section"></div>
-		            <div class="push-header output">
-			            <div><a href="#" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
-		                <ul></ul>
+		            <div class="clear-wrapper"><a href="javascript:void(0);" class="clear-log"><i class="fa fa-eraser"></i> Clear Console</a></div>
+		            <div class="push-header output panel-content">
+			            <ul></ul>
 			            <div class="push"></div>
 	                </div>
-		            <div class="background"></div>
 	            </div>
 		        <!--// End Developer Content //-->
 
             </div>
 	        <!--// End Content //-->
         </div>
+
+        <!--// Start Intro Tour //-->
+        <ol class='tourbus-legs' id='tourbus'>
+	        <!-- INTRO -->
+	        <li data-scroll-to='0' data-highlight='true' data-width='80%' data-orientation='centered' data-top='150'>
+		        <h3>Welcome to Facing</h3>
+		        <p>This is a quick intro on how to use Facing. Click Next to continue, or Cancel if you're not in the mood.</p>
+		        <div class='buttons'>
+			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
+			        <a href='javascript:void(0);' style='float: left;' class='button remove-bottom tourbus-stop'><i class="fa fa-times"></i>&nbsp; Cancel</a>
+		        </div>
+	        </li>
+
+	        <!-- menu -->
+	        <li data-el='#navToggle' data-highlight='true' data-scroll-to='false' data-width='220' data-orientation='right' data-align='center'>
+		        <h4>Main Menu</h4>
+		        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
+	        </li>
+
+	        <!-- contact -->
+	        <li data-el='.find-a-friend' data-highlight='true' data-scroll-to='false' data-width='80%' data-orientation='top' data-align='center'>
+		        <h3>Pick a Friend</h3>
+		        <p>Click this Circle to Pick a Friend. You will then be given choices on how to connect.</p>
+		        <div class='buttons'>
+			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
+		        </div>
+	        </li>
+
+	        <!-- End -->
+	        <li data-orientation='centered' data-highlight='true' data-width='80%' data-scroll-to='0'>
+		        <h3>That's It</h3>
+		        <p>If you ever need to see this again, you can just click the Help option from the Main Menu.</p>
+		        <div class='buttons'>
+			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-stop'>Done &nbsp;<i class="fa fa-check"></i></a>
+		        </div>
+	        </li>
+        </ol>
+
+        <div class='intro-tour-overlay'></div>
 
         <!--// Scripts ( lib, app & gui are managed by Grunt in ./src/js folder ) //-->
         <script src="cordova.js"></script>
@@ -229,15 +266,48 @@
         }
 
         // Handler for Custom facing:// protocol
-        function handleOpenURL(url) {
-	        var invite_code = url.replace('facing://invite/', '');
-	        app.io.joinSpace(invite_code, 'guest');
+        function handleOpenURL(url)
+        {
+	        // This will set an internal flag to launch during app.initialize
+	        app.launch_invite_code = url.replace('facing://invite/', '');
+
+	        // Check if the app is already initialized ( use might have app running in background before clicking invite link )
+	        if(app.initialized)
+	        {
+		        app.io.joinSpace(app.launch_invite_code, 'guest');
+	        }
         }
 
-        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.oRequestAnimationFrame;
+        (function() {
+	        var lastTime = 0;
+	        var vendors = ['ms', 'moz', 'webkit', 'o'];
+	        for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+		        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+		        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+				        || window[vendors[x]+'CancelRequestAnimationFrame'];
+	        }
+
+	        if (!window.requestAnimationFrame)
+		        window.requestAnimationFrame = function(callback, element) {
+			        var currTime = new Date().getTime();
+			        var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+			        var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+					        timeToCall);
+			        lastTime = currTime + timeToCall;
+			        return id;
+		        };
+
+	        if (!window.cancelAnimationFrame)
+		        window.cancelAnimationFrame = function(id) {
+			        clearTimeout(id);
+		        };
+        }());
 
         window.onbeforeunload = function(){
-	        app.io.leaveSpace();
+	        if(app.io.space)
+	        {
+		        app.io.leaveSpace();
+	        }
         }
         </script>
     </body>
