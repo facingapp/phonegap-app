@@ -10,18 +10,32 @@ app.hardware.start = function()
 
 	    function sendData()
 	    {
-		    if(typeof app.user_data.accelerometer !== 'undefined' && typeof app.user_data.compass !== 'undefined' && typeof app.user_data.geolocation !== 'undefined')
+		    // fill in missing accelerometer data ( for development )
+		    if(typeof app.user_data.acceleration === 'undefined')
 		    {
-			    app.socket.emit('send', JSON.stringify(app.user_data));
+			    app.user_data.acceleration = (app.io.mode === 'guest') ?
+				    fake_data.guest.user_data.acceleration :
+				    fake_data.host.user_data.acceleration;
 		    }
-		    else
-		    {
-			    app.user_data = (app.io.mode === 'guest') ?
-				    fake_data.guest.user_data :
-				    fake_data.host.user_data;
 
-			    app.socket.emit('send', JSON.stringify(app.user_data));
+		    // fill in missing compass data ( for development )
+		    if(typeof app.user_data.compass === 'undefined')
+		    {
+			    app.user_data.compass = (app.io.mode === 'guest') ?
+				    fake_data.guest.user_data.compass :
+				    fake_data.host.user_data.compass;
 		    }
+
+		    // fill in missing geolocation data ( for development )
+		    if(typeof app.user_data.geolocation === 'undefined')
+		    {
+			    app.user_data.geolocation= (app.io.mode === 'guest') ?
+				    fake_data.guest.user_data.geolocation :
+				    fake_data.host.user_data.geolocation;
+		    }
+
+			// send data
+		    app.socket.emit('send', JSON.stringify(app.user_data));
 
 		    app.hardware.timer = window.requestAnimationFrame(sendData);
 	    }

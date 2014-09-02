@@ -31,6 +31,13 @@ app.io.init = function()
 
         app.util.debug('log', 'Socket Connected');
         app.stats.event('Socket', 'Status', 'Connected');
+
+		// Once the socket is connected, launch any invite codes we might have
+	    if(app.launch_invite_code !== null)
+	    {
+		    app.io.joinSpace(app.launch_invite_code, 'guest');
+		    app.launch_invite_code = null;
+	    }
     });
 
     app.socket.on('reconnect', function () {
@@ -114,17 +121,29 @@ app.io.init = function()
 
     app.socket.on('receiveData', function(user, data)
     {
-		/*
-		    device: "desktop"
-		    inroom: "XXXXXX"
-		    name: "45B46737-7046-114D-087B-586E060B6FD3"
-		    owns: null
-		    user_id: "45B46737-7046-114D-087B-586E060B6FD3"
-		    user_mode: "guest"
-	    */
-
-//	    app.io.name = user.name;
-//	    app.io.mode = user.user_mode;
+		/**
+		 * Example Data for 'user' who's a guest
+		 *
+		 *  user = {
+		 *      device    : 'mobile'
+		 *      inroom    : 'aFDsQ9nKJ5'
+		 *      name      : '5CB3CF15-63CD-E56A-6EFD-78D4B3467936'
+		 *      owns      : null
+		 *      user_id   : '5CB3CF15-63CD-E56A-6EFD-78D4B3467936'
+		 *      user_mode : 'guest'
+		 *  }
+		 *
+		 *  Example Data for 'user' who's a host
+		 *
+		 *  user = {
+		 *      device    : 'mobile'
+		 *      inroom    : 'aFDsQ9nKJ5'
+		 *      name      : '197263FE-5C56-F277-F9D5-004F4C982DAE'
+		 *      owns      : 'aFDsQ9nKJ5'
+		 *      user_id   : '197263FE-5C56-F277-F9D5-004F4C982DAE'
+		 *      user_mode : 'host'
+		 *  }
+	     */
 
 	    var obj = JSON.parse(data);
 
@@ -137,15 +156,15 @@ app.io.init = function()
 		    app.io.location.host = obj;
 	    }
 
-	    if(user.user_mode === 'guest' && app.io.mode === 'guest' || user.user_mode === 'host' && app.io.mode === 'host')
+	    if((user.user_mode === 'guest' && app.io.mode === 'guest') || (user.user_mode === 'host' && app.io.mode === 'host'))
 	    {
 		    gui.render.self.draw();
-		    gui.render.self.debug(user, obj);
+		    gui.render.self.debug();
 	    }
 	    else
 	    {
-		    //gui.render.friend.draw(user, data);
-		    gui.render.friend.debug(user, obj);
+		    gui.render.friend.draw();
+		    gui.render.friend.debug();
 	    }
     });
 };

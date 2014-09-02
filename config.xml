@@ -18,9 +18,9 @@
 
     <!-- Customize your app and platform with the preference element. -->
     <preference name="phonegap-version" value="3.5.0" />
-    <preference name="Orientation" value="portrait" />
+    <preference name="orientation" value="portrait" />
     <preference name="target-device"  value="universal" />
-    <preference name="Fullscreen" value="true" />
+    <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="prerendered-icon" value="true" />
     <preference name="show-splash-screen-spinner" value="false" />
@@ -37,6 +37,12 @@
 
     <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
         <false/>
+    </gap:config-file>
+
+    <gap:config-file platform="ios" parent="UISupportedInterfaceOrientations" overwrite="true">
+        <array>
+            <string>UIInterfaceOrientationLandscapeOmg</string>
+        </array>
     </gap:config-file>
 
     <gap:config-file platform="android" parent="/manifest">
@@ -108,6 +114,12 @@
     <!-- IOS Background Location Enabler -->
     <!-- Documentation: https://build.phonegap.com/plugins/291 -->
     <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" version="3.0" />
+
+    <!-- MapKit -->
+    <!-- Documentation: https://github.com/imhotep/MapKit/ -->
+    <gap:plugin name="com.phonegap.plugins.mapkit" version="0.9.3">
+        <param name="API_KEY" value="AIzaSyAlHN4UJJvslMRI4fiGejM63UjrGCoH1tQ" />
+    </gap:plugin>
 
 
     <!-- ================================================== -->

@@ -51,35 +51,8 @@ a
         bottom: 0;
         left: 0;
         z-index: -10000;
-        background: url(../img/bg/bg1.jpg) center center no-repeat $base-grey;
+        background: url(../img/bg.jpg) center center no-repeat $base-grey;
         background-size: cover;
-
-        &.bg1
-        {
-            background: url(../img/bg/bg1.jpg) center center no-repeat $base-grey;
-            background-size: cover;
-        }
-        &.bg2
-        {
-            background: url(../img/bg/bg2.jpg) center center no-repeat $base-grey;
-            background-size: cover;
-        }
-        &.bg3
-        {
-            background: url(../img/bg/bg3.jpg) center center no-repeat $base-grey;
-            background-size: cover;
-        }
-        &.bg4
-        {
-            background: url(../img/bg/bg4.jpg) center center no-repeat $base-grey;
-            background-size: cover;
-        }
-        &.bg5
-        {
-            background: url(../img/bg/bg5.jpg) center center no-repeat $base-grey;
-            background-size: cover;
-        }
-
 
         @include filter(blur(0));
 

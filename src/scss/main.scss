@@ -9,6 +9,7 @@
 @import "about";
 @import "data";
 @import "devlog";
+@import "tour";
 
 html, body
 {
@@ -128,6 +129,7 @@ html, body
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 1000;
 }
 
 .header-section

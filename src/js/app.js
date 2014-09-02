@@ -8,6 +8,7 @@ var app = {
 	launch_invite_code: null,
     online: false,
 	sharing_data: false,
+	enable_tour: true,
     user_data: {
         app: {
             device: this.platform,

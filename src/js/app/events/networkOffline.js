@@ -1,3 +1,6 @@
+/**
+ *
+ */
 app.events.networkOffline = function()
 {
     app.stats.event('App', 'Event', 'Device Offline');

@@ -27,9 +27,6 @@
         font-weight: 500;
         @include transform(translate3d(0,0,0));
 
-        i {
-            opacity: 0.33;
-        }
     }
     .status
     {
@@ -50,32 +47,27 @@
     .location-marker
     {
         position: absolute;
-        width: 24px;
-        height: 24px;
-        z-index: 1000;
-        -webkit-box-shadow: 0 0 0 4px rgba(0, 0, 0, .5);
-        -moz-box-shadow: 0 0 0 4px rgba(0, 0, 0, .5);
         box-shadow: 0 0 0 4px rgba(0, 0, 0, .5);
-
-        -webkit-border-radius: 50%;
-        -moz-border-radius: 50%;
         border-radius: 50%;
-
         display: none;
-        @include transform(translate3d(0,0,0));
+        @include transform( translate3d(0, 0, 0) );
+        @include transition( all 0.25s );
 
         &.friend
         {
-            background-color: #FFF;
-            top: 45%;
-            left: 45%;
+            top: 50%;
+            left: 50%;
             opacity: 0.5;
+            background-color: rgba(0,0,0,0.75);
+            z-index: 500;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.15);
         }
         &.self
         {
             background-color: #f79022;
-            top: 35%;
-            left: 65%;
+            top: 50%;
+            left: 50%;
+            z-index: 1000;
         }
     }
     .io
@@ -104,7 +96,7 @@
         z-index: 999 !important;
         background-color: $base-grey;
         background-size: $size-friend $size-friend;
-        box-shadow: 0 0 0 10px rgba(255,255,255,.2), 0 0 5px 2px rgba(0,0,0,.3), inset 0 0 0 10px rgba(0,0,0,.2);
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.25), 0 0 0 3px rgba(0, 0, 0, 0.25), inset 0 0 0 10px rgba(0, 0, 0, 0.35);
         border-radius: 50%;
         @include transform(translate3d(0,0,0));
 
@@ -209,7 +201,7 @@
         left: 0;
         background: url(../img/cloud/1.png) top center no-repeat;
         @include transform(translate3d(0,0,0));
-        @include animation(cloud1 400s ease-in-out infinite);
+        @include animation(cloud1 400s linear infinite);
         opacity: 0.33;
     }
     .cloud2
@@ -221,7 +213,7 @@
         left: 0;
         background: url(../img/cloud/2.png) top center no-repeat;
         @include transform(translate3d(0,0,0));
-        @include animation(cloud2 800s ease-in-out infinite);
+        @include animation(cloud2 800s linear infinite);
         opacity: 0.33;
     }
     .cloud3
@@ -233,11 +225,17 @@
         left: 0;
         background: url(../img/cloud/3.png) top center no-repeat;
         @include transform(translate3d(0,0,0));
-        @include animation(cloud3 1200s ease-in-out infinite);
+        @include animation(cloud3 1200s linear infinite);
         opacity: 0.33;
     }
 }
-
+@media only screen and (max-width: 599px)
+{
+    .location-marker {
+        width: 24px;
+        height: 24px;
+    }
+}
 @media only screen and (min-width: 600px)
 {
     .find-a-friend {
@@ -297,5 +295,10 @@
     {
         width: 100px !important;
         font-size: 14px !important;
+    }
+
+    .location-marker {
+        width: 36px;
+        height: 36px;
     }
 }

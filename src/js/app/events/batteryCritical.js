@@ -1,3 +1,7 @@
+/**
+ *
+ * @param info
+ */
 app.events.batteryCritical = function(info)
 {
     app.stats.event('App', 'Event', 'Battery Critical: ' + info.level + '%');
