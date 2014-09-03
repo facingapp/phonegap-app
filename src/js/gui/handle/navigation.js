@@ -30,7 +30,7 @@ gui.handle.navigation = function()
 
 		setTimeout(function(){
 			app.tour.start();
-		}, 300);
+		}, 500);
 
 		$('nav a').removeClass('active');
 		$('.panel').removeClass('active');

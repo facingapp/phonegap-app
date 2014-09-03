@@ -1,14 +1,20 @@
 app.tour = {
 	start: function()
     {
-	    $('#tourbus').tourbus( {
-		    debug: true,
-		    autoDepart: true,
-		    onLegStart: function( leg, bus ) {
-			    console.log("Intro tour is on leg: " + (leg.index+1));
+	    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
 
-			    // auto-progress where required
-			    if( leg.rawData.autoProgress ) {
+	    $('#tourbus').tourbus( {
+		    debug: false,
+		    autoDepart: true,
+		    onLegStart: function( leg, bus )
+		    {
+			    $('.toubus-next').click(function( event ) {
+				    event.stopPropagation();
+				    event.preventDefault();
+			    });
+
+			    if( leg.rawData.autoProgress )
+			    {
 				    var currentIndex = leg.index;
 				    setTimeout(
 					    function() {
@@ -20,31 +26,78 @@ app.tour = {
 			    }
 
 			    // highlight where required
-			    if( leg.rawData.highlight ) {
+			    if(leg.rawData.highlight)
+			    {
 				    leg.$target.addClass('intro-tour-highlight');
 				    $('.intro-tour-overlay').show();
 			    }
 
-			    // fade/slide in first leg
-			    if( leg.index == 0 ) {
-				    leg.$el
-					    .css( { visibility: 'visible', opacity: 0, top: leg.options.top / 2 } )
-					    .animate( { top: leg.options.top, opacity: 1.0 }, 500,
-					    function() { leg.show(); } );
-				    return false;
+			    // placeholder to control gui during tour
+			    if(leg.index == 2)
+			    {
+				    clearTimeout(gui.timeout.welcomeIn);
+				    clearTimeout(gui.timeout.welcomeOut);
+				    clearInterval(gui.timeout.welcome);
+
+				    $('#home .welcome').removeClass('animated fadeInUp fadeOutDown').hide();
+
+				    setTimeout(function(){
+					    app.io.friend = fake_data.contact;
+					    gui.render.contact.update(app.io.friend);
+				    }, 1000);
+
+			    }
+			    if(leg.index == 3)
+			    {
+				    $('#sms').removeClass('animated swing');
+				    setTimeout(function(){ $('#sms').addClass('animated swing'); }, 100);
+
+				    $('#email').removeClass('animated swing');
+				    setTimeout(function(){ $('#email').addClass('animated swing'); }, 500);
+
+				    $('#clipboard').removeClass('animated swing');
+				    setTimeout(function(){ $('#clipboard').addClass('animated swing'); }, 900);
+
+
+			    }
+			    if(leg.index == 5)
+			    {
+				    gui.render.waitForFiend('Email', '', 'Jane', true);
+
+				    setTimeout(function(){
+					    app.io.location.guest = fake_data.guest.user_data;
+					    app.io.location.host = fake_data.host.user_data;
+
+					    gui.render.self.draw();
+					    gui.render.startGuidance('host');
+
+					    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
+				    }, 2250);
+			    }
+			    if(leg.index == 7)
+			    {
+				    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
+			    }
+			    if(leg.index == 8)
+			    {
+				    $('.self-marker').addClass('slow-move').css({ top: ((gui.screen.height/2)-($('.self-marker').height()/2)), left: ((gui.screen.width/2)-($('.self-marker').width()/2)) });
 			    }
 		    },
-		    onLegEnd: function( leg ) {
+		    onLegEnd: function( leg )
+		    {
 			    // remove highlight when leaving this leg
-			    if( leg.rawData.highlight ) {
+			    if( leg.rawData.highlight )
+			    {
 				    leg.$target.removeClass('intro-tour-highlight');
 				    $('.intro-tour-overlay').hide();
 			    }
 		    },
-		    onDepart: function() {
+		    onDepart: function()
+		    {
 			    $('.tourbus-container').fadeIn('slow');
 		    },
-		    onStop: function() {
+		    onStop: function()
+		    {
 			    app.tour.stop();
 		    }
 	    });
@@ -54,5 +107,7 @@ app.tour = {
 		$('.tourbus-container').hide().remove();
 		$('.intro-tour-highlight').removeClass('intro-tour-highlight');
 		$('.intro-tour-overlay').hide();
+		$('.self-marker').removeClass('slow-move')
+		gui.reset();
 	}
 };

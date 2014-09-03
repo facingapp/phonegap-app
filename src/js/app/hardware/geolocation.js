@@ -3,7 +3,7 @@ app.hardware.geolocation = {
     obj: null,
     settings:
     {
-        maximumAge: 500,
+        maximumAge: 25,
         timeout: 10000,
         enableHighAccuracy: true
     },
@@ -59,8 +59,53 @@ app.hardware.geolocation = {
     },
     error: function(error)
     {
-        app.util.debug('error', 'Geolocation Error: ' + error.message);
-        app.stats.event('Hardware', 'Error', 'Geolocation Error: ' + error.message);
+        // Returned when users do not allow the app to retrieve position information.
+	    if(error.PERMISSION_DENIED)
+        {
+	        app.util.debug('error', 'Geolocation Error: Permission Denied');
+	        app.stats.event('Hardware', 'Error', 'Geolocation Error: Permission Denied');
+
+	        // Stop Hardware Listening since we can't use it
+	        app.hardware.stop();
+
+	        // Notify User of issue
+	        app.notification.alert(
+		        'Your device settings prevent us from retrieving position information.',
+		        function(){},
+		        'Permission Denied',
+		        'OK'
+	        );
+        }
+	    // Returned when the device is unable to retrieve a position.
+	    // In general, this means the device is not connected to a network or can't get a satellite fix.
+	    else if(error.POSITION_UNAVAILABLE)
+	    {
+		    app.util.debug('error', 'Geolocation Error: Position Unavailable');
+		    app.stats.event('Hardware', 'Error', 'Geolocation Error: Position Unavailable');
+
+		    // Stop Hardware Listening since we can't use it
+		    app.hardware.stop();
+
+		    // Notify User of issue
+		    app.notification.alert(
+			    'We can\'t get a satellite fix. Perhaps you are in an area with no reception?',
+			    function(){},
+			    'Position Unavailable',
+			    'OK'
+		    );
+	    }
+	    // Returned when the device is unable to retrieve a position within the time specified
+	    else if(error.TIMEOUT)
+	    {
+		    app.util.debug('warn', 'Geolocation Warning: ' + error.message);
+		    app.stats.event('Hardware', 'Warning', 'Geolocation Warning: ' + error.message);
+	    }
+	    // Some other Error has occurred
+	    else
+        {
+	        app.util.debug('error', 'Geolocation Error: ' + error.message);
+	        app.stats.event('Hardware', 'Error', 'Geolocation Error: ' + error.message);
+        }
     },
     distance: function(value, use_metric)
     {

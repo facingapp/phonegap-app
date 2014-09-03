@@ -22,7 +22,7 @@ gui.render.self = {
 			app.io.location.host;
 
 		// Do not continue if we do not have data we need
-		if(geo.bearing === null || app.user_data.compass.magnetic_heading === null)
+		if(geo.bearing === null || loc.compass.magnetic_heading === null)
 		{
 			return false;
 		}
