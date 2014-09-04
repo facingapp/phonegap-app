@@ -5,6 +5,12 @@ app.io.leaveSpace = function()
         app.socket.emit('leaveRoom', app.io.space);
     }
 
+	// Allow Device to sleep
+	if(typeof window.plugins !== 'undefined')
+	{
+		window.plugins.insomnia.allowSleepAgain();
+	}
+
 	window.cancelAnimationFrame(app.hardware.timer);
 
 	// Stop Hardware

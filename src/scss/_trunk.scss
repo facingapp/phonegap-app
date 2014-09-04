@@ -145,114 +145,112 @@ ul.menu a
 {
     text-transform: uppercase;
 }
-@media only screen and (max-width: 1024px)
+
+header
 {
-    header
-    {
-        height: 60px;
-        z-index: 2;
-        background-color: transparent;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        @include transform(translate3d(0,0,0));
+    height: 60px;
+    z-index: 2;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    @include transform(translate3d(0,0,0));
 
-        h1 {
-            display: none;
-        }
-
-        .burger
-        {
-            display: block;
-        }
+    h1 {
+        display: none;
     }
 
-    nav
+    .burger
     {
-        width: 93%;
-        height: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        margin: 0;
-        background-color: #1d2d35;
+        display: block;
+    }
+}
+
+nav
+{
+    width: 93%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    background-color: $ui-blue;
+    opacity: .3;
+    @include transform(translate3d(5%,0,0)scale(.97));
+
+    &.open
+    {
+        opacity: 1;
+        @include transform(translate3d(0,0,0)scale(1));
+        @include animation(slideIn .35s ease-in-out);
+    }
+
+    &.close
+    {
         opacity: .3;
         @include transform(translate3d(5%,0,0)scale(.97));
+        @include animation(slideOut .3s ease-in-out);
+    }
 
-        &.open
-        {
-            opacity: 1;
-            @include transform(translate3d(0,0,0)scale(1));
-            @include animation(slideIn .35s ease-in-out);
-        }
+    ul {
+        height: 100%;
+        overflow-y: auto;
 
-        &.close
-        {
-            opacity: .3;
-            @include transform(translate3d(5%,0,0)scale(.97));
-            @include animation(slideOut .3s ease-in-out);
-        }
+        li {
+            display: block;
+            float: none;
 
-        ul {
-            height: 100%;
-            overflow-y: auto;
+            a {
+                padding: 21px 25px;
+                letter-spacing: 3px;
+                font-size: 14px;
 
-            li {
-                display: block;
-                float: none;
+                &logo
+                {
+                    display: none;
+                }
 
-                a {
-                    padding: 21px 25px;
-                    letter-spacing: 3px;
-                    font-size: 14px;
+                &.active
+                {
+                    color: #fff;
+                    background-color: $ui-dark-blue;
+                }
 
-                    &logo
-                    {
-                        display: none;
-                    }
-
-                    &.active
-                    {
-                        color: #fff;
-                        background-color: #141e23;
-                    }
-
-                    &:hover
-                    {
-                        color: #fff;
-                        background-color: #19252c;
-                    }
+                &:hover
+                {
+                    color: #fff;
+                    background-color: $ui-dark-blue;
                 }
             }
         }
     }
+}
 
-    .content
-    {
-        z-index: 1;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        left: 0;
-        top: 0;
-        margin: 0;
-        -webkit-touch-callout: none;
-        -webkit-text-size-adjust: none;
+.content
+{
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
 
-        @include user-select(none);
-        @include transform(translate3d(0,0,0));
-    }
-    header.open, .content.open
-    {
-        @include transform(translate3d(240px, 0, 0));
-        @include animation(open .5s ease-in-out);
-    }
-    header.close, .content.close
-    {
-        @include transform(translate3d(0, 0, 0));
-        @include animation(close .3s ease-in-out);
-    }
+    @include user-select(none);
+    @include transform(translate3d(0,0,0));
+}
+header.open, .content.open
+{
+    @include transform(translate3d(240px, 0, 0));
+    @include animation(open .5s ease-in-out);
+}
+header.close, .content.close
+{
+    @include transform(translate3d(0, 0, 0));
+    @include animation(close .3s ease-in-out);
 }
 
 @include keyframes(slideIn) {

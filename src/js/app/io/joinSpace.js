@@ -3,6 +3,12 @@ app.io.joinSpace = function(roomName, mode)
 	clearInterval(gui.timeout.welcome);
 	clearTimeout(gui.render.timeout.hideStatus);
 
+	// Prevent Device from sleeping
+	if(typeof window.plugins !== 'undefined')
+	{
+		window.plugins.insomnia.keepAwake();
+	}
+
 	// Prepare Socket Connection
 	app.io.space = roomName;
 	app.io.name = app.uuid;

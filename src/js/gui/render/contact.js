@@ -6,20 +6,21 @@ gui.render.contact = {
 
 	    clearTimeout(gui.render.timeout.hideStatus);
 
-        // Allow user to Stop
-        $('.reset-gui').fadeIn();
+	    // Leave if there was an issue with the contact
+	    if( !contact || contact.name === null)
+	    {
+		    app.util.debug('warn', 'Invalid Contact');
+
+		    return false;
+	    }
 
         // Setup initial data
         var name = contact.name.formatted;
         var first_name = contact.name.givenName;
         var invite_code = app.util.generateUID();
 
-        // Leave if there was an issue with the contact
-        if(!contact || typeof contact.name === 'undefined' || contact.name.givenName === '')
-        {
-            app.util.debug('warn', 'Invalid Contact');
-            return false;
-        }
+	    // Allow user to Stop
+	    $('.reset-gui').fadeIn();
 
         // Add data attributes to links for later use
         $('.contact-option').data('invite_code', invite_code);

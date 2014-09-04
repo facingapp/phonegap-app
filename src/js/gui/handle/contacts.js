@@ -4,7 +4,14 @@ gui.handle.contacts = function()
 
     $('.find-a-friend').on(gui.touchEvents, function()
     {
-        app.util.debug('log', 'Picking a Friend ...');
+        if(app.sharing_data)
+        {
+	        app.util.debug('log', 'Currently Sharing Data. Contact Button Disabled.');
+
+	        return false;
+        }
+
+	    app.util.debug('log', 'Picking a Friend ...');
 
         clearTimeout(gui.timeout.welcomeIn);
         clearTimeout(gui.timeout.welcomeOut);

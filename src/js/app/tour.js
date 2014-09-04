@@ -1,10 +1,14 @@
 app.tour = {
-	gui_reset: false,
+	gui_reset: true,
 	start: function()
     {
-	    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
+	    if(app.sharing_data)
+	    {
+		    app.notification.alert('Help is disabled while you\'re connected to a friend.', function(){}, 'Connected to Friend', 'OK');
+		    return false;
+	    }
 
-	    app.tour.gui_reset = false;
+	    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
 
 	    $('#tourbus').tourbus( {
 		    debug: false,
@@ -41,6 +45,8 @@ app.tour = {
 				    clearTimeout(gui.timeout.welcomeIn);
 				    clearTimeout(gui.timeout.welcomeOut);
 				    clearInterval(gui.timeout.welcome);
+
+				    app.tour.gui_reset = false;
 
 				    $('#home .welcome').removeClass('animated fadeInUp fadeOutDown').hide();
 
@@ -117,7 +123,7 @@ app.tour = {
 		$('.intro-tour-overlay').hide();
 		$('.self-marker').removeClass('slow-move');
 
-		if( !app.tour.gui_reset)
+		if( !app.tour.gui_reset && !app.sharing_data)
 		{
 			gui.reset();
 			app.tour.gui_reset = true;
