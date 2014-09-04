@@ -6,6 +6,7 @@ Requirements
 * [PhoneGap v3.5+](http://phonegap.com/install/)
 * [Xcode](http://docs.phonegap.com/en/3.5.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide)
 * [Android SDK](http://docs.phonegap.com/en/3.5.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide)
+* [Node.js v10+](http://nodejs.org/) ( For Application Development )
 
 Facing App Installation
 ===
