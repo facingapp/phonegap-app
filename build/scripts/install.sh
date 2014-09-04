@@ -49,7 +49,6 @@ echo " "
 
 cordova plugin add com.google.cordova.admob
 cordova plugin add org.apache.cordova.battery-status
-cordova plugin add org.apache.cordova.console
 cordova plugin add org.apache.cordova.contacts
 cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.device-motion

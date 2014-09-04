@@ -20,5 +20,7 @@ app.ad.display = {
     error: function()
     {
         app.stats.event('Advertising', 'Request', 'Failed to Receive New Ad Content');
+
+	    gui.resize();
     }
 };

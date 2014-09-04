@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <widget id = "com.manifestinteractive.facing"
-        version = "0.3.0"
+        version = "0.6.0"
         xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
@@ -16,55 +16,36 @@
         Manifest Interactive
     </author>
 
-    <!-- Customize your app and platform with the preference element. -->
+    <!-- Global Preferences -->
     <preference name="phonegap-version" value="3.5.0" />
     <preference name="orientation" value="portrait" />
-    <preference name="target-device"  value="universal" />
     <preference name="fullscreen" value="true" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="prerendered-icon" value="true" />
-    <preference name="show-splash-screen-spinner" value="false" />
-    <preference name="DisallowOverscroll" value="true" />
-    <preference name="BackgroundColor" value="0xff222222" />
-    <preference name="HideKeyboardFormAccessoryBar" value="true"/>
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="BackupWebStorage" value="local" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="BackgroundColor" value="0xff595a5c" />
+    <preference name="AutoHideSplashScreen" value="false" />
 
+    <!-- iOS Specific Preferences -->
     <platform name="ios">
-        <preference name="SuppressesIncrementalRendering" value="true"/>
+        <preference name="ShowSplashScreenSpinner" value="false" />
+        <preference name="DisallowOverscroll" value="true" />
+        <preference name="webviewbounce" value="false" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+        <preference name="target-device"  value="universal" />
+        <preference name="deployment-target" value="7.0" />
+        <preference name="SuppressesIncrementalRendering" value="true" />
+        <preference name="prerendered-icon" value="true" />
     </platform>
 
+    <!-- Android Specific Preferences -->
     <platform name="android">
-        <preference name="Fullscreen" value="true" />
+        <preference name="android-minSdkVersion" value="19" />
+        <preference name="disallowOverscroll" value="true" />
+        <preference name="webviewbounce" value="false" />
     </platform>
-
-    <gap:config-file platform="ios" parent="UIStatusBarHidden">
-        <true/>
-    </gap:config-file>
-
-    <gap:config-file platform="ios" parent="UIViewControllerBasedStatusBarAppearance">
-        <false/>
-    </gap:config-file>
-
-    <gap:config-file platform="ios" parent="UISupportedInterfaceOrientations" overwrite="true">
-        <array>
-            <string>UIInterfaceOrientationLandscapeOmg</string>
-        </array>
-    </gap:config-file>
-
-    <gap:config-file platform="android" parent="/manifest">
-        <application debuggable="true" />
-    </gap:config-file>
 
     <!-- Plugins -->
 
     <!-- Core plugins -->
     <!-- ================================================== -->
-
-    <!-- Console ( Better Support for console.log ) -->
-    <!-- Documentation: https://build.phonegap.com/plugins/624 -->
-    <gap:plugin name="org.apache.cordova.console" />
 
     <!-- Contacts ( access to the device contacts ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/930 -->
@@ -90,16 +71,17 @@
     <!-- Documentation: https://build.phonegap.com/plugins/626 -->
     <gap:plugin name="org.apache.cordova.network-information" />
 
-    <!-- Splashscreen ( support for loading a Splashscreen ) -->
-    <!-- Documentation: https://build.phonegap.com/plugins/620 -->
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-
     <!-- Notification ( support for loading a Splashscreen ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/622 -->
     <gap:plugin name="org.apache.cordova.dialogs" />
 
-
+    <!-- Status Bar ( control status bar ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/505 -->
     <gap:plugin name="com.phonegap.plugin.statusbar" />
+
+    <!-- Splash Screen ( control splash screen ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/620 -->
+    <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->

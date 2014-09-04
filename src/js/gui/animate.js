@@ -5,6 +5,7 @@ gui.animate = function()
     clearTimeout(gui.timeout.fadeLogo);
     clearTimeout(gui.timeout.welcomeOut);
 
+
 	if( !gui.counter.welcome)
 	{
 		gui.counter.welcome = 0;
