@@ -18,7 +18,7 @@ echo "Clone Facing App Repository:"
 echo " "
 
 rm -fr www
-git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+git clone -b stable https://github.com/facingapp/phonegap-app.git www
 
 echo " "
 echo "Setup Grunt:"
@@ -37,10 +37,16 @@ echo " "
 cp www/assets/js/config.dist.js www/assets/js/config.js
 
 echo " "
-echo "Installing Require Plugins:"
+echo "Adding Platforms:"
 echo " "
 
 cordova platform add ios
+cordova platform add android
+
+echo " "
+echo "Installing Require Plugins:"
+echo " "
+
 cordova plugin add com.google.cordova.admob
 cordova plugin add org.apache.cordova.battery-status
 cordova plugin add org.apache.cordova.console
@@ -62,7 +68,25 @@ cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
-cordova plugin add plugin.google.maps --variable API_KEY_FOR_IOS="AIzaSyAs4v_dLlLjwLsQhyES4GU8EMuKtRtnsIU"
+
+echo " "
+echo "Copy Build Hooks into Project:"
+echo " "
+
+cp -R www/build/hooks/* hooks/
+chmod 755 hooks/*/*.js
+
+echo " "
+echo "Replace iOS Build Files ( modified from default ):"
+echo " "
+
+rm platforms/ios/Facing.xcodeproj
+rm -fr platforms/ios/Facing/Images.xcassets
+rm platforms/ios/Facing/Facing-Info.plist
+
+cp www/build/ios/Facing.xcodeproj platforms/ios/Facing.xcodeproj
+cp -R www/build/ios/Images.xcassets platforms/ios/Facing/Images.xcassets
+cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
 
 echo " "
 echo "Build Application & Launch in iOS Simulator:"

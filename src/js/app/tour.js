@@ -1,7 +1,10 @@
 app.tour = {
+	gui_reset: false,
 	start: function()
     {
 	    $('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
+
+	    app.tour.gui_reset = false;
 
 	    $('#tourbus').tourbus( {
 		    debug: false,
@@ -62,7 +65,7 @@ app.tour = {
 			    }
 			    if(leg.index == 5)
 			    {
-				    gui.render.waitForFiend('Email', '', 'Jane', true);
+				    gui.render.waitForFiend('Email', '', 'Demo', true);
 
 				    setTimeout(function(){
 					    app.io.location.guest = fake_data.guest.user_data;
@@ -81,6 +84,11 @@ app.tour = {
 			    if(leg.index == 8)
 			    {
 				    $('.self-marker').addClass('slow-move').css({ top: ((gui.screen.height/2)-($('.self-marker').height()/2)), left: ((gui.screen.width/2)-($('.self-marker').width()/2)) });
+			    }
+			    if(leg.index == 10)
+			    {
+				    gui.reset();
+				    app.tour.gui_reset = true;
 			    }
 		    },
 		    onLegEnd: function( leg )
@@ -107,7 +115,12 @@ app.tour = {
 		$('.tourbus-container').hide().remove();
 		$('.intro-tour-highlight').removeClass('intro-tour-highlight');
 		$('.intro-tour-overlay').hide();
-		$('.self-marker').removeClass('slow-move')
-		gui.reset();
+		$('.self-marker').removeClass('slow-move');
+
+		if( !app.tour.gui_reset)
+		{
+			gui.reset();
+			app.tour.gui_reset = true;
+		}
 	}
 };

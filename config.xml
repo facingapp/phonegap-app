@@ -31,6 +31,14 @@
     <preference name="BackupWebStorage" value="local" />
     <preference name="android-minSdkVersion" value="19" />
 
+    <platform name="ios">
+        <preference name="SuppressesIncrementalRendering" value="true"/>
+    </platform>
+
+    <platform name="android">
+        <preference name="Fullscreen" value="true" />
+    </platform>
+
     <gap:config-file platform="ios" parent="UIStatusBarHidden">
         <true/>
     </gap:config-file>
@@ -47,7 +55,7 @@
 
     <gap:config-file platform="android" parent="/manifest">
         <application debuggable="true" />
-    </gap:config-file>-->
+    </gap:config-file>
 
     <!-- Plugins -->
 
@@ -56,69 +64,63 @@
 
     <!-- Console ( Better Support for console.log ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/624 -->
-    <gap:plugin name="org.apache.cordova.console" version="0.2.7" />
+    <gap:plugin name="org.apache.cordova.console" />
 
     <!-- Contacts ( access to the device contacts ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/930 -->
-    <gap:plugin name="org.apache.cordova.contacts" version="0.2.11" />
+    <gap:plugin name="org.apache.cordova.contacts" />
 
     <!-- Device Info ( describes the device's hardware and software ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/628 -->
-    <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
+    <gap:plugin name="org.apache.cordova.device" />
 
     <!-- Device Motion ( access to the device's accelerometer ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/623 -->
-    <gap:plugin name="org.apache.cordova.device-motion" version="0.2.6" />
+    <gap:plugin name="org.apache.cordova.device-motion" />
 
     <!-- Device Orientation ( access to the device's compass ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/629 -->
-    <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.5" />
+    <gap:plugin name="org.apache.cordova.device-orientation" />
 
     <!-- Geolocation ( information about the device's location, such as latitude and longitude ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/821 -->
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
 
     <!-- Network Information ( information about the device's cellular and wifi connection ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/626 -->
-    <gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
+    <gap:plugin name="org.apache.cordova.network-information" />
 
     <!-- Splashscreen ( support for loading a Splashscreen ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/620 -->
-    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <!-- Notification ( support for loading a Splashscreen ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/622 -->
-    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
 
 
-    <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!-- ================================================== -->
 
-    <!-- Custom URL Scheme Support ( facing:// ) -->
-    <!-- Documentation: https://build.phonegap.com/plugins/844 -->
-    <gap:plugin name="nl.x-services.plugins.launchmyapp" version="3.2.0">
-        <param name="URL_SCHEME" value="facing" />
-    </gap:plugin>
-
     <!-- Support to switch the Flashlight / Torch of your device on or off -->
     <!-- Documentation: https://build.phonegap.com/plugins/871 -->
-    <gap:plugin name="nl.x-services.plugins.flashlight" version="2.0.0" />
+    <gap:plugin name="nl.x-services.plugins.flashlight" />
 
     <!-- Prevent the screen of the mobile device from falling asleep. -->
     <!-- Documentation: https://build.phonegap.com/plugins/842 -->
-    <gap:plugin name="nl.x-services.plugins.insomnia" version="4.0.1" />
+    <gap:plugin name="nl.x-services.plugins.insomnia" />
 
     <!-- IOS Background Location Enabler -->
     <!-- Documentation: https://build.phonegap.com/plugins/291 -->
-    <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" version="3.0" />
+    <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" />
 
-    <!-- MapKit -->
-    <!-- Documentation: https://github.com/imhotep/MapKit/ -->
-    <gap:plugin name="com.phonegap.plugins.mapkit" version="0.9.3">
-        <param name="API_KEY" value="AIzaSyAlHN4UJJvslMRI4fiGejM63UjrGCoH1tQ" />
+    <!-- Custom URL Scheme Support ( facing:// ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/844 -->
+    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+        <param name="URL_SCHEME" value="facing" />
     </gap:plugin>
 
 
