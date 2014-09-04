@@ -21,14 +21,14 @@ You can install the Facing App via the command line with either `curl` or `wget`
 
 ```bash
 cd /your/project/folder
-curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh | sh
+curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh | sh
 ```
 
 ### via `wget`:
 
 ```bash
 cd /your/project/folder
-wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh -O - | sh
+wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh -O - | sh
 ```
 
 ### NOTE:
@@ -134,7 +134,7 @@ Build Tools:
 
 ### \#1. Automation Scripts:
 
-To help speed up development, there are a few tools in `./shell_scripts` that you might want to check out.
+To help speed up development, there are a few tools in `./build/scripts` that you might want to check out.
 
 * `facingapp.sh` This is a shell script that adds aliases and commands to automate building & debugging.  See the comments at the top of the file for instructions.
 * `install.sh` This is the script to automatically install and build the Facing app for you.

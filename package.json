@@ -6,7 +6,7 @@
   "license": "GPL-3.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/manifestinteractive/facing-app.git#stable"
+    "url": "https://github.com/facingapp/phonegap-app.git#stable"
   },
   "author": {
     "name": "Manifest Interactive, LLC,",
@@ -14,11 +14,16 @@
     "url": "http://manifestinteractive.com"
   },
   "bugs": {
-    "url": "https://github.com/manifestinteractive/facing-app/issues",
+    "url": "https://github.com/facingapp/phonegap-app/issues",
     "email": "hello@youfacing.me"
+  },
+  "dependencies":{
+      "cordova": ">=3",
+      "phonegap": ">=3",
   },
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-cli": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-watch": "*",
     "grunt-contrib-concat": "*",
