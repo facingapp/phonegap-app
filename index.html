@@ -29,7 +29,6 @@
             <nav class="slide">
                 <ul class="menu">
                     <li><a href="javascript:void(0);" data-panel="home" class="active" id="facing-home"><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
-	                <li><a href="javascript:void(0);" data-panel="map"><i class="fa fa-crosshairs fa-fw"></i> Map</a></li>
 	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question fa-fw"></i> Help</a></li>
 	                <li><a href="javascript:void(0);" data-panel="about"><i class="fa fa-info fa-fw"></i> About</a></li>
 
@@ -77,7 +76,7 @@
 		                <!--// End Welcome Message //-->
 
 		                <!--// Start Main Status Bar //-->
-		                <div class="status">
+		                <div class="status" id="app-status">
 			                <div class="message">
 				                <i class="fa fa-circle-o-notch fa-fw fa-spin"></i> Loading
 			                </div>
@@ -110,15 +109,6 @@
 			        <div class="background"></div>
                 </div>
 		        <!--// End Facing //-->
-
-		        <!--// Start Map //-->
-		        <div id="map" class="panel">
-		            <div class="header-section"></div>
-			        <div class="push-header panel-content">
-				        <div id="map_canvas"></div>
-			        </div>
-	            </div>
-		        <!--// End Map //-->
 
 		        <!--// Start About //-->
 		        <div id="about" class="panel">
@@ -187,12 +177,12 @@
         <!--// Start Intro Tour //-->
         <ol class='tourbus-legs' id='tourbus'>
 	        <!-- INTRO -->
-	        <li data-scroll-to='0' data-highlight='true' data-width='80%' data-orientation='centered' data-top='150'>
+	        <li data-highlight='true' data-width='260' data-orientation='centered'>
 		        <h3>Welcome to Facing</h3>
 		        <p>This is a quick intro on how to use Facing. Click Next to continue, or Cancel if you're not in the mood.</p>
 		        <div class='buttons'>
 			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
-			        <a href='javascript:void(0);' style='float: left;' class='button remove-bottom tourbus-stop'><i class="fa fa-times"></i>&nbsp; Cancel</a>
+			        <a href='javascript:void(0);' style='float: left;' class='button remove-bottom tourbus-stop cancel'><i class="fa fa-times"></i>&nbsp; Cancel</a>
 		        </div>
 	        </li>
 
@@ -203,18 +193,57 @@
 	        </li>
 
 	        <!-- contact -->
-	        <li data-el='.find-a-friend' data-highlight='true' data-scroll-to='false' data-width='80%' data-orientation='top' data-align='center'>
+	        <li data-el='.find-a-friend' data-highlight='true' data-scroll-to='false' data-width='260' data-orientation='top' data-align='center'>
 		        <h3>Pick a Friend</h3>
-		        <p>Click this Circle to Pick a Friend. You will then be given choices on how to connect.</p>
+		        <p>Tap this Circle to Pick a Friend from your Contact List.</p>
 		        <div class='buttons'>
 			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
 		        </div>
 	        </li>
 
+	        <li data-el='#app-status' data-highlight='true' data-scroll-to='false' data-width='260' data-orientation='top' data-align='center'>
+		        <h3>Send Invite Link</h3>
+		        <p>Choose how you'd like to connect using available contact information.</p>
+		        <div class='buttons'>
+			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
+		        </div>
+	        </li>
+
+	        <li data-auto-progress='2500' data-el='.reset-gui' data-highlight='true' data-scroll-to='false' data-width='190' data-orientation='left' data-align='center'>
+		        <h4>Cancel Anytime ...</h4>
+	        </li>
+
+	        <li data-auto-progress='3000' data-highlight='true' data-width='260' data-orientation='centered'>
+		        <h3>Connecting ...</h3>
+		        <p>Now, we just wait for your friend to connect.</p>
+	        </li>
+
+	        <li data-auto-progress='3000' data-highlight='true' data-width='260' data-orientation='centered'>
+		        <h3>Connected ...</h3>
+		        <p>Your Friend just popped up :)</p>
+	        </li>
+
+	        <li data-auto-progress='3000' data-el='.self-marker' data-highlight='true' data-scroll-to='false' data-width='220' data-orientation='left' data-align='center'>
+		        <h4 class="no-margin">This is Your Friend ...</h4>
+	        </li>
+
+	        <li data-el='.find-a-friend' data-highlight='true' data-scroll-to='false' data-width='260' data-orientation='top' data-align='center'>
+		        <h3>Look to Your Friend</h3>
+		        <p>Move around until Your Friend is in the center of the screen.</p>
+		        <div class='buttons'>
+			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-next'>Next &nbsp;<i class="fa fa-arrow-right"></i></a>
+		        </div>
+	        </li>
+
+	        <li data-auto-progress='3000' data-highlight='true' data-scroll-to='false' data-width='260' data-orientation='centered'>
+		        <h3>Face to Face ...</h3>
+		        <p>Now you are Facing your friend :)</p>
+	        </li>
+
 	        <!-- End -->
-	        <li data-orientation='centered' data-highlight='true' data-width='80%' data-scroll-to='0'>
-		        <h3>That's It</h3>
-		        <p>If you ever need to see this again, you can just click the Help option from the Main Menu.</p>
+	        <li data-orientation='centered' data-highlight='true' data-width='260' data-scroll-to='0'>
+		        <h3>That's It :)</h3>
+		        <p>If you ever need to see this again, you can just tap the Help option from the Main Menu.</p>
 		        <div class='buttons'>
 			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-stop'>Done &nbsp;<i class="fa fa-check"></i></a>
 		        </div>
@@ -271,7 +300,7 @@
 	        // This will set an internal flag to launch during app.initialize
 	        app.launch_invite_code = url.replace('facing://invite/', '');
 
-	        // Check if the app is already initialized ( use might have app running in background before clicking invite link )
+	        // Check if the app is already initialized ( use might have app running in background before tapping invite link )
 	        if(app.initialized)
 	        {
 		        app.io.joinSpace(app.launch_invite_code, 'guest');

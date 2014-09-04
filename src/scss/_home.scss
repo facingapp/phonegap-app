@@ -53,6 +53,11 @@
         @include transform( translate3d(0, 0, 0) );
         @include transition( all 0.25s );
 
+        &.slow-move
+        {
+            @include transition( all 5s );
+        }
+
         &.friend
         {
             top: 50%;
@@ -127,7 +132,7 @@
     .contact-option
     {
         width: 60px;
-        height: 30px;
+        height: 60px;
         font-size: 30px;
         color: #FFF;
         text-align: center;

@@ -1,4 +1,4 @@
-$background-color: rgba(0,0,0, 0.8);
+$background-color: rgba(0,0,0, 0.9);
 
 #tourbus, .tourbus-container
 {
@@ -40,6 +40,7 @@ $background-color: rgba(0,0,0, 0.8);
             font-weight: 500;
             line-height: 18px;
             margin-bottom: 10px;
+            color: #89cedd;
         }
         h4
         {
@@ -48,14 +49,27 @@ $background-color: rgba(0,0,0, 0.8);
             line-height: 18px;
             float: left;
             margin-top: 3px;
+            color: #89cedd;
+
+            &.no-margin
+            {
+                margin: 0;
+            }
         }
 
         .button
         {
-            background-color: #fff;
+            background-color: #f79022;
             padding: 4px 10px;
-            color: #333;
+            color: #fff;
             border-radius: 4px;
+            text-shadow: 1px 1px rgba(0,0,0,0.1);
+
+            &.cancel
+            {
+                background-color: #595a5c;
+                color: #fff;
+            }
         }
 
         &:before,
@@ -178,9 +192,16 @@ $background-color: rgba(0,0,0, 0.8);
         0 0 0 3px rgba(0, 0, 0, 0.25),
         inset 0 0 0 10px rgba(0, 0, 0, 0.6) !important;
 }
+#home .contact-option.intro-tour-highlight {
+    background: transparent;
+    position: relative;
+    border-radius: 4px;
+    box-shadow: inset 0 0 0 2px $base-orange;
+    z-index: 9998;
+}
 .intro-tour-overlay {
     display: none;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.25);
     min-height: 100%;
     height: 100%;
     position: absolute;

@@ -17,6 +17,10 @@ gui.prepareDevice = function()
     // Force Width & Height on Elements that need it
     gui.resize();
 
+	$(window).resize(function(){
+		gui.resize();
+	});
+
     // reposition some elements for smaller screens
     if(screen.height <= 480)
     {

@@ -2,38 +2,38 @@ var fake_data = {
 	host: {
 		user_data: {
 			acceleration: {
-				x: 0.18941611977796963,
-				y: 13.795011596605141,
-				z: 1.7098997777770906
+				x: -0.03068618774414063,
+				y: 10.06147705078125,
+				z: 0.9445358276167188
 			},
 			compass: {
-				direction: 'N',
-				magnetic_heading: 359.00
+				direction: 'SSE',
+				magnetic_heading: 158.2145538330078
 			},
 			geolocation: {
-				latitude: 38.6244972,
-				longitude: -90.1849882,
-				altitude: 5,
-				accuracy: 5,
-				heading: 'N',
-				speed: 0
+				latitude: 40.71965838912204,
+				longitude: -74.0066714632712,
+				altitude: '40 Feet',
+				accuracy: '30 Feet',
+				heading: '--',
+				speed: '0 MPH'
 			}
 		}
 	},
 	guest: {
 		user_data: {
 			acceleration: {
-				x: 0.6459774420389147,
-				y: -8.611446421506374,
-				z: -2.8358355851547357
+				x: -0.2249821472167969,
+				y: 9.648036804199219,
+				z: 2.396217041015625
 			},
 			compass: {
-				direction: 'W',
-				magnetic_heading: 270.00
+				direction: 'NNW',
+				magnetic_heading: 339.302734375
 			},
 			geolocation: {
-				latitude: 38.6247717,
-				longitude: -90.1864876,
+				latitude: 40.71969146592103,
+				longitude: -74.00658612562913,
 				altitude: 2.5,
 				accuracy: 5,
 				heading: 'W',
@@ -46,10 +46,10 @@ var fake_data = {
 		"rawId"        : null,
 		"displayName"  : null,
 		"name"         : {
-			"givenName"      : "John",
-			"formatted"      : "John Doe",
+			"givenName"      : "Demo",
+			"formatted"      : "Demo User",
 			"middleName"     : null,
-			"familyName"     : "Doe",
+			"familyName"     : "User",
 			"honorificPrefix": null,
 			"honorificSuffix": null
 		},
@@ -71,13 +71,13 @@ var fake_data = {
 		"emails"       : [
 			{
 				"type" : "home",
-				"value": "fake.home.email@gmail.com",
+				"value": "demo.home.email@gmail.com",
 				"id"   : 0,
 				"pref" : false
 			},
 			{
 				"type" : "work",
-				"value": "fake.work.email@gmail.com",
+				"value": "demo.work.email@gmail.com",
 				"id"   : 1,
 				"pref" : false
 			}

@@ -1,4 +1,4 @@
-![Facing Logo](https://raw.githubusercontent.com/manifestinteractive/facing/master/assets/logo/rectangle/logo_rectangle.jpg)
+![Facing Logo](https://raw.githubusercontent.com/facingapp/facing/master/assets/logo/rectangle/logo_rectangle.jpg)
 
 Requirements
 ===
@@ -15,20 +15,20 @@ To use this repository you will first need to create a PhoneGap application.  Yo
 Automatic Installation ( do you trust me? ):
 ---
 
-You can install the Facing App via the command line with either `curl` or `wget` which will run this [Shell Script](https://raw.githubusercontent.com/manifestinteractive/facing-app/stable/shell_scripts/install.sh).
+You can install the Facing App via the command line with either `curl` or `wget` which will run this [Shell Script](https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh).
 
 ### via `curl`:
 
 ```bash
 cd /your/project/folder
-curl -L https://raw.githubusercontent.com/manifestinteractive/facing-app/stable/shell_scripts/install.sh | sh
+curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh | sh
 ```
 
 ### via `wget`:
 
 ```bash
 cd /your/project/folder
-wget --no-check-certificate https://raw.githubusercontent.com/manifestinteractive/facing-app/stable/shell_scripts/install.sh -O - | sh
+wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh -O - | sh
 ```
 
 ### NOTE:
@@ -42,7 +42,7 @@ Manual Installation:
 
 ```bash
 cd /your/project/folder
-npm update -g phonegap cordova grunt-cli
+npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
 ```
 
 ### \#2. Creating PhoneGap Project:
@@ -56,7 +56,7 @@ cd facing
 
 ```bash
 rm -fr www
-git clone -b stable https://github.com/manifestinteractive/facing-app.git www
+git clone -b stable https://github.com/facingapp/phonegap-app.git www
 ```
 
 ### \#4. Setup Grunt:
@@ -104,49 +104,30 @@ cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 ```
+### \#7. Copy Build Hooks into Project:
 
-### \#7. Build Application & Launch in iOS Simulator:
+```bash
+cp -R www/build/hooks/* hooks/
+chmod 755 hooks/*/*.js
+```
+
+### \#8. Replace iOS Build Files ( modified from default ):
+
+```bash
+rm platforms/ios/Facing.xcodeproj
+rm -fr platforms/ios/Facing/Images.xcassets
+rm platforms/ios/Facing/Facing-Info.plist
+
+cp www/build/ios/Facing.xcodeproj platforms/ios/Facing.xcodeproj
+cp -R www/build/ios/Images.xcassets platforms/ios/Facing/Images.xcassets
+cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
+```
+
+### \#9. Build Application & Launch in iOS Simulator:
 
 ```bash
 cordova emulate ios
 ```
-
-iOS Build Settings:
----
-
-You will need to make a few minor tweaks in iOS manually to make the app run smoothly.
-
-### \#1. Hide Status Bar:
-
-There seems to be a bug where the status bar flickers even though its set to be hidden.  To fix this, open `./facing/platforms/ios/Facing/Facing-Info.plist` in a text editor ( not in XCode ).  And look for the following code:
-
-```xml
-<key>UIStatusBarHidden</key>
-<true/>
-```
-
-and place the following directly below it:
-
-```xml
-<key>UIViewControllerBasedStatusBarAppearance</key>
-<false/>
-```
-
-### \#2. Force Portrait Only Mode & More Status Bar Settings:
-
-Since the device uses Orientation for calculations, things get weird if we do not fix the device to a specific rotation.  The config code is supposed to fix this, but it looks like it only does it for iPhones and NOT iPads... so we need to fix this.
-
-1. Open `./facing/platforms/ios/Facing.xcodeproj`
-- In the left column of the XCode window that opens, double click the __Facing__ Project
-- On the __General__ tab, expand the __Deployment Info__ if it is not already expanded
-- Under the __Devices__ Drop down that should have "Universal" selected, you will find __iPhone__ & __iPad__ buttons, for each of these make the following changes:
-- For __Device Orientation__ make sure ONLY __Portrait__ is checked
-- For __Status Bar Style__, make sure "Hide during application launch" is checked
-
-### \#3. Building on Actual Devices:
-
-While you are making the changes above, you can also set your Team Identity if you happen to be an iOS developer.  Just select your account from the Team section and this will be used for building on native devices.
-
 
 Build Tools:
 ===
