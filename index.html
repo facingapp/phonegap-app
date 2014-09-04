@@ -37,15 +37,17 @@
 <li><a href="http://phonegap.com/install/">PhoneGap v3.5+</a></li>
 <li><a href="http://docs.phonegap.com/en/3.5.0/guide_platforms_ios_index.md.html#iOS%20Platform%20Guide">Xcode</a></li>
 <li><a href="http://docs.phonegap.com/en/3.5.0/guide_platforms_android_index.md.html#Android%20Platform%20Guide">Android SDK</a></li>
+<li>
+<a href="http://nodejs.org/">Node.js v10+</a> ( For Application Development )</li>
 </ul><h1>
 <a name="facing-app-installation" class="anchor" href="#facing-app-installation"><span class="octicon octicon-link"></span></a>Facing App Installation</h1>
 
-<p>To use this repository you will first need to create a PhoneGap application.  You can do so by manually running the commands below in your terminal window, or run the shell script in ./shell_scripts/install.sh which contains the same content.</p>
+<p>To use this repository you will first need to create a PhoneGap application.  You can do so by manually running the commands below in your terminal window, or run the shell script in ./build/scripts/install.sh which contains the same content.</p>
 
 <h2>
 <a name="automatic-installation--do-you-trust-me-" class="anchor" href="#automatic-installation--do-you-trust-me-"><span class="octicon octicon-link"></span></a>Automatic Installation ( do you trust me? ):</h2>
 
-<p>You can install the Facing App via the command line with either <code>curl</code> or <code>wget</code> which will run this <a href="https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh">Shell Script</a>.</p>
+<p>You can install the Facing App via the command line with either <code>curl</code> or <code>wget</code> which will run this <a href="https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh">Shell Script</a>.</p>
 
 <h3>
 <a name="via-curl" class="anchor" href="#via-curl"><span class="octicon octicon-link"></span></a>via <code>curl</code>:</h3>
@@ -115,7 +117,6 @@ grunt
 cordova platform add android
 cordova plugin add com.google.cordova.admob
 cordova plugin add org.apache.cordova.battery-status
-cordova plugin add org.apache.cordova.console
 cordova plugin add org.apache.cordova.contacts
 cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.device-motion
