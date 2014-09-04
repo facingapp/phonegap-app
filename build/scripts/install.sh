@@ -4,7 +4,7 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-npm install -g phonegap cordova grunt-cli
+npm update -g phonegap cordova grunt-cli
 
 echo " "
 echo "Creating PhoneGap Project:"
