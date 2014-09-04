@@ -17,9 +17,9 @@
     "url": "https://github.com/facingapp/phonegap-app/issues",
     "email": "hello@youfacing.me"
   },
-  "dependencies":{
+  "dependencies": {
       "cordova": ">=3",
-      "phonegap": ">=3",
+      "phonegap": ">=3"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
