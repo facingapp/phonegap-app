@@ -4,7 +4,7 @@ echo " "
 echo "PhoneGap Installation:"
 echo " "
 
-npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
+npm update -g phonegap cordova grunt-cli
 
 echo " "
 echo "Creating PhoneGap Project:"
@@ -80,12 +80,13 @@ echo " "
 echo "Replace iOS Build Files ( modified from default ):"
 echo " "
 
-rm platforms/ios/Facing.xcodeproj
-rm -fr platforms/ios/Facing/Images.xcassets
-rm platforms/ios/Facing/Facing-Info.plist
+rm platforms/ios/Facing/Resources/icons/*.png
+rm platforms/ios/Facing/Resources/splash/*.png
 
-cp www/build/ios/Facing.xcodeproj platforms/ios/Facing.xcodeproj
-cp -R www/build/ios/Images.xcassets platforms/ios/Facing/Images.xcassets
+cp www/assets/img/icon/ios/*.png platforms/ios/Facing/Resources/icons/
+cp www/assets/img/screen/ios/*.png platforms/ios/Facing/Resources/splash/
+
+rm platforms/ios/Facing/Facing-Info.plist
 cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
 
 echo " "

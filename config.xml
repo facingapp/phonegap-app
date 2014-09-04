@@ -161,10 +161,10 @@
     <gap:splash gap:platform="ios" width="320"  height="480"  src="www/assets/img/screen/ios/Default.png" />           <!-- [X] iPhone Non-Retina (iOS 6.1 and Prior) -->
     <gap:splash gap:platform="ios" width="640"  height="960"  src="www/assets/img/screen/ios/Default@2x.png" />        <!-- [X] iPhone Retina -->
     <gap:splash gap:platform="ios" width="640"  height="1136" src="www/assets/img/screen/ios/Default-568h@2x.png" />   <!-- [X] iPhone Retina 4-inch -->
-    <gap:splash gap:platform="ios" width="768"  height="1024" src="www/assets/img/screen/ios/Default-Portrait.png" />     <!-- [X] iPad Portrait Non-Retina -->
-    <gap:splash gap:platform="ios" width="1536" height="2048" src="www/assets/img/screen/ios/Default-Portrait@2x.png" />  <!-- [X] iPad Portrait Retina -->
-    <gap:splash gap:platform="ios" width="1024" height="768"  src="www/assets/img/screen/ios/Default-Landscape.png" />    <!-- [ ] iPad Landscape Non-Retina -->
-    <gap:splash gap:platform="ios" width="2048" height="1536" src="www/assets/img/screen/ios/Default-Landscape@2x.png" /> <!-- [ ] iPad Landscape Retina -->
+    <gap:splash gap:platform="ios" width="768"  height="1024" src="www/assets/img/screen/ios/Default-Portrait~ipad.png" />     <!-- [X] iPad Portrait Non-Retina -->
+    <gap:splash gap:platform="ios" width="1536" height="2048" src="www/assets/img/screen/ios/Default-Portrait@2x~ipad.png" />  <!-- [X] iPad Portrait Retina -->
+    <gap:splash gap:platform="ios" width="1024" height="768"  src="www/assets/img/screen/ios/Default-Landscape~ipad.png" />    <!-- [ ] iPad Landscape Non-Retina -->
+    <gap:splash gap:platform="ios" width="2048" height="1536" src="www/assets/img/screen/ios/Default-Landscape@2x~ipad.png" /> <!-- [ ] iPad Landscape Retina -->
 
     <access origin="*" />
 

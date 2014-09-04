@@ -21,14 +21,14 @@ You can install the Facing App via the command line with either `curl` or `wget`
 
 ```bash
 cd /your/project/folder
-curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh | sh
+curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh | sh
 ```
 
 ### via `wget`:
 
 ```bash
 cd /your/project/folder
-wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh -O - | sh
+wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh -O - | sh
 ```
 
 ### NOTE:
@@ -42,7 +42,7 @@ Manual Installation:
 
 ```bash
 cd /your/project/folder
-npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
+npm update -g phonegap cordova grunt-cli
 ```
 
 ### \#2. Creating PhoneGap Project:
@@ -114,12 +114,13 @@ chmod 755 hooks/*/*.js
 ### \#8. Replace iOS Build Files ( modified from default ):
 
 ```bash
-rm platforms/ios/Facing.xcodeproj
-rm -fr platforms/ios/Facing/Images.xcassets
-rm platforms/ios/Facing/Facing-Info.plist
+rm platforms/ios/Facing/Resources/icons/*.png
+rm platforms/ios/Facing/Resources/splash/*.png
 
-cp www/build/ios/Facing.xcodeproj platforms/ios/Facing.xcodeproj
-cp -R www/build/ios/Images.xcassets platforms/ios/Facing/Images.xcassets
+cp www/assets/img/icon/ios/*.png platforms/ios/Facing/Resources/icons/
+cp www/assets/img/screen/ios/*.png platforms/ios/Facing/Resources/splash/
+
+rm platforms/ios/Facing/Facing-Info.plist
 cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
 ```
 
@@ -134,7 +135,7 @@ Build Tools:
 
 ### \#1. Automation Scripts:
 
-To help speed up development, there are a few tools in `./shell_scripts` that you might want to check out.
+To help speed up development, there are a few tools in `./build/scripts` that you might want to check out.
 
 * `facingapp.sh` This is a shell script that adds aliases and commands to automate building & debugging.  See the comments at the top of the file for instructions.
 * `install.sh` This is the script to automatically install and build the Facing app for you.
