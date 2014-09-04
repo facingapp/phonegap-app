@@ -51,14 +51,14 @@
 <a name="via-curl" class="anchor" href="#via-curl"><span class="octicon octicon-link"></span></a>via <code>curl</code>:</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nb">cd</span> /your/project/folder
-curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh <span class="p">|</span> sh
+curl -L https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh <span class="p">|</span> sh
 </pre></div>
 
 <h3>
 <a name="via-wget" class="anchor" href="#via-wget"><span class="octicon octicon-link"></span></a>via <code>wget</code>:</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nb">cd</span> /your/project/folder
-wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh -O - <span class="p">|</span> sh
+wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh -O - <span class="p">|</span> sh
 </pre></div>
 
 <h3>
@@ -73,7 +73,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/facingapp/phonegap
 <a name="1-phonegap-installation" class="anchor" href="#1-phonegap-installation"><span class="octicon octicon-link"></span></a>#1. PhoneGap Installation:</h3>
 
 <div class="highlight highlight-bash"><pre><span class="nb">cd</span> /your/project/folder
-npm update -g phonegap cordova ios-sim ios-deploy grunt-cli
+npm update -g phonegap cordova grunt-cli
 </pre></div>
 
 <h3>
@@ -146,12 +146,13 @@ chmod <span class="m">755</span> hooks/*/*.js
 <h3>
 <a name="8-replace-ios-build-files--modified-from-default-" class="anchor" href="#8-replace-ios-build-files--modified-from-default-"><span class="octicon octicon-link"></span></a>#8. Replace iOS Build Files ( modified from default ):</h3>
 
-<div class="highlight highlight-bash"><pre>rm platforms/ios/Facing.xcodeproj
-rm -fr platforms/ios/Facing/Images.xcassets
-rm platforms/ios/Facing/Facing-Info.plist
+<div class="highlight highlight-bash"><pre>rm platforms/ios/Facing/Resources/icons/*.png
+rm platforms/ios/Facing/Resources/splash/*.png
 
-cp www/build/ios/Facing.xcodeproj platforms/ios/Facing.xcodeproj
-cp -R www/build/ios/Images.xcassets platforms/ios/Facing/Images.xcassets
+cp www/assets/img/icon/ios/*.png platforms/ios/Facing/Resources/icons/
+cp www/assets/img/screen/ios/*.png platforms/ios/Facing/Resources/splash/
+
+rm platforms/ios/Facing/Facing-Info.plist
 cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
 </pre></div>
 
@@ -167,7 +168,7 @@ cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist
 <h3>
 <a name="1-automation-scripts" class="anchor" href="#1-automation-scripts"><span class="octicon octicon-link"></span></a>#1. Automation Scripts:</h3>
 
-<p>To help speed up development, there are a few tools in <code>./shell_scripts</code> that you might want to check out.</p>
+<p>To help speed up development, there are a few tools in <code>./build/scripts</code> that you might want to check out.</p>
 
 <ul>
 <li>
