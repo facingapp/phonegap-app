@@ -10,12 +10,12 @@ Requirements
 Facing App Installation
 ===
 
-To use this repository you will first need to create a PhoneGap application.  You can do so by manually running the commands below in your terminal window, or run the shell script in ./shell_scripts/install.sh which contains the same content.
+To use this repository you will first need to create a PhoneGap application.  You can do so by manually running the commands below in your terminal window, or run the shell script in ./build/scripts/install.sh which contains the same content.
 
 Automatic Installation ( do you trust me? ):
 ---
 
-You can install the Facing App via the command line with either `curl` or `wget` which will run this [Shell Script](https://raw.githubusercontent.com/facingapp/phonegap-app/stable/shell_scripts/install.sh).
+You can install the Facing App via the command line with either `curl` or `wget` which will run this [Shell Script](https://raw.githubusercontent.com/facingapp/phonegap-app/stable/build/scripts/install.sh).
 
 ### via `curl`:
 
