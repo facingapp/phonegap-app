@@ -66,6 +66,7 @@ cordova plugin add https://github.com/firassouki/com.cleartag.plugins.EnableBack
 cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
+cordova plugin add https://github.com/shazron/TestFlightPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 
 echo " "

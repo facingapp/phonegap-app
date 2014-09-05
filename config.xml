@@ -84,6 +84,10 @@
     <!-- Documentation: https://build.phonegap.com/plugins/620 -->
     <gap:plugin name="org.apache.cordova.splashscreen" />
 
+    <!-- Globalization ( language support ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/614 -->
+    <gap:plugin name="org.apache.cordova.globalization" />
+
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
     <!-- ================================================== -->
@@ -95,6 +99,10 @@
     <!-- IOS Background Location Enabler -->
     <!-- Documentation: https://build.phonegap.com/plugins/291 -->
     <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" />
+
+    <!-- TestFlight Plugin -->
+    <!-- Documentation: https://build.phonegap.com/plugins/306 -->
+    <gap:plugin name="com.testflightapp.cordova-plugin" />
 
     <!-- Custom URL Scheme Support ( facing:// ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/844 -->
