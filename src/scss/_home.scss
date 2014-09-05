@@ -87,6 +87,82 @@
         line-height: 14px;
         opacity: 0.5;
     }
+    .connection
+    {
+        height: 35px;
+        width: 100%;
+        line-height: 35px;
+        z-index: 10;
+        display: none;
+
+        .connection-status
+        {
+            height: 35px;
+            width: 100%;
+            line-height: 35px;
+            background-color: rgba(0, 0, 0, 0.5);
+            font-weight: 500;
+            overflow: hidden;
+
+            .signal-strength
+            {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                overflow: hidden;
+                position: relative;
+                top: 2px;
+                right: 1px;
+
+                i.fa-signal
+                {
+                    float: left;
+                    display: inline-block;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+
+                    &.one-bar
+                    {
+                        width: 20%;
+                    }
+
+                    &.two-bars
+                    {
+                        width: 40%;
+                    }
+
+                    &.three-bars
+                    {
+                        width: 60%;
+                    }
+
+                    &.four-bars
+                    {
+                        width: 80%;
+                    }
+
+                    &.five-bars
+                    {
+                        width: 100%;
+                    }
+
+                    &.over
+                    {
+                        z-index: 100;
+                        color: #FFF;
+                        overflow: hidden;
+                    }
+
+                    &.under
+                    {
+                        z-index: 90;
+                        color: rgba(255, 255, 255, 0.33);
+                    }
+                }
+            }
+        }
+    }
     .find-a-friend
     {
         position: absolute;

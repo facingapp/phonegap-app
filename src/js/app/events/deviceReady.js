@@ -15,7 +15,7 @@ app.events.deviceReady = function()
 
 		gui.initialize();
 
-	}, 250);
+	}, 1000);
 
 	if(app.initialized === true)
 	{

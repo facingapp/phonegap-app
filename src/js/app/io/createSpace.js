@@ -1,6 +1,6 @@
 app.io.createSpace = function(roomName)
 {
-	if(app.socket && app.socket.emit && app.io.space === null)
+	if(app.legal.accepted.location_sharing === 'accepted' && app.socket && app.socket.emit && app.io.space === null)
     {
 	    app.socket.emit('check', roomName, function(data) {
 		    if(data.result)
@@ -18,9 +18,6 @@ app.io.createSpace = function(roomName)
 						app.io.mode = 'host';
 
 						app.sharing_data = true;
-
-						// Startup Hardware
-						app.hardware.start();
 
 						app.stats.event('Socket', 'Create', data.message + ' ' + app.io.name);
 					}

@@ -4,12 +4,20 @@ gui.handle.contacts = function()
 
     $('.find-a-friend').on(gui.touchEvents, function()
     {
-        if(app.sharing_data)
+	    if(app.sharing_data)
         {
 	        app.util.debug('log', 'Currently Sharing Data. Contact Button Disabled.');
 
 	        return false;
         }
+
+	    var permission = app.legal.contact_list_access_permission();
+	    if(permission !== 'accepted')
+	    {
+		    app.util.debug('log', 'User did not allow us to access the contact list');
+
+		    return false;
+	    }
 
 	    app.util.debug('log', 'Picking a Friend ...');
 

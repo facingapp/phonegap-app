@@ -1,5 +1,13 @@
 gui.render.waitForFiend = function(button_id, invite_code, firstname, tour_enabled)
 {
+	var permission = app.legal.location_sharing_permission();
+	if(permission !== 'accepted')
+	{
+		app.util.debug('log', 'User did not allow us to share location data');
+
+		return false;
+	}
+
 	clearTimeout(gui.render.timeout.hideStatus);
 
 	// Communicate with Socket that we want to initiate a session

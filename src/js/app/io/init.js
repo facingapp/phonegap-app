@@ -49,6 +49,11 @@ app.io.init = function()
 
         app.util.debug('log', 'Socket Reconnected');
         app.stats.event('Socket', 'Status', 'Reconnected');
+
+	    if(app.sharing_data && app.io.space && app.io.mode)
+	    {
+		    app.io.joinSpace(app.io.space && app.io.mode);
+	    }
     });
 
     app.socket.on('disconnect', function () {
