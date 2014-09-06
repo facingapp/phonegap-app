@@ -1,0 +1,68 @@
+#feedback
+{
+    background-color: $ui-dark-blue;
+
+    .header-section
+    {
+        text-align: center;
+        color: #89cedd;
+        font-size: 20px;
+        line-height: 68px;
+        overflow: hidden;
+        font-weight: 500;
+    }
+
+    .push-header
+    {
+        margin-top: 60px;
+        padding: 5px 17px;
+
+        .feedback
+        {
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #fff;
+
+            textarea
+            {
+                border: none;
+                resize: none;
+                color: #333;
+                font-size: 16px;
+                width: 100%;
+                height: 150px;
+
+                &:focus, &.active
+                {
+                    outline: none
+                }
+            }
+        }
+
+        button.support-site
+        {
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            background-color: #595a5c;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 300;
+            margin: 10px 0 0 0;
+            float: left;
+        }
+
+        button.send-feedback
+        {
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            background-color: #F79021;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 300;
+            margin: 10px 0 0 0;
+            float: right;
+        }
+    }
+}

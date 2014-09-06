@@ -41,4 +41,13 @@ gui.render.startGuidance = function(user)
 		$('.logo').addClass('fadeLogoGuidance');
 		$('.location-marker.self').fadeIn();
 	}
+
+	clearTimeout(gui.timeout.connectionStatus);
+	gui.timeout.connectionStatus = setInterval(function(){
+		$(".connection-status ul li:first").slideUp('slow', function() {
+			$(this).remove();
+			$(".connection-status ul").append($(this));
+			$(this).slideDown('slow');
+		});
+	}, 5000);
 };

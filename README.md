@@ -91,11 +91,12 @@ cordova plugin add org.apache.cordova.device-motion
 cordova plugin add org.apache.cordova.device-orientation
 cordova plugin add org.apache.cordova.dialogs
 cordova plugin add org.apache.cordova.geolocation
+cordova plugin add org.apache.cordova.globalization
+cordova plugin add org.apache.cordova.inappbrowser
 cordova plugin add org.apache.cordova.network-information
 cordova plugin add org.apache.cordova.splashscreen
 cordova plugin add https://github.com/aharris88/phonegap-sms-plugin.git
 cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
-cordova plugin add https://github.com/EddyVerbruggen/Flashlight-PhoneGap-Plugin.git
 cordova plugin add https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git
 cordova plugin add https://github.com/EddyVerbruggen/LaunchMyApp-PhoneGap-Plugin.git --variable URL_SCHEME=facing
 cordova plugin add https://github.com/firassouki/com.cleartag.plugins.EnableBackgroundLocation.git

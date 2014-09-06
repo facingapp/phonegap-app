@@ -7,11 +7,12 @@ gui.initialize = function()
     gui.handle.contacts();
     gui.animate();
 
-	if(app.enable_tour)
+	if( !app.tour_given)
 	{
 		setTimeout(function(){
 			app.tour.start();
-			app.enable_tour = false;
+			app.tour_given = true;
+			app.store.set('tour_given', 'yes');
 		}, 500);
 	}
 };

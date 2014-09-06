@@ -1,6 +1,6 @@
 app.io.createSpace = function(roomName)
 {
-	if(app.socket && app.socket.emit && app.io.space === null)
+	if(app.legal.accepted.location_sharing === 'accepted' && app.socket && app.socket.emit && app.io.space === null)
     {
 	    app.socket.emit('check', roomName, function(data) {
 		    if(data.result)

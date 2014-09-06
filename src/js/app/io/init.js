@@ -32,8 +32,8 @@ app.io.init = function()
         app.util.debug('log', 'Socket Connected');
         app.stats.event('Socket', 'Status', 'Connected');
 
-		// Once the socket is connected, launch any invite codes we might have
-	    if(app.launch_invite_code !== null)
+		// Once the socket is connected & tour is already taken once, launch any invite codes we might have
+	    if(app.tour_given && app.launch_invite_code !== null)
 	    {
 		    app.io.joinSpace(app.launch_invite_code, 'guest');
 		    app.launch_invite_code = null;
@@ -49,6 +49,11 @@ app.io.init = function()
 
         app.util.debug('log', 'Socket Reconnected');
         app.stats.event('Socket', 'Status', 'Reconnected');
+
+	    if(app.sharing_data && app.io.space && app.io.mode)
+	    {
+		    app.io.joinSpace(app.io.space && app.io.mode);
+	    }
     });
 
     app.socket.on('disconnect', function () {

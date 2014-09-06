@@ -14,6 +14,12 @@ var config = {
 		/* If this is a Paid App, no ads will show */
 		paidApp: false,
 
+		/* App Support Information */
+		support: {
+			website: 'http://support.mywebsite.com',
+			email: 'support@fmywebsite.com'
+		},
+
 		/* Settings for Development */
 		dev: {
 
@@ -59,5 +65,10 @@ var config = {
 				}
 			}
 		}
+	},
+
+	/* TestFlight Settings */
+	test_flight: {
+		app_token: 'XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX'
 	}
 };

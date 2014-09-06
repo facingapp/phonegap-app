@@ -4,7 +4,7 @@ gui.handle.contacts = function()
 
     $('.find-a-friend').on(gui.touchEvents, function()
     {
-        if(app.sharing_data)
+	    if(app.sharing_data)
         {
 	        app.util.debug('log', 'Currently Sharing Data. Contact Button Disabled.');
 

@@ -1,6 +1,7 @@
 app.hardware.start = function()
 {
-    if(app.hardware.timer === null)
+	// Only start hardware if user has accepted
+	if(app.hardware.timer === null)
     {
         app.hardware.accelerometer.start();
         app.hardware.compass.start();
@@ -42,4 +43,12 @@ app.hardware.start = function()
 
 	    app.hardware.timer = window.requestAnimationFrame(sendData);
     }
+	else if(app.legal.accepted.location_sharing === 'disagreed')
+	{
+		app.notification.alert('You disagreed to sharing location data. We are unable to continue.', function(){}, 'Permission Denied', 'OK');
+	}
+	else if(app.legal.accepted.location_sharing === 'no_choice')
+	{
+		app.notification.alert('You did not make a choice on whether you agreed to sharing location data. We are unable to continue.', function(){}, 'Permission Denied', 'OK');
+	}
 };

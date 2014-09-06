@@ -1,5 +1,12 @@
 app.io.joinSpace = function(roomName, mode)
 {
+	if(app.legal.location_sharing_permission() !== 'accepted')
+	{
+		app.util.debug('log', 'User did not allow us to share location data');
+
+		return false;
+	}
+
 	clearInterval(gui.timeout.welcome);
 	clearTimeout(gui.render.timeout.hideStatus);
 
@@ -17,7 +24,7 @@ app.io.joinSpace = function(roomName, mode)
 	// Startup Hardware
 	app.hardware.start();
 
-	if(app.socket && app.socket.emit)
+	if(app.legal.accepted.location_sharing === 'accepted' && app.socket && app.socket.emit)
     {
 	    app.stats.event('Socket', 'Join', app.io.name + ' joined Server');
 

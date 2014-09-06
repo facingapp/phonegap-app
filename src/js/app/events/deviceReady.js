@@ -13,26 +13,28 @@ app.events.deviceReady = function()
 			navigator.splashscreen.hide();
 		}
 
+		if(app.initialized === true)
+		{
+			return false;
+		}
+
+		app.initialized = true;
+
+		if(app.uuid === null && typeof device !== 'undefined')
+		{
+			app.uuid = device.uuid;
+		}
+		else if(app.uuid === null)
+		{
+			app.uuid = app.util.generateGUID();
+		}
+
+		app.io.name = app.uuid;
+		app.io.mode = 'guest';
+
 		gui.initialize();
 
-	}, 250);
+		app.testflight.init(config.test_flight.app_token);
 
-	if(app.initialized === true)
-	{
-		return false;
-	}
-
-    app.initialized = true;
-
-    if(app.uuid === null && typeof device !== 'undefined')
-    {
-        app.uuid = device.uuid;
-    }
-	else if(app.uuid === null)
-    {
-	    app.uuid = app.util.generateGUID();
-    }
-
-	app.io.name = app.uuid;
-	app.io.mode = 'guest';
+	}, 1000);
 };

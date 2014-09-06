@@ -22,4 +22,5 @@ app.initialize = function()
     }
 
     app.stats.init();
+	app.store.init();
 };
