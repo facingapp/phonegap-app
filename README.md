@@ -92,6 +92,7 @@ cordova plugin add org.apache.cordova.device-orientation
 cordova plugin add org.apache.cordova.dialogs
 cordova plugin add org.apache.cordova.geolocation
 cordova plugin add org.apache.cordova.globalization
+cordova plugin add org.apache.cordova.inappbrowser
 cordova plugin add org.apache.cordova.network-information
 cordova plugin add org.apache.cordova.splashscreen
 cordova plugin add https://github.com/aharris88/phonegap-sms-plugin.git
@@ -102,7 +103,6 @@ cordova plugin add https://github.com/firassouki/com.cleartag.plugins.EnableBack
 cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git
-cordova plugin add https://github.com/shazron/TestFlightPlugin.git
 cordova plugin add https://github.com/VersoSolutions/CordovaClipboard
 ```
 ### \#7. Copy Build Hooks into Project:

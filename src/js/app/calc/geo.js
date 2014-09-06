@@ -40,11 +40,11 @@ app.calc.geo = {
 		var host_longitude = Geo.parseDMS(app.io.location.host.geolocation.longitude);
 		var host_point = LatLon(host_latitude, host_longitude);
 
-		var guest_bearing = guest_point.bearingTo(host_point);
-		var guest_bearing_final = guest_point.finalBearingTo(host_point);
+		var guest_bearing = host_point.bearingTo(guest_point);
+		var guest_bearing_final = host_point.finalBearingTo(guest_point);
 
-		var host_bearing = host_point.bearingTo(guest_point);
-		var host_bearing_final = host_point.finalBearingTo(guest_point);
+		var host_bearing = guest_point.bearingTo(host_point);
+		var host_bearing_final = guest_point.finalBearingTo(host_point);
 
 		var distance = host_point.distanceTo(guest_point, precision);
 		var midpoint = host_point.midpointTo(guest_point);

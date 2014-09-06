@@ -11,14 +11,6 @@ gui.handle.contacts = function()
 	        return false;
         }
 
-	    var permission = app.legal.contact_list_access_permission();
-	    if(permission !== 'accepted')
-	    {
-		    app.util.debug('log', 'User did not allow us to access the contact list');
-
-		    return false;
-	    }
-
 	    app.util.debug('log', 'Picking a Friend ...');
 
         clearTimeout(gui.timeout.welcomeIn);

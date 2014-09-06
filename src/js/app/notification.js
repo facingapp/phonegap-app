@@ -6,7 +6,7 @@ app.notification = {
 
 		if(navigator && typeof navigator.notification !== 'undefined')
 		{
-			navigator.notification.alert(message, callback, title, button_label);
+			return navigator.notification.alert(message, callback, title, button_label);
 		}
 		// polyfill for browser development
 		else
@@ -15,7 +15,7 @@ app.notification = {
 
 			if(callback && typeof callback == 'function')
 			{
-				callback();
+				return callback();
 			}
 		}
 	},
@@ -25,7 +25,7 @@ app.notification = {
 
 		if(navigator && typeof navigator.notification !== 'undefined')
 		{
-			navigator.notification.confirm(message, callback, title, button_labels);
+			return navigator.notification.confirm(message, callback, title, button_labels);
 		}
 		// polyfill for browser development
 		else
@@ -35,7 +35,7 @@ app.notification = {
 
 			if(callback && typeof callback == 'function')
 			{
-				callback(button_index);
+				return callback(button_index);
 			}
 		}
 	},
@@ -45,7 +45,7 @@ app.notification = {
 
 		if(navigator && typeof navigator.notification !== 'undefined')
 		{
-			navigator.notification.prompt(message, callback, title, button_labels, default_text);
+			return navigator.notification.prompt(message, callback, title, button_labels, default_text);
 		}
 		// polyfill for browser development
 		else
@@ -59,7 +59,7 @@ app.notification = {
 
 			if(callback && typeof callback == 'function')
 			{
-				callback(results);
+				return callback(results);
 			}
 		}
 	},
@@ -69,7 +69,7 @@ app.notification = {
 
 		if(navigator && typeof navigator.notification !== 'undefined')
 		{
-			navigator.notification.beep(times);
+			return navigator.notification.beep(times);
 		}
 	}
 };

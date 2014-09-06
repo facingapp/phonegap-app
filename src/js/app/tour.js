@@ -93,6 +93,10 @@ app.tour = {
 			    }
 			    if(leg.index == 10)
 			    {
+				    $('.get-support').on(gui.touchEvents, function(){
+					    window.open(config.app.support.website, '_system');
+				    });
+
 				    gui.reset();
 				    app.tour.gui_reset = true;
 			    }
@@ -127,6 +131,13 @@ app.tour = {
 		{
 			gui.reset();
 			app.tour.gui_reset = true;
+		}
+
+		// Check if there was an invite code at launch, since we needed to give tour first
+		if(app.launch_invite_code !== null)
+		{
+			app.io.joinSpace(app.launch_invite_code, 'guest');
+			app.launch_invite_code = null;
 		}
 	}
 };

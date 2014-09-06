@@ -6,6 +6,40 @@ gui.handle.navigation = function()
     var items = $('.slide');
     var content = $('.content');
 
+	$('button.send-feedback').on(gui.touchEvents, function(event){
+		event.stopPropagation();
+		event.preventDefault();
+
+		var feedback = $('#feedback-message').val();
+
+		if(feedback !== '')
+		{
+			app.testflight.feedback.submit(feedback);
+			$('#feedback-message').val('').blur();
+
+			if(app.testflight.supported)
+			{
+				app.notification.alert('Thanks for sending your feedback. You are Awesome.', function(){}, 'Feedback Sent', 'OK');
+			}
+			else
+			{
+				app.notification.alert('Thanks for the Feedback. We\'re going to open a pre-populated email message now... just hit send :)', function(){}, 'Feedback Sent', 'High Five');
+			}
+
+		}
+		else
+		{
+			app.notification.alert('Looks like the Feedback was left blank. Once there is a message, we\'ll send it.', function(){}, 'Missing Feedback', 'OK');
+		}
+	});
+
+	$('button.support-site').on(gui.touchEvents, function(event){
+		event.stopPropagation();
+		event.preventDefault();
+
+		window.open(config.app.support.website, '_system');
+	});
+
     $('#navToggle').on(gui.touchEvents, function(event) {
         event.stopPropagation();
         event.preventDefault();

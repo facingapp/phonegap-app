@@ -8,7 +8,6 @@ app.store = {
 		if(app.store.supported)
 		{
 			app.tour_given = (app.store.get('tour_given') === 'yes');
-			app.legal.accepted.contact_list_access = app.store.get('contact_list_access');
 			app.legal.accepted.location_sharing = app.store.get('location_sharing');
 		}
 
@@ -92,7 +91,6 @@ app.store = {
 	{
 		if(app.store.supported)
 		{
-			app.legal.accepted.contact_list_access = false;
 			app.legal.accepted.location_sharing = false;
 			app.tour_given = false;
 

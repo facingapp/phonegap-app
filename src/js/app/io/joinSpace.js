@@ -1,7 +1,6 @@
 app.io.joinSpace = function(roomName, mode)
 {
-	var permission = app.legal.location_sharing_permission();
-	if(permission !== 'accepted')
+	if(app.legal.location_sharing_permission() !== 'accepted')
 	{
 		app.util.debug('log', 'User did not allow us to share location data');
 

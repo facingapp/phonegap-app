@@ -29,8 +29,9 @@
             <nav class="slide">
                 <ul class="menu">
                     <li><a href="javascript:void(0);" data-panel="home" class="active" id="facing-home"><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
-	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question fa-fw"></i> Help</a></li>
-	                <li><a href="javascript:void(0);" data-panel="about"><i class="fa fa-info fa-fw"></i> About</a></li>
+	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question-circle fa-fw"></i> Help</a></li>
+	                <!--<li><a href="javascript:void(0);" data-panel="about" id="about-us"><i class="fa fa-info fa-fw"></i> About</a></li>-->
+	                <li><a href="javascript:void(0);" data-panel="feedback" id="feedback-tab"><i class="fa fa-comments fa-fw"></i> Feedback</a></li>
 
 	                <li class="devonly spacer"><a href="javascript:void(0);" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
                     <li class="devonly"><a href="javascript:void(0);" data-panel="friends-data"><i class="fa fa-crosshairs fa-fw"></i> Friends Data</a></li>
@@ -51,8 +52,6 @@
 			        <div class="location-marker self self-marker"></div>
                     <div class="location-marker friend friend-marker"></div>
 			        <!--// End Location Markers //-->
-
-
 
 			        <!--// Start Socket Status //-->
 			        <div class="io">
@@ -147,6 +146,21 @@
 			        </div>
 		        </div>
 		        <!--// End About //-->
+
+		        <!--// Start Feedback //-->
+		        <div id="feedback" class="panel">
+			        <div class="header-section feedback">
+				        <i class="fa fa-comments fa-fw"></i> Feedback
+			        </div>
+			        <div class="push-header panel-content feedback">
+				        <div class="feedback">
+					        <textarea placeholder="Thanks for testing the Facing App. What do you think so far?" id="feedback-message"></textarea>
+				        </div>
+				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; Support</button>
+				        <button class="send-feedback">Submit &nbsp;<i class="fa fa-comment"></i></button>
+			        </div>
+		        </div>
+		        <!--// End Feedback //-->
 
 		        <!--// Start Developer Content //-->
                 <div id="my-data" class="panel devonly">
@@ -275,6 +289,7 @@
 		        <p>If you ever need to see this again, you can just tap the Help option from the Main Menu.</p>
 		        <div class='buttons'>
 			        <a href='javascript:void(0);' style='float: right;' class='button remove-bottom tourbus-stop'>Done &nbsp;<i class="fa fa-check"></i></a>
+			        <a href='javascript:void(0);' target="_blank" style='float: left;' class='button remove-bottom tourbus-stop cancel get-support'><i class="fa fa-comment"></i>&nbsp; Support</a>
 		        </div>
 	        </li>
         </ol>

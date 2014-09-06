@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <widget id = "com.manifestinteractive.facing"
-        version = "0.6.0"
+        version = "0.7.0"
         xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
@@ -25,7 +25,7 @@
 
     <!-- iOS Specific Preferences -->
     <platform name="ios">
-        <preference name="ShowSplashScreenSpinner" value="false" />
+        <preference name="ShowSplashScreenSpinner" value="true" />
         <preference name="DisallowOverscroll" value="true" />
         <preference name="webviewbounce" value="false" />
         <preference name="StatusBarOverlaysWebView" value="false" />
@@ -50,43 +50,47 @@
 
     <!-- Contacts ( access to the device contacts ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/930 -->
-    <gap:plugin name="org.apache.cordova.contacts" />
+    <gap:plugin name="org.apache.cordova.contacts" version="0.2.11" />
 
     <!-- Device Info ( describes the device's hardware and software ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/628 -->
-    <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.8" />
 
     <!-- Device Motion ( access to the device's accelerometer ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/623 -->
-    <gap:plugin name="org.apache.cordova.device-motion" />
+    <gap:plugin name="org.apache.cordova.device-motion" version="0.2.6" />
 
     <!-- Device Orientation ( access to the device's compass ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/629 -->
-    <gap:plugin name="org.apache.cordova.device-orientation" />
+    <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.5" />
 
     <!-- Geolocation ( information about the device's location, such as latitude and longitude ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/821 -->
-    <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
 
     <!-- Network Information ( information about the device's cellular and wifi connection ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/626 -->
-    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
 
     <!-- Notification ( support for alerts, confirmations, prompts & beeps ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/622 -->
-    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.dialogs" version="0.2.6" />
 
     <!-- Status Bar ( control status bar ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/505 -->
-    <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <gap:plugin name="com.phonegap.plugin.statusbar" version="1.1.0" />
 
     <!-- Splash Screen ( control splash screen ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/620 -->
-    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.splashscreen" version="0.2.7" />
 
     <!-- Globalization ( language support ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/614 -->
-    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.globalization" version="0.3.0" />
+
+    <!-- In App Browser ( Needed to Even Launch Default Browser ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/658 -->
+    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.1" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
@@ -94,19 +98,15 @@
 
     <!-- Prevent the screen of the mobile device from falling asleep. -->
     <!-- Documentation: https://build.phonegap.com/plugins/842 -->
-    <gap:plugin name="nl.x-services.plugins.insomnia" />
+    <gap:plugin name="nl.x-services.plugins.insomnia" version="4.0.1" />
 
     <!-- IOS Background Location Enabler -->
     <!-- Documentation: https://build.phonegap.com/plugins/291 -->
-    <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" />
-
-    <!-- TestFlight Plugin -->
-    <!-- Documentation: https://build.phonegap.com/plugins/306 -->
-    <gap:plugin name="com.testflightapp.cordova-plugin" />
+    <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" version="3.0" />
 
     <!-- Custom URL Scheme Support ( facing:// ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/844 -->
-    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+    <gap:plugin name="nl.x-services.plugins.launchmyapp" version="3.2.0">
         <param name="URL_SCHEME" value="facing" />
     </gap:plugin>
 

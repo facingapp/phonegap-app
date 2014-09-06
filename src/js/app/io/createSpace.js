@@ -19,6 +19,9 @@ app.io.createSpace = function(roomName)
 
 						app.sharing_data = true;
 
+						// Startup Hardware
+						app.hardware.start();
+
 						app.stats.event('Socket', 'Create', data.message + ' ' + app.io.name);
 					}
 					else

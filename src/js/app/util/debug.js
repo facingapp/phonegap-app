@@ -43,4 +43,6 @@ app.util.debug = function(level, message)
 	{
 		gui.render.debug(level, message);
 	}
+
+	app.testflight.log.remote(message, true);
 };

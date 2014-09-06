@@ -1,7 +1,7 @@
 app.hardware.start = function()
 {
 	// Only start hardware if user has accepted
-	if(app.legal.accepted.location_sharing == 'accepted' && app.hardware.timer === null)
+	if(app.hardware.timer === null)
     {
         app.hardware.accelerometer.start();
         app.hardware.compass.start();
