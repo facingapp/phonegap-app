@@ -86,7 +86,7 @@
 
     <!-- In App Browser ( Needed to Even Launch Default Browser ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/658 -->
-    <gap:plugin name="org.apache.cordova.inappbrowser" version="0.5.1" />
+    <gap:plugin name="org.apache.cordova.inappbrowser" />
 
     <!-- Third party plugins -->
     <!-- A list of available plugins are available at https://build.phonegap.com/plugins -->
