@@ -64,10 +64,6 @@
     <!-- Documentation: https://build.phonegap.com/plugins/629 -->
     <gap:plugin name="org.apache.cordova.device-orientation" version="0.3.5" />
 
-    <!-- Geolocation ( information about the device's location, such as latitude and longitude ) -->
-    <!-- Documentation: https://build.phonegap.com/plugins/821 -->
-    <gap:plugin name="org.apache.cordova.geolocation" version="0.3.7" />
-
     <!-- Network Information ( information about the device's cellular and wifi connection ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/626 -->
     <gap:plugin name="org.apache.cordova.network-information" version="0.2.7" />
@@ -86,7 +82,7 @@
 
     <!-- Globalization ( language support ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/614 -->
-    <gap:plugin name="org.apache.cordova.globalization" version="0.3.0" />
+    <gap:plugin name="org.apache.cordova.globalization" />
 
     <!-- In App Browser ( Needed to Even Launch Default Browser ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/658 -->
@@ -102,6 +98,8 @@
 
     <!-- IOS Background Location Enabler -->
     <!-- Documentation: https://build.phonegap.com/plugins/291 -->
+    <!-- Adds Geolocation Dependency ( information about the device's location, such as latitude and longitude ) -->
+    <!-- Documentation: https://build.phonegap.com/plugins/821 -->
     <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" version="3.0" />
 
     <!-- Custom URL Scheme Support ( facing:// ) -->
