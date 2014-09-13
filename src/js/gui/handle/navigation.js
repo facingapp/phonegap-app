@@ -1,12 +1,13 @@
 gui.handle.navigation = function()
 {
 
-    app.util.debug('log', 'Setting up Navigation');
+	app.util.debug('log', 'Setting up Navigation');
 
-    var items = $('.slide');
-    var content = $('.content');
+	var items = $('.slide');
+	var content = $('.content');
 
-	$('button.send-feedback').on(gui.touchEvents, function(event){
+	$('button.send-feedback').on(gui.touchEvents, function(event)
+	{
 		event.stopPropagation();
 		event.preventDefault();
 
@@ -33,36 +34,40 @@ gui.handle.navigation = function()
 		}
 	});
 
-	$('button.support-site').on(gui.touchEvents, function(event){
+	$('button.support-site').on(gui.touchEvents, function(event)
+	{
 		event.stopPropagation();
 		event.preventDefault();
 
 		window.open(config.app.support.website, '_system');
 	});
 
-    $('#navToggle').on(gui.touchEvents, function(event) {
-        event.stopPropagation();
-        event.preventDefault();
+	$('#navToggle').on(gui.touchEvents, function(event)
+	{
+		event.stopPropagation();
+		event.preventDefault();
 
-	    app.tour.stop();
+		app.tour.stop();
 
-        if (content.hasClass('open'))
-        {
-            $(items).removeClass('open').addClass('close');
-            app.stats.event('Navigation', 'Menu', 'Close');
-        }
-        else
-        {
-            $(items).removeClass('close').addClass('open');
-            app.stats.event('Navigation', 'Menu', 'Open');
-        }
+		if(content.hasClass('open'))
+		{
+			$(items).removeClass('open').addClass('close');
+			app.stats.event('Navigation', 'Menu', 'Close');
+		}
+		else
+		{
+			$(items).removeClass('close').addClass('open');
+			app.stats.event('Navigation', 'Menu', 'Open');
+		}
 
-        return false;
-    });
+		return false;
+	});
 
-	$('#trigger-tour').on(gui.touchEvents, function() {
+	$('#trigger-tour').on(gui.touchEvents, function()
+	{
 
-		setTimeout(function(){
+		setTimeout(function()
+		{
 			app.tour.start();
 		}, 500);
 
@@ -75,66 +80,69 @@ gui.handle.navigation = function()
 		return false;
 	});
 
-    content.on(gui.touchEvents, function(){
-        if (content.hasClass('open'))
-        {
-            $(items).removeClass('open').addClass('close');
-            app.stats.event('Navigation', 'Menu', 'Closed by Page Tap');
-        }
-    });
+	content.on(gui.touchEvents, function()
+	{
+		if(content.hasClass('open'))
+		{
+			$(items).removeClass('open').addClass('close');
+			app.stats.event('Navigation', 'Menu', 'Closed by Page Tap');
+		}
+	});
 
-    $('nav a').on(gui.touchEvents, function(){
+	$('nav a').on(gui.touchEvents, function()
+	{
 
-        var panel = $(this).data('panel');
-	    var tour = $(this).data('tour');
-        var label = $(this).html();
+		var panel = $(this).data('panel');
+		var tour = $(this).data('tour');
+		var label = $(this).html();
 
-        // Do nothing if user clicks tab for current panel
-        if(panel === gui.currentPanel)
-        {
-            $('#navToggle').trigger('touchstart');
-            return false;
-        }
+		// Do nothing if user clicks tab for current panel
+		if(panel === gui.currentPanel)
+		{
+			$('#navToggle').trigger('touchstart');
+			return false;
+		}
 
-        app.stats.event('Navigation', 'Page Change', panel);
+		app.stats.event('Navigation', 'Page Change', panel);
 
-        $('nav a').removeClass('active');
-        $('.panel').removeClass('active');
+		$('nav a').removeClass('active');
+		$('.panel').removeClass('active');
 
-        gui.currentPanel = panel;
+		gui.currentPanel = panel;
 
-        $(this).addClass('active');
-        $('#' + panel).addClass('active');
+		$(this).addClass('active');
+		$('#' + panel).addClass('active');
 
-        $('header .label').html(label);
+		$('header .label').html(label);
 
-        $('#navToggle').trigger('touchstart');
+		$('#navToggle').trigger('touchstart');
 
-        if(panel === 'home')
-        {
-            // reset interface if we're not currently sharing data
-	        if(app.sharing_data === false)
-            {
-	            gui.reset();
-            }
-	        else
-	        {
-		        $('.reset-gui').fadeIn();
-	        }
+		if(panel === 'home')
+		{
+			// reset interface if we're not currently sharing data
+			if(app.sharing_data === false)
+			{
+				gui.reset();
+			}
+			else
+			{
+				$('.reset-gui').fadeIn();
+			}
 
-	        $('.dev').show();
-        }
-        else
-        {
-            $('.logo, .reset-gui, .dev').hide();
-            app.ad.remove.banner();
-        }
+			$('.dev').show();
+		}
+		else
+		{
+			$('.logo, .reset-gui, .dev').hide();
+			app.ad.remove.banner();
+		}
 
-        return false;
-    });
+		return false;
+	});
 
-    $('a.clear-log').on(gui.touchEvents, function(){
-        $('#dev-log .output ul').html('');
-        return false;
-    });
+	$('a.clear-log').on(gui.touchEvents, function()
+	{
+		$('#dev-log .output ul').html('');
+		return false;
+	});
 };

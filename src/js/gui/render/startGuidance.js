@@ -9,7 +9,7 @@ gui.render.startGuidance = function(user)
 
 		//
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
-		gui.render.status('<i class="fa fa-check fa-fw"></i> '+ app.io.friend.name.givenName + ' has Connected', true);
+		gui.render.status('<i class="fa fa-check fa-fw"></i> '+  app.locale.dict('home', 'friend_connected').replace(/{{NAME}}/g, app.io.friend.name.givenName), true);
 
 		$('#home .background').removeClass('blurIn blurOut').addClass('blurIn');
 		$('.pulse1, .pulse2').fadeOut('slow');
@@ -24,7 +24,7 @@ gui.render.startGuidance = function(user)
 		$('.reset-gui').fadeIn();
 
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
-		gui.render.status('<i class="fa fa-check fa-fw"></i> You are Now Connected', true);
+		gui.render.status('<i class="fa fa-check fa-fw"></i> ' + app.locale.dict('home', 'you_are_connected'), true);
 
 		// Update Contact Image
 		var contact_image = $('.find-a-friend');

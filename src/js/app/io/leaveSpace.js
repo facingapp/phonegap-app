@@ -1,9 +1,9 @@
 app.io.leaveSpace = function()
 {
-    if(app.socket && app.socket.emit)
-    {
-        app.socket.emit('leaveRoom', app.io.space);
-    }
+	if(app.socket && app.socket.emit)
+	{
+		app.socket.emit('leaveRoom', app.io.space);
+	}
 
 	// Allow Device to sleep
 	if(typeof window.plugins !== 'undefined')

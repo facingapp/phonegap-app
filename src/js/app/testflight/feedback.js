@@ -24,13 +24,13 @@ app.testflight.feedback = {
 
 				// Check if the user has an existing email client
 				window.plugin.email.isServiceAvailable(
-
-					function (isAvailable)
+					function(isAvailable)
 					{
 						// User has Email Service
 						if(isAvailable)
 						{
-							window.plugin.email.open(email_options, function(){
+							window.plugin.email.open(email_options, function()
+							{
 								console.log('email view dismissed');
 							}, this);
 						}

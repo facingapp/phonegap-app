@@ -6,6 +6,12 @@ gui.render.self = {
 		up: 60,
 		down: 75
 	},
+	data: {
+		correction: null,
+		geo: null,
+		loc: null,
+		position: null
+	},
 	draw: function()
 	{
 		// Fetch distance between two users
@@ -16,10 +22,14 @@ gui.render.self = {
 			app.calc.geo.guest :
 			app.calc.geo.host;
 
+		gui.render.self.data.geo = geo;
+
 		// Fetch Location Data for this user
 		var loc = (app.io.mode === 'guest') ?
 			app.io.location.guest :
 			app.io.location.host;
+
+		gui.render.self.data.loc = loc;
 
 		// Do not continue if we do not have data we need
 		if(geo.bearing === null || loc.compass.magnetic_heading === null)
@@ -30,11 +40,13 @@ gui.render.self = {
 		// We have all the data we need, time to calculate the offset
 		var correction = app.calc.geo.getOffset(geo.bearing, loc.compass.magnetic_heading);
 
+		gui.render.self.data.correction = correction;
+
 		// Define which Marker to use
 		var pointer = $('.self-marker');
-		
+
 		// Set the original width of our marker
-		if( !pointer.data('original-width'))
+		if(!pointer.data('original-width'))
 		{
 			pointer.data('original-width', pointer.width())
 		}
@@ -52,42 +64,44 @@ gui.render.self = {
 		// Set the maximum we can shrink the pointer to 1/4 of its size
 		var max_squish = ( pointer_size * 0.75 );
 
-		// Calculate Markers Left Position
-		var left = center_x - ( pointer_size / 2 );
+		var left = ((((( correction.degrees / 180 ) * center_x) / ( center_x / gui.render.self.visualField.left_right ) ) / gui.render.self.visualField.left_right ) * center_x) - ( pointer_size / 2 );
 
-		// User is facing to far left, and needs to turn right
-		if(correction.degrees < 0)
-		{
-			left = ( center_x - ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
-		}
-		// User is facing to far right, and needs to turn left
-		else if(correction.degrees > 0)
-		{
-			left = ( center_x + ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
-		}
-
-		// Use to animate left and right edge smooshiness
-		var current_offscreen_left = (left < 0) ? Math.abs(left) : 0;
-		var current_offscreen_right = (left > gui.screen.width) ? (left - gui.screen.width) : 0;
-
-		// Calculate Marker Width
-		var width = pointer_size - ( max_squish * ( max_squish / ( max_squish * ( max_offscreen / ( current_offscreen_left + current_offscreen_right ) ) ) ) );
-
-		// Reposition Marker if off screen
-		if(left < 0)
-		{
-			left = 0;
-		}
-		if(left > ( gui.screen.width - pointer_size ))
-		{
-			left = ( gui.screen.width - pointer_size );
-		}
-
-		// Fix position of marker for when we know we need to add squish
-		if(left > center_x)
-		{
-			left = left + ( pointer_size - width );
-		}
+//		// Calculate Markers Left Position
+//		var left = center_x - ( pointer_size / 2 );
+//
+//		// User is facing to far left, and needs to turn right
+//		if(correction.degrees >= 180)
+//		{
+//			left = ( center_x - ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
+//		}
+//		// User is facing to far right, and needs to turn left
+//		else if(correction.degrees < 180)
+//		{
+//			left = ( center_x + ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
+//		}
+//
+//		// Use to animate left and right edge smooshiness
+//		var current_offscreen_left = (left < 0) ? Math.abs(left) : 0;
+//		var current_offscreen_right = (left > gui.screen.width) ? (left - gui.screen.width) : 0;
+//
+//		// Calculate Marker Width
+//		var width = pointer_size - ( max_squish * ( max_squish / ( max_squish * ( max_offscreen / ( current_offscreen_left + current_offscreen_right ) ) ) ) );
+//
+//		// Reposition Marker if off screen
+//		if(left < 0)
+//		{
+//			left = 0;
+//		}
+//		if(left > ( gui.screen.width - pointer_size ))
+//		{
+//			left = ( gui.screen.width - pointer_size );
+//		}
+//
+//		// Fix position of marker for when we know we need to add squish
+//		if(left > center_x)
+//		{
+//			left = left + ( pointer_size - width );
+//		}
 
 		// Calculate Markers Top Position
 		var top = center_y - ( pointer_size / 2 );
@@ -128,10 +142,17 @@ gui.render.self = {
 			top = top + ( pointer_size - height );
 		}
 
+		gui.render.self.data.position = {
+			left: left,
+			top: top,
+			width: pointer_size,
+			height: height
+		};
+
 		pointer.css({
-			left  : left,
-			top   : top,
-			width : width,
+			left: left,
+			top: top,
+			width: pointer_size,
 			height: height,
 			display: 'block'
 		});
@@ -139,11 +160,9 @@ gui.render.self = {
 	debug: function()
 	{
 		// Fetch Location Data for this user
-		var data = (app.io.mode === 'guest') ?
-			app.io.location.guest :
-			app.io.location.host;
+		var data = app.user_data;
 
-		if( !data)
+		if(!data)
 		{
 			return false;
 		}
@@ -151,11 +170,23 @@ gui.render.self = {
 		var label = (app.io.mode === 'guest') ? 'Guest' : 'Host';
 		$('#my-data h3 span.mode').text(label);
 
+		var degrees = (gui.render.self.data.correction !== null) ?
+			gui.render.self.data.correction.degrees :
+			0;
+
+		var bearing = (typeof gui.render.self.data.geo !== null) ?
+			gui.render.self.data.geo.bearing :
+			0;
+
+		var position = '' +
+			'<li><strong>Correction</strong>:&nbsp; ' + degrees + '</li>' +
+			'<li><strong>Bearing</strong>:&nbsp; ' + bearing + '</li>';
+
+		$('#my-data .position ul').html(position);
+
 		if(typeof data.acceleration !== 'undefined')
 		{
 			var acceleration = '' +
-				'<li><strong>X</strong>:&nbsp; ' + data.acceleration.x + '</li>' +
-				'<li><strong>Y</strong>:&nbsp; ' + data.acceleration.y + '</li>' +
 				'<li><strong>Z</strong>:&nbsp; ' + data.acceleration.z + '</li>';
 
 			$('#my-data .acceleration ul').html(acceleration);
@@ -167,9 +198,7 @@ gui.render.self = {
 				'<li><strong>Latitude</strong>:&nbsp; ' + data.geolocation.latitude + ' &deg;</li>' +
 				'<li><strong>Longitude</strong>:&nbsp; ' + data.geolocation.longitude + ' &deg;</li>' +
 				'<li><strong>Altitude</strong>:&nbsp; ' + data.geolocation.altitude + '</li>' +
-				'<li><strong>Accuracy</strong>:&nbsp; ' + data.geolocation.accuracy + '</li>' +
-				'<li><strong>Heading</strong>:&nbsp; ' + data.geolocation.heading + '</li>' +
-				'<li><strong>Speed</strong>:&nbsp; ' + data.geolocation.speed + '</li>';
+				'<li><strong>Accuracy</strong>:&nbsp; ' + data.geolocation.accuracy + '</li>';
 
 			$('#my-data .geolocation ul').html(geolocation);
 		}
