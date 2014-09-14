@@ -8,13 +8,14 @@ var fake_data = {
 			},
 			compass: {
 				direction: 'SSE',
-				magnetic_heading: 158.2145538330078
+				magnetic_heading: Math.floor(Math.random() * 360),
 			},
 			geolocation: {
 				latitude: 40.71965838912204,
 				longitude: -74.0066714632712,
 				altitude: '40 Feet',
-				accuracy: '30 Feet',
+				accuracy: 30,
+				accuracy_formatted: '',
 				heading: '--',
 				speed: '0 MPH'
 			}
@@ -29,7 +30,7 @@ var fake_data = {
 			},
 			compass: {
 				direction: 'NNW',
-				magnetic_heading: 339.302734375
+				magnetic_heading: Math.floor(Math.random() * 360)
 			},
 			geolocation: {
 				latitude: 40.71969146592103,
@@ -42,66 +43,66 @@ var fake_data = {
 		}
 	},
 	contact: {
-		"id"           : 1,
-		"rawId"        : null,
-		"displayName"  : null,
-		"name"         : {
-			"givenName"      : "Demo",
-			"formatted"      : "Demo User",
-			"middleName"     : null,
-			"familyName"     : "User",
+		"id": 1,
+		"rawId": null,
+		"displayName": null,
+		"name": {
+			"givenName": "Demo",
+			"formatted": "Demo User",
+			"middleName": null,
+			"familyName": "User",
 			"honorificPrefix": null,
 			"honorificSuffix": null
 		},
-		"nickname"     : null,
-		"phoneNumbers" : [
+		"nickname": null,
+		"phoneNumbers": [
 			{
-				"type" : "home",
+				"type": "home",
 				"value": "(123) 456-7890",
-				"id"   : 0,
-				"pref" : false
+				"id": 0,
+				"pref": false
 			},
 			{
-				"type" : "work",
+				"type": "work",
 				"value": "(987) 654-3210",
-				"id"   : 1,
-				"pref" : false
+				"id": 1,
+				"pref": false
 			}
 		],
-		"emails"       : [
+		"emails": [
 			{
-				"type" : "home",
+				"type": "home",
 				"value": "demo.home.email@gmail.com",
-				"id"   : 0,
-				"pref" : false
+				"id": 0,
+				"pref": false
 			},
 			{
-				"type" : "work",
+				"type": "work",
 				"value": "demo.work.email@gmail.com",
-				"id"   : 1,
-				"pref" : false
+				"id": 1,
+				"pref": false
 			}
 		],
-		"addresses"    : null,
-		"ims"          : null,
+		"addresses": null,
+		"ims": null,
 		"organizations": null,
-		"birthday"     : null,
-		"note"         : null,
-		"photos"       : null,
-		"categories"   : null,
-		"urls"         : null
+		"birthday": null,
+		"note": null,
+		"photos": null,
+		"categories": null,
+		"urls": null
 	},
 	geo: {
 		host: {
-			bearing: 283.18880216858554,
+			bearing: Math.floor(Math.random() * 360),
 			formatted_bearing: "283.1888°",
-			final_bearing: 283.1878662196385,
+			final_bearing: Math.floor(Math.random() * 360),
 			formatted_final_bearing: "283.1879°"
 		},
 		guest: {
-			bearing: 103.18786621963852,
+			bearing: Math.floor(Math.random() * 360),
 			formatted_bearing: "103.1879°",
-			final_bearing: 103.18880216858554,
+			final_bearing: Math.floor(Math.random() * 360),
 			formatted_final_bearing: "103.1888°"
 		},
 		data: {

@@ -27,7 +27,7 @@ app.store = {
 
 			return value;
 		}
-		else if( !key)
+		else if(!key)
 		{
 			app.util.debug('warn', 'No Key Provided');
 		}
@@ -52,11 +52,11 @@ app.store = {
 			localStorage.setItem(key, value);
 			return true;
 		}
-		else if( !key)
+		else if(!key)
 		{
 			app.util.debug('warn', 'No Key Provided');
 		}
-		else if( !value)
+		else if(!value)
 		{
 			app.util.debug('warn', 'No Value Provided');
 		}
@@ -75,7 +75,7 @@ app.store = {
 			localStorage.removeItem(key);
 			return true;
 		}
-		else if( !key)
+		else if(!key)
 		{
 			app.util.debug('warn', 'No Key Provided');
 		}

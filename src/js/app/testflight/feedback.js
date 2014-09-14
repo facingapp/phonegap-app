@@ -24,14 +24,14 @@ app.testflight.feedback = {
 
 				// Check if the user has an existing email client
 				window.plugin.email.isServiceAvailable(
-
-					function (isAvailable)
+					function(isAvailable)
 					{
 						// User has Email Service
 						if(isAvailable)
 						{
-							window.plugin.email.open(email_options, function(){
-								console.log('email view dismissed');
+							window.plugin.email.open(email_options, function()
+							{
+								app.util.debug('log', 'email view dismissed');
 							}, this);
 						}
 						// User has No Email Service, alert them just in case its a new phone or something
@@ -58,10 +58,10 @@ app.testflight.feedback = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Feedback Submitted');
+		app.util.debug('log', 'TestFlight Feedback Submitted');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Failed to Submit Feedback');
+		app.util.debug('error', 'TestFlight Failed to Submit Feedback');
 	}
 };

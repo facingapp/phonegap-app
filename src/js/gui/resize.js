@@ -14,7 +14,7 @@ gui.resize = function()
 	// Get some initial measurements
 	var padding = (gui.screen.height > 480) ? 40 : 25;
 	var button_height = $('.find-a-friend').height() - 20; // 20 is for border on button
-	var information_top = ( ( gui.screen.height / 2 ) + ( button_height / 2 ) )  + padding;
+	var information_top = ( ( gui.screen.height / 2 ) + ( button_height / 2 ) ) + padding;
 
 	// Move UI Elements that need it
 	$('.information').css('top', information_top);

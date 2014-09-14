@@ -13,10 +13,10 @@ app.testflight.env = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Environment Variable Set');
+		app.util.debug('log', 'TestFlight Environment Variable Set');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Failed to Set Environment Variable');
+		app.util.debug('error', 'TestFlight Failed to Set Environment Variable');
 	}
 };

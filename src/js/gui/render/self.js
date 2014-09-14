@@ -6,35 +6,42 @@ gui.render.self = {
 		up: 60,
 		down: 75
 	},
+	notice:
+	{
+		gps: null,
+		distance: null,
+		direction: null
+	},
 	draw: function()
 	{
 		// Fetch distance between two users
 		app.calc.geo.getDistance();
 
+		if(typeof app.user_data.correction === 'undefined')
+		{
+			app.user_data.correction = {};
+		}
+
 		// Fetch Geographic Data for this user
-		var geo = (app.io.mode === 'guest') ?
+		app.user_data.correction.geo = (app.io.mode === 'guest') ?
 			app.calc.geo.guest :
 			app.calc.geo.host;
 
-		// Fetch Location Data for this user
-		var loc = (app.io.mode === 'guest') ?
-			app.io.location.guest :
-			app.io.location.host;
-
 		// Do not continue if we do not have data we need
-		if(geo.bearing === null || loc.compass.magnetic_heading === null)
+		if(typeof app.user_data.correction.geo.bearing === 'undefined' || typeof app.user_data.compass === 'undefined')
 		{
+			console.error('Missing Data');
 			return false;
 		}
 
 		// We have all the data we need, time to calculate the offset
-		var correction = app.calc.geo.getOffset(geo.bearing, loc.compass.magnetic_heading);
+		app.user_data.correction = app.calc.geo.getOffset(app.user_data.correction.geo.bearing, app.user_data.compass.magnetic_heading);
 
 		// Define which Marker to use
 		var pointer = $('.self-marker');
-		
+
 		// Set the original width of our marker
-		if( !pointer.data('original-width'))
+		if(!pointer.data('original-width'))
 		{
 			pointer.data('original-width', pointer.width())
 		}
@@ -52,57 +59,22 @@ gui.render.self = {
 		// Set the maximum we can shrink the pointer to 1/4 of its size
 		var max_squish = ( pointer_size * 0.75 );
 
-		// Calculate Markers Left Position
-		var left = center_x - ( pointer_size / 2 );
-
-		// User is facing to far left, and needs to turn right
-		if(correction.degrees < 0)
-		{
-			left = ( center_x - ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
-		}
-		// User is facing to far right, and needs to turn left
-		else if(correction.degrees > 0)
-		{
-			left = ( center_x + ( Math.abs(correction.degrees) * ( center_x / gui.render.self.visualField.left_right ) ) - ( pointer_size / 2 ) );
-		}
-
-		// Use to animate left and right edge smooshiness
-		var current_offscreen_left = (left < 0) ? Math.abs(left) : 0;
-		var current_offscreen_right = (left > gui.screen.width) ? (left - gui.screen.width) : 0;
-
-		// Calculate Marker Width
-		var width = pointer_size - ( max_squish * ( max_squish / ( max_squish * ( max_offscreen / ( current_offscreen_left + current_offscreen_right ) ) ) ) );
-
-		// Reposition Marker if off screen
-		if(left < 0)
-		{
-			left = 0;
-		}
-		if(left > ( gui.screen.width - pointer_size ))
-		{
-			left = ( gui.screen.width - pointer_size );
-		}
-
-		// Fix position of marker for when we know we need to add squish
-		if(left > center_x)
-		{
-			left = left + ( pointer_size - width );
-		}
+		var left = ((((( app.user_data.correction.degrees / 180 ) * center_x) / ( center_x / gui.render.self.visualField.left_right ) ) / gui.render.self.visualField.left_right ) * center_x) - ( pointer_size / 2 );
 
 		// Calculate Markers Top Position
 		var top = center_y - ( pointer_size / 2 );
 
 		// Screen is tilted towards the sky, correction needed to look down
-		if(loc.acceleration.z >= 0)
+		if(app.user_data.acceleration.z >= 0)
 		{
 			// Marker should be above center
-			top = ( center_y - ( ( ( loc.acceleration.z / 10 ) * ( 90 / gui.render.self.visualField.down ) ) * center_y ) - ( pointer_size / 2 ) );
+			top = ( center_y - ( ( ( app.user_data.acceleration.z / 10 ) * ( 90 / gui.render.self.visualField.down ) ) * center_y ) - ( pointer_size / 2 ) );
 		}
 		// Screen is tilted towards the ground, correction needed to look up
-		else if(loc.acceleration.z < 0)
+		else if(app.user_data.acceleration.z < 0)
 		{
 			// Marker should be below center
-			top = ( center_y - ( ( ( loc.acceleration.z / 10 ) * ( 90 / gui.render.self.visualField.up ) ) * center_y ) - ( pointer_size / 2 ) );
+			top = ( center_y - ( ( ( app.user_data.acceleration.z / 10 ) * ( 90 / gui.render.self.visualField.up ) ) * center_y ) - ( pointer_size / 2 ) );
 		}
 
 		// Use to animate left and right edge smooshiness
@@ -129,21 +101,98 @@ gui.render.self = {
 		}
 
 		pointer.css({
-			left  : left,
-			top   : top,
-			width : width,
+			left: left,
+			top: top,
+			width: pointer_size,
 			height: height,
 			display: 'block'
 		});
+
+		var strength_class = 'one-bar';
+
+		if(app.user_data.geolocation.accuracy > 300)
+		{
+			strength_class = 'one-bar';
+		}
+		if(app.user_data.geolocation.accuracy > 200)
+		{
+			strength_class = 'two-bars';
+		}
+		if(app.user_data.geolocation.accuracy > 100)
+		{
+			strength_class = 'three-bars';
+		}
+		if(app.user_data.geolocation.accuracy > 25)
+		{
+			strength_class = 'four-bars';
+		}
+		if(app.user_data.geolocation.accuracy > 0)
+		{
+			strength_class = 'five-bars';
+		}
+
+		var message = '';
+		var date = new Date();
+		var now = date.getTime();
+
+		var max_signal_strength = 4;
+		var max_distance = 4;
+		var max_direction = 30;
+		var reset = 30;
+
+		if(gui.render.self.notice.gps === null)
+		{
+			gui.render.self.notice.gps = now;
+		}
+
+		if(gui.render.self.notice.distance === null)
+		{
+			gui.render.self.notice.distance = now;
+		}
+
+		if(gui.render.self.notice.direction === null)
+		{
+			gui.render.self.notice.direction = now;
+		}
+
+		var time_signal_strength = (now - gui.render.self.notice.gps) / 1000;
+		var time_distance = ((now - gui.render.self.notice.distance) / 1000) - max_signal_strength;
+		var time_direction = ((now - gui.render.self.notice.direction) / 1000) - max_distance;
+
+		var show_signal_strength = (time_signal_strength <= max_signal_strength);
+		var show_distance = ( !show_signal_strength && time_distance <= max_distance);
+		var show_direction = ( !show_signal_strength && !show_distance && time_direction <= max_direction);
+
+		if(time_direction >= reset)
+		{
+			gui.render.self.notice.gps = null;
+			gui.render.self.notice.distance = null;
+			gui.render.self.notice.direction = null;
+		}
+
+		if(show_signal_strength)
+		{
+			message = '<div class="signal-strength"><i class="fa fa-signal over '+ strength_class +'"></i><i class="fa fa-signal under"></i></div>&nbsp; GPS Accuracy <span id="gps-accuracy">'+ app.user_data.geolocation.accuracy_formatted +'</span>';
+		}
+
+		if(show_distance)
+		{
+			message = 'Your Friend is <span id="distance-away">'+ app.hardware.geolocation.distance(app.calc.geo.data.distance.length) +' Away</span>';
+		}
+
+		if(show_direction)
+		{
+			message = app.user_data.correction.direction;
+		}
+
+		if(message !== '')
+		{
+			$('.connection-status').html(message);
+		}
 	},
 	debug: function()
 	{
-		// Fetch Location Data for this user
-		var data = (app.io.mode === 'guest') ?
-			app.io.location.guest :
-			app.io.location.host;
-
-		if( !data)
+		if(!app.user_data)
 		{
 			return false;
 		}
@@ -151,34 +200,49 @@ gui.render.self = {
 		var label = (app.io.mode === 'guest') ? 'Guest' : 'Host';
 		$('#my-data h3 span.mode').text(label);
 
-		if(typeof data.acceleration !== 'undefined')
+		var degrees = (typeof app.user_data.correction !== 'undefined') ?
+			app.user_data.correction.degrees :
+			0;
+
+		var bearing = (typeof app.user_data.correction !== 'undefined' && typeof app.user_data.correction.geo !== 'undefined') ?
+			app.user_data.correction.geo.bearing :
+			0;
+
+		var direction = (typeof app.user_data.correction !== 'undefined') ?
+			app.user_data.correction.direction :
+			'Unknown';
+
+		var position = '' +
+			'<li><strong>Correction</strong>:&nbsp; ' + degrees + '</li>' +
+			'<li><strong>Bearing</strong>:&nbsp; ' + bearing + '</li>' +
+			'<li><strong>Direction</strong>:&nbsp; ' + direction + '</li>';
+
+		$('#my-data .position ul').html(position);
+
+		if(typeof app.user_data.acceleration !== 'undefined')
 		{
 			var acceleration = '' +
-				'<li><strong>X</strong>:&nbsp; ' + data.acceleration.x + '</li>' +
-				'<li><strong>Y</strong>:&nbsp; ' + data.acceleration.y + '</li>' +
-				'<li><strong>Z</strong>:&nbsp; ' + data.acceleration.z + '</li>';
+				'<li><strong>Z</strong>:&nbsp; ' + app.user_data.acceleration.z + '</li>';
 
 			$('#my-data .acceleration ul').html(acceleration);
 		}
 
-		if(typeof data.geolocation !== 'undefined')
+		if(typeof app.user_data.geolocation !== 'undefined')
 		{
 			var geolocation = '' +
-				'<li><strong>Latitude</strong>:&nbsp; ' + data.geolocation.latitude + ' &deg;</li>' +
-				'<li><strong>Longitude</strong>:&nbsp; ' + data.geolocation.longitude + ' &deg;</li>' +
-				'<li><strong>Altitude</strong>:&nbsp; ' + data.geolocation.altitude + '</li>' +
-				'<li><strong>Accuracy</strong>:&nbsp; ' + data.geolocation.accuracy + '</li>' +
-				'<li><strong>Heading</strong>:&nbsp; ' + data.geolocation.heading + '</li>' +
-				'<li><strong>Speed</strong>:&nbsp; ' + data.geolocation.speed + '</li>';
+				'<li><strong>Latitude</strong>:&nbsp; ' + app.user_data.geolocation.latitude + ' &deg;</li>' +
+				'<li><strong>Longitude</strong>:&nbsp; ' + app.user_data.geolocation.longitude + ' &deg;</li>' +
+				'<li><strong>Altitude</strong>:&nbsp; ' + app.user_data.geolocation.altitude + '</li>' +
+				'<li><strong>Accuracy</strong>:&nbsp; ' + app.user_data.geolocation.accuracy + '</li>';
 
 			$('#my-data .geolocation ul').html(geolocation);
 		}
 
-		if(typeof data.compass !== 'undefined')
+		if(typeof app.user_data.compass !== 'undefined')
 		{
 			var compass = '' +
-				'<li><strong>Direction</strong>:&nbsp; ' + data.compass.direction + '</li>' +
-				'<li><strong>Heading</strong>:&nbsp; ' + data.compass.magnetic_heading + ' &deg;</li>';
+				'<li><strong>Direction</strong>:&nbsp; ' + app.user_data.compass.direction + '</li>' +
+				'<li><strong>Heading</strong>:&nbsp; ' + app.user_data.compass.magnetic_heading + ' &deg;</li>';
 
 			$('#my-data .compass ul').html(compass);
 		}

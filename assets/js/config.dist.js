@@ -17,7 +17,10 @@ var config = {
 		/* App Support Information */
 		support: {
 			website: 'http://support.mywebsite.com',
-			email: 'support@fmywebsite.com'
+			email: 'support@fmywebsite.com',
+			info: 'https://mywebsite.com',
+			terms_of_use: 'https://mywebsite.com/terms-of-use',
+			privacy_policy: 'https://mywebsite.com/privacy-policy'
 		},
 
 		/* Settings for Development */

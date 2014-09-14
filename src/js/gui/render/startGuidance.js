@@ -9,12 +9,7 @@ gui.render.startGuidance = function(user)
 
 		//
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
-		gui.render.status('<i class="fa fa-check fa-fw"></i> '+ app.io.friend.name.givenName + ' has Connected', true);
-
-		$('#home .background').removeClass('blurIn blurOut').addClass('blurIn');
-		$('.pulse1, .pulse2').fadeOut('slow');
-		$('.logo').addClass('fadeLogoGuidance');
-		$('.location-marker.self').fadeIn();
+		gui.render.status('<i class="fa fa-check fa-fw"></i> '+  app.locale.dict('home', 'friend_connected').replace(/{{NAME}}/g, app.io.friend.name.givenName), true, 1500);
 
 		app.ad.remove.banner();
 	}
@@ -24,7 +19,7 @@ gui.render.startGuidance = function(user)
 		$('.reset-gui').fadeIn();
 
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
-		gui.render.status('<i class="fa fa-check fa-fw"></i> You are Now Connected', true);
+		gui.render.status('<i class="fa fa-check fa-fw"></i> ' + app.locale.dict('home', 'you_are_connected'), true, 1500);
 
 		// Update Contact Image
 		var contact_image = $('.find-a-friend');
@@ -35,19 +30,23 @@ gui.render.startGuidance = function(user)
 		contact_image.removeClass('animated flipInX');
 
 		setTimeout(function(){ $('.find-a-friend').addClass('animated flipInX'); }, 100);
-
-		$('#home .background').removeClass('blurIn blurOut').addClass('blurIn');
-		$('.pulse1, .pulse2').fadeOut('slow');
-		$('.logo').addClass('fadeLogoGuidance');
-		$('.location-marker.self').fadeIn();
 	}
 
-	clearTimeout(gui.timeout.connectionStatus);
-	gui.timeout.connectionStatus = setInterval(function(){
-		$(".connection-status ul li:first").slideUp('slow', function() {
-			$(this).remove();
-			$(".connection-status ul").append($(this));
-			$(this).slideDown('slow');
-		});
-	}, 5000);
+	$('#home .background').removeClass('blurIn blurOut').addClass('blurIn');
+	$('#home .clouds').removeClass('blurIn blurOut').addClass('blurIn');
+
+	$('.pulse1, .pulse2').fadeOut('slow');
+	$('.logo').addClass('fadeLogoGuidance');
+	$('.location-marker.self').fadeIn();
+	$('.welcome').hide();
+
+	clearTimeout(gui.timeout.message);
+	clearTimeout(gui.timeout.welcomeIn);
+	clearTimeout(gui.timeout.welcomeOut);
+
+	app.sharing_data = true;
+
+	setTimeout(function(){
+		$('.connection').slideDown();
+	}, 1500);
 };

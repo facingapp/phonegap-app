@@ -19,7 +19,7 @@ var app = {
 			{
 				// request user permission to share location data
 				app.notification.confirm(
-					app.locale.dict('location_sharing_message'),
+					app.locale.dict('notification', 'location_sharing_message'),
 					function(results){
 
 						// Check which button was clicked ( 1 = Disagree, 2 = Agree, 3 = Closed Without Choice )
@@ -54,10 +54,10 @@ var app = {
 
 						}
 					},
-					app.locale.dict('general_title_permission_request'),
+					app.locale.dict('notification', 'permission_request'),
 					[
-						app.locale.dict('general_button_disagree'),
-						app.locale.dict('general_button_agree')
+						app.locale.dict('button', 'disagree'),
+						app.locale.dict('button', 'agree')
 					]
 				);
 			}

@@ -2,7 +2,7 @@ gui.render.waitForFiend = function(button_id, invite_code, firstname, tour_enabl
 {
 	clearTimeout(gui.render.timeout.hideStatus);
 
-	if( !tour_enabled)
+	if(!tour_enabled)
 	{
 		if(app.legal.location_sharing_permission() !== 'accepted')
 		{
@@ -15,12 +15,12 @@ gui.render.waitForFiend = function(button_id, invite_code, firstname, tour_enabl
 		app.io.createSpace(invite_code);
 	}
 
-	app.stats.event('Navigation', 'Contact', 'Using '+ button_id + ' Button with ID ' + invite_code);
-    gui.render.status('<i class="fa fa-circle-o-notch fa-fw fa-spin"></i> Waiting for '+ firstname + ' to Connect');
-    $('.contact-options').addClass('animated fadeOut');
+	app.stats.event('Navigation', 'Contact', 'Using ' + button_id + ' Button with ID ' + invite_code);
+	gui.render.status('<i class="fa fa-circle-o-notch fa-fw fa-spin"></i> ' + app.locale.dict('home', 'waiting_for_friend').replace(/{{NAME}}/g, firstname));
+	$('.contact-options').addClass('animated fadeOut');
 
-    if( !tour_enabled)
-    {
-	    app.ad.create.banner();
-    }
+	if(!tour_enabled)
+	{
+		app.ad.create.banner();
+	}
 };

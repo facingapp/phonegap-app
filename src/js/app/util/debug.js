@@ -1,43 +1,35 @@
 app.util.debug = function(level, message)
 {
-    if(app.util.enableDebug)
-    {
-        var Debug = Error;
+	if(app.util.enableDebug)
+	{
+		switch(level)
+		{
+			case 'log':
+				console.log(message);
+				break;
 
-        Debug.prototype.warn = function(){
-            var args = Array.prototype.slice.call(arguments,0),suffix=this.lineNumber?'line: '+this.lineNumber:"\n"+this.stack;
-            console.warn.apply(console, args.concat([suffix]));
-        };
+			case 'info':
+				console.info(message);
+				break;
 
-        Debug.prototype.error = function(){
-            var args = Array.prototype.slice.call(arguments,0),suffix=this.lineNumber?'line: '+this.lineNumber:"\n"+this.stack;
-            console.error.apply(console, args.concat([suffix]));
-        };
+			case 'debug':
+				console.debug(message);
+				break;
 
-        switch(level)
-        {
-            case 'log':
-                console.log(message);
-                break;
+			case 'warn':
+				console.warn(message);
+				break;
 
-            case 'debug':
-                console.debug(message);
-                break;
+			case 'error':
+				console.error(message);
+				break;
+		}
+	}
 
-            case 'warn':
-                Debug().warn(message);
-                break;
-
-            case 'error':
-                Debug().error(message);
-                break;
-        }
-    }
-
-    if(typeof message !== 'string')
-    {
-        message = JSON.stringify(message);
-    }
+	if(typeof message !== 'string')
+	{
+		message = JSON.stringify(message);
+	}
 
 	if(gui && gui.render && gui.render.debug)
 	{
