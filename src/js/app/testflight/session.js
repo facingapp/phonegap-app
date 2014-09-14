@@ -21,10 +21,10 @@ app.testflight.session = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Session Success');
+		app.util.debug('log', 'TestFlight Session Success');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Session Error');
+		app.util.debug('error', 'TestFlight Session Error');
 	}
 };

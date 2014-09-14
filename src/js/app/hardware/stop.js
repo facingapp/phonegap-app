@@ -13,6 +13,6 @@ app.hardware.stop = function()
 		app.hardware.geolocation.stop();
 	}
 
-	window.cancelAnimationFrame(app.hardware.timer);
+	clearInterval(app.hardware.timer);
 	app.hardware.timer = null;
 };

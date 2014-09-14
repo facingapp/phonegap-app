@@ -13,10 +13,10 @@ app.testflight = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Take Off Success');
+		app.util.debug('log', 'TestFlight Take Off Success');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Take Off Failed');
+		app.util.debug('error', 'TestFlight Take Off Failed');
 	}
 };

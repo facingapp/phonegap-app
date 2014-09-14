@@ -12,10 +12,10 @@ app.testflight.option = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Option Set');
+		app.util.debug('log', 'TestFlight Option Set');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Failed to Set Option');
+		app.util.debug('error', 'TestFlight Failed to Set Option');
 	}
 };

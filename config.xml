@@ -108,6 +108,10 @@
         <param name="URL_SCHEME" value="facing" />
     </gap:plugin>
 
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+    </feature>
+
 
     <!-- ================================================== -->
 

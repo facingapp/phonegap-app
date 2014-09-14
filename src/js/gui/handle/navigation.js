@@ -6,7 +6,7 @@ gui.handle.navigation = function()
 	var items = $('.slide');
 	var content = $('.content');
 
-	$('button.send-feedback').on(gui.touchEvents, function(event)
+	$('button.send-feedback').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
 	{
 		event.stopPropagation();
 		event.preventDefault();
@@ -32,17 +32,71 @@ gui.handle.navigation = function()
 		{
 			app.notification.alert('Looks like the Feedback was left blank. Once there is a message, we\'ll send it.', function(){}, 'Missing Feedback', 'OK');
 		}
+
+		app.stats.event('Navigation', 'Button', 'Feedback Sent');
+
+		$(this).blur();
+
+		return false;
 	});
 
-	$('button.support-site').on(gui.touchEvents, function(event)
+	$('button.support-site').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
 	{
 		event.stopPropagation();
 		event.preventDefault();
 
+		app.stats.event('Navigation', 'Button', 'Support Site Opened');
+
 		window.open(config.app.support.website, '_system');
+
+		$(this).blur();
+
+		return false;
 	});
 
-	$('#navToggle').on(gui.touchEvents, function(event)
+	$('button.terms-of-use').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
+	{
+		event.stopPropagation();
+		event.preventDefault();
+
+		app.stats.event('Navigation', 'Button', 'Terms of Use Opened');
+
+		window.open(config.app.support.terms_of_use, '_system');
+
+		$(this).blur();
+
+		return false;
+	});
+
+	$('button.privacy-policy').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
+	{
+		event.stopPropagation();
+		event.preventDefault();
+
+		app.stats.event('Navigation', 'Button', 'Privacy Policy Opened');
+
+		window.open(config.app.support.privacy_policy, '_system');
+
+		$(this).blur();
+
+		return false;
+	});
+
+	$('button.visit-website').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
+	{
+		event.stopPropagation();
+		event.preventDefault();
+
+		app.stats.event('Navigation', 'Button', 'Website Visited');
+
+		window.open(config.app.support.info, '_system');
+
+		$(this).blur();
+
+		return false;
+	});
+
+	$('#navToggle').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
 	{
 		event.stopPropagation();
 		event.preventDefault();
@@ -63,24 +117,7 @@ gui.handle.navigation = function()
 		return false;
 	});
 
-	$('#trigger-tour').on(gui.touchEvents, function()
-	{
-
-		setTimeout(function()
-		{
-			app.tour.start();
-		}, 500);
-
-		$('nav a').removeClass('active');
-		$('.panel').removeClass('active');
-
-		$('#facing-home').addClass('active');
-		$('#home').addClass('active');
-
-		return false;
-	});
-
-	content.on(gui.touchEvents, function()
+	content.hammer(gui.touchOptions).bind(gui.touchEvents, function()
 	{
 		if(content.hasClass('open'))
 		{
@@ -89,17 +126,39 @@ gui.handle.navigation = function()
 		}
 	});
 
-	$('nav a').on(gui.touchEvents, function()
+	$('nav a').hammer(gui.touchOptions).bind(gui.touchEvents, function(event)
 	{
+		event.stopPropagation();
+		event.preventDefault();
 
 		var panel = $(this).data('panel');
-		var tour = $(this).data('tour');
+		var id = $(this).attr('id');
 		var label = $(this).html();
+
+		// Do nothing if user clicks tab for current panel
+		if(id === 'trigger-tour')
+		{
+			app.tour.stop();
+
+			setTimeout(function()
+			{
+				app.tour.start();
+			}, 500);
+
+			$('nav a').removeClass('active');
+			$('.panel').removeClass('active');
+
+			$('#facing-home').addClass('active');
+			$('#home').addClass('active');
+
+			$('#navToggle').trigger(gui.touchEvents);
+			return false;
+		}
 
 		// Do nothing if user clicks tab for current panel
 		if(panel === gui.currentPanel)
 		{
-			$('#navToggle').trigger('touchstart');
+			$('#navToggle').trigger(gui.touchEvents);
 			return false;
 		}
 
@@ -115,7 +174,7 @@ gui.handle.navigation = function()
 
 		$('header .label').html(label);
 
-		$('#navToggle').trigger('touchstart');
+		$('#navToggle').trigger(gui.touchEvents);
 
 		if(panel === 'home')
 		{
@@ -140,7 +199,7 @@ gui.handle.navigation = function()
 		return false;
 	});
 
-	$('a.clear-log').on(gui.touchEvents, function()
+	$('a.clear-log').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 	{
 		$('#dev-log .output ul').html('');
 		return false;

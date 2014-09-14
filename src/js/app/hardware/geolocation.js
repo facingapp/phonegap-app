@@ -2,10 +2,13 @@ app.hardware.geolocation = {
 
 	obj: null,
 	settings: {
-		maximumAge: 25,
-		timeout: 10000,
-		enableHighAccuracy: true
+		maximumAge: 100,
+		timeout: 90,
+		enableHighAccuracy: false
 	},
+	failed_updates: 0,
+	failed_permission: 0,
+	max_fail: 50,
 	start: function()
 	{
 		if(typeof navigator.geolocation === 'undefined')
@@ -15,6 +18,8 @@ app.hardware.geolocation = {
 			return false;
 		}
 
+		app.stats.event('Hardware', 'Watching', 'GPS');
+
 		try
 		{
 			app.hardware.geolocation.obj = navigator.geolocation.watchPosition(
@@ -22,8 +27,6 @@ app.hardware.geolocation = {
 				app.hardware.geolocation.error,
 				app.hardware.geolocation.settings
 			);
-
-			app.stats.event('Hardware', 'Watching', 'GPS');
 		}
 		catch(err)
 		{
@@ -47,14 +50,19 @@ app.hardware.geolocation = {
 	},
 	success: function(position)
 	{
+		app.util.debug('log', 'Updating Position');
+
 		app.user_data.geolocation = {
 			latitude: position.coords.latitude,
 			longitude: position.coords.longitude,
 			altitude: app.hardware.geolocation.distance(position.coords.altitude),
-			accuracy: app.hardware.geolocation.distance(position.coords.accuracy),
+			accuracy: position.coords.accuracy,
+			accuracy_formatted: app.hardware.geolocation.distance(position.coords.accuracy),
 			heading: app.hardware.compass.direction(position.coords.heading),
 			speed: app.hardware.geolocation.speed(position.coords.speed)
 		};
+
+		app.hardware.geolocation.failed_updates = 0;
 	},
 	error: function(error)
 	{
@@ -64,16 +72,23 @@ app.hardware.geolocation = {
 			app.util.debug('error', 'Geolocation Error: Permission Denied');
 			app.stats.event('Hardware', 'Error', 'Geolocation Error: Permission Denied');
 
-			// Stop Hardware Listening since we can't use it
-			app.hardware.stop();
+			app.hardware.geolocation.failed_permission++;
 
-			// Notify User of issue
-			app.notification.alert(
-				app.locale.dict('notification', 'permission_denied_message'),
-				function(){},
-				app.locale.dict('notification', 'permission_denied_title'),
-				app.locale.dict('button', 'ok')
-			);
+			if(app.hardware.geolocation.failed_permission > 3)
+			{
+				// Stop Hardware Listening since we can't use it
+				app.hardware.stop();
+
+				// Notify User of issue
+				app.notification.alert(
+					app.locale.dict('notification', 'permission_denied_message'),
+					function(){
+						gui.reset();
+					},
+					app.locale.dict('notification', 'permission_denied_title'),
+					app.locale.dict('button', 'ok')
+				);
+			}
 		}
 		// Returned when the device is unable to retrieve a position.
 		// In general, this means the device is not connected to a network or can't get a satellite fix.
@@ -88,7 +103,9 @@ app.hardware.geolocation = {
 			// Notify User of issue
 			app.notification.alert(
 				app.locale.dict('notification', 'bad_signal_message'),
-				function(){},
+				function(){
+					gui.reset();
+				},
 				app.locale.dict('notification', 'bad_signal_title'),
 				app.locale.dict('button', 'ok')
 			);
@@ -104,6 +121,26 @@ app.hardware.geolocation = {
 		{
 			app.util.debug('error', 'Geolocation Error: ' + error.message);
 			app.stats.event('Hardware', 'Error', 'Geolocation Error: ' + error.message);
+		}
+
+		app.hardware.geolocation.failed_updates++;
+
+		if(app.hardware.geolocation.failed_updates >= app.hardware.geolocation.max_fail)
+		{
+			app.hardware.geolocation.failed_updates = 0;
+
+			// Stop Hardware Listening since we can't use it
+			app.hardware.stop();
+
+			// Notify User of issue
+			app.notification.alert(
+				app.locale.dict('notification', 'bad_signal_message'),
+				function(){
+					gui.reset();
+				},
+				app.locale.dict('notification', 'bad_signal_title'),
+				app.locale.dict('button', 'ok')
+			);
 		}
 	},
 	distance: function(value, use_metric)

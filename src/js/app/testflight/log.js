@@ -23,10 +23,10 @@ app.testflight.log = {
 	},
 	success: function()
 	{
-		console.log('TestFlight Logged Remote Message');
+		app.util.debug('log', 'TestFlight Logged Remote Message');
 	},
 	fail: function()
 	{
-		console.error('TestFlight Failed to Log Remote Message');
+		app.util.debug('error', 'TestFlight Failed to Log Remote Message');
 	}
 };

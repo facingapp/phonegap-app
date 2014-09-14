@@ -32,8 +32,6 @@ gui.render.contact = {
 		// Remove Previous Event Bindings
 		$('#clipboard, #sms, #email').off();
 
-		console.log(JSON.stringify(contact));
-
 		// Fetch Contact Details
 		var email = (contact && contact.emails && contact.emails.length > 0) ?
 			contact.emails[0].value :
@@ -52,7 +50,7 @@ gui.render.contact = {
 		{
 			number = number.replace(/[^0-9]/g, '');
 
-			$('#sms').on(gui.touchEvents, function()
+			$('#sms').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 			{
 
 				$('#sms').removeClass('animated swing');
@@ -83,7 +81,7 @@ gui.render.contact = {
 		// Setup Email Button
 		if(email !== '')
 		{
-			$('#email').on(gui.touchEvents, function()
+			$('#email').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 			{
 
 				$('#email').removeClass('animated swing');
@@ -109,7 +107,7 @@ gui.render.contact = {
 							{
 								window.plugin.email.open(email_options, function()
 								{
-									console.log('email view dismissed');
+									app.util.debug('log', 'email view dismissed');
 								}, this);
 
 								gui.render.waitForFiend('Email', invite_code, first_name);
@@ -148,7 +146,7 @@ gui.render.contact = {
 		}
 
 		// Setup Clipboard Button
-		$('#clipboard').on(gui.touchEvents, function()
+		$('#clipboard').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 		{
 
 			$('#clipboard').removeClass('animated swing');

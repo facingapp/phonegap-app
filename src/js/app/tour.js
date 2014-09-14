@@ -103,7 +103,7 @@ app.tour = {
 				}
 				if(leg.index == 10)
 				{
-					$('.get-support').on(gui.touchEvents, function()
+					$('.get-support').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 					{
 						window.open(config.app.support.website, '_system');
 					});

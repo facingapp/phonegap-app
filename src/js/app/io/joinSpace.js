@@ -21,9 +21,6 @@ app.io.joinSpace = function(roomName, mode)
 	app.io.name = app.uuid;
 	app.io.mode = mode;
 
-	// Startup Hardware
-	app.hardware.start();
-
 	if(app.legal.accepted.location_sharing === 'accepted' && app.socket && app.socket.emit)
 	{
 		app.stats.event('Socket', 'Join', app.io.name + ' joined Server');
@@ -33,8 +30,6 @@ app.io.joinSpace = function(roomName, mode)
 			if(join_response.success === true)
 			{
 				app.stats.event('Socket', 'Join', app.io.name + ' joined ' + app.io.space + ' as ' + app.io.mode);
-
-				app.sharing_data = true;
 			}
 			else
 			{

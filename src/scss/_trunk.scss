@@ -119,24 +119,41 @@ nav
     position: absolute;
     top: 0;
     right: 5px;
+
+    li
+    {
+        float: left;
+        display: inline-block;
+
+        &.spacer
+        {
+            margin-top: 36px;
+        }
+
+        a
+        {
+            font-size: 11px;
+            color: #9aa6af;
+            padding: 24px 15px;
+            display: block;
+            white-space: nowrap;
+
+            i.fa {
+                font-size: 24px;
+                line-height: 24px;
+                top: 3px;
+                position: relative;
+                left: -6px;
+            }
+
+            &:hover
+            {
+                color: #FFF;
+            }
+        }
+    }
 }
-nav li
-{
-    float: left;
-    display: inline-block;
-}
-nav li a
-{
-    font-size: 11px;
-    color: #9aa6af;
-    padding: 24px 15px;
-    display: block;
-    white-space: nowrap;
-}
-nav li a:hover
-{
-    color: #FFF;
-}
+
 ul.menu li:last-child
 {
     margin-right: 30px;

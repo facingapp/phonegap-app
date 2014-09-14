@@ -49,7 +49,13 @@ app.locale.en = {
 		no_tour_title: "Connected to Friend",
 		no_tour_message: "Help is disabled while you're connected to a friend.",
 		no_email_title: "Unable to Send Email",
-		no_email_message: "You do not have any Email Clients setup to send Email."
+		no_email_message: "You do not have any Email Clients setup to send Email.",
+		host_left_title: "Friend Disconnected",
+		host_left_message: "The friend that invited you has chosen to stop sharing their location.",
+		guest_left_title: "Friend Disconnected",
+		guest_left_message: "The friend you invited has chosen to stop sharing their location.",
+		self_left_title: "You're Disconnected",
+		self_left_message: "We'll let your friend know that you have chosen to stop sharing you location."
 	},
 	tour:
 	{

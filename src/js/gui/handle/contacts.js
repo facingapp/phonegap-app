@@ -2,7 +2,7 @@ gui.handle.contacts = function()
 {
 	app.util.debug('log', 'Setting up Friend Picker');
 
-	$('.find-a-friend').on(gui.touchEvents, function()
+	$('.find-a-friend').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 	{
 		if(app.sharing_data)
 		{
@@ -27,7 +27,6 @@ gui.handle.contacts = function()
 			navigator.contacts.pickContact(function(contact)
 			{
 				app.io.friend = contact;
-				console.log(JSON.stringify(contact));
 				gui.render.contact.update(contact);
 
 			}, function(err){ gui.render.contact.reset(err); });
@@ -68,7 +67,7 @@ gui.handle.contacts = function()
 		friends.attr('style', '').css('background-position', position + 'px 0px');
 	}, 4000);
 
-	$('.force-reset-gui').on(gui.touchEvents, function()
+	$('.force-reset-gui').hammer(gui.touchOptions).bind(gui.touchEvents, function()
 	{
 		app.util.debug('log', 'Resetting GUI ...');
 		gui.reset();

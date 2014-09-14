@@ -2,24 +2,14 @@ app.util.debug = function(level, message)
 {
 	if(app.util.enableDebug)
 	{
-		var Debug = Error;
-
-		Debug.prototype.warn = function()
-		{
-			var args = Array.prototype.slice.call(arguments, 0), suffix = this.lineNumber ? 'line: ' + this.lineNumber : "\n" + this.stack;
-			console.warn.apply(console, args.concat([suffix]));
-		};
-
-		Debug.prototype.error = function()
-		{
-			var args = Array.prototype.slice.call(arguments, 0), suffix = this.lineNumber ? 'line: ' + this.lineNumber : "\n" + this.stack;
-			console.error.apply(console, args.concat([suffix]));
-		};
-
 		switch(level)
 		{
 			case 'log':
 				console.log(message);
+				break;
+
+			case 'info':
+				console.info(message);
 				break;
 
 			case 'debug':
@@ -27,11 +17,11 @@ app.util.debug = function(level, message)
 				break;
 
 			case 'warn':
-				Debug().warn(message);
+				console.warn(message);
 				break;
 
 			case 'error':
-				Debug().error(message);
+				console.error(message);
 				break;
 		}
 	}

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+	    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
 
 	    <!--// Styles ( Managed by Grunt in ./src/scss folder ) //-->
 	    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
@@ -29,8 +29,8 @@
             <nav class="slide">
                 <ul class="menu">
                     <li><a href="javascript:void(0);" data-panel="home" class="active" id="facing-home"><i class="fa fa-map-marker fa-fw"></i> Facing</a></li>
-	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question-circle fa-fw"></i> <span data-locale="menu|help"></span></a></li>
-	                <!--<li><a href="javascript:void(0);" data-panel="about" id="about-us"><i class="fa fa-info fa-fw"></i> <span data-locale="menu|about"></span></a></li>-->
+	                <li><a href="javascript:void(0);" data-panel="home" id="trigger-tour"><i class="fa fa-question fa-fw"></i> <span data-locale="menu|help"></span></a></li>
+	                <li><a href="javascript:void(0);" data-panel="about" id="about-us"><i class="fa fa-info fa-fw"></i> <span data-locale="menu|about"></span></a></li>
 	                <li><a href="javascript:void(0);" data-panel="feedback" id="feedback-tab"><i class="fa fa-comments fa-fw"></i> <span data-locale="menu|feedback"></span></a></li>
 
 	                <li class="devonly spacer"><a href="javascript:void(0);" data-panel="my-data"><i class="fa fa-crosshairs fa-fw"></i> My Data</a></li>
@@ -72,28 +72,7 @@
 
 		                <!--// Start Socket Status //-->
 		                <div class="connection">
-			                <div class="connection-status">
-				                <ul>
-					                <li>
-						                <div class="signal-strength">
-							                <i class="fa fa-signal over three-bars"></i>
-							                <i class="fa fa-signal under"></i>
-						                </div>
-
-						                GPS Accurate within <span id="gps-accuracy">15ft</span>
-					                </li>
-					                <li>
-						                Your Friend is <span id="distance-away">150ft Away</span>
-					                </li>
-					                <li>
-						                You'll want to be Facing <span id="facing-destination">NNE</span>
-					                </li>
-					                <li>
-						                You're currently Facing <span id="facing-currently">SSW</span>
-					                </li>
-				                </ul>
-
-			                </div>
+			                <div class="connection-status"></div>
 		                </div>
 		                <!--// End Socket Status //-->
 
@@ -140,9 +119,18 @@
 
 		        <!--// Start About //-->
 		        <div id="about" class="panel">
-			        <div class="header-section"></div>
+			        <div class="header-section about"></div>
 			        <div class="push-header panel-content">
-				        About Facing
+				        <div class="logo-header"></div>
+				        <div class="about-us">
+					        True 3D Location Tracking in a 100% Open Source iOS & Android App. Use Facing to locate those you can't seem to find, even though they were right next to you.
+				        </div>
+				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; Support</button>
+				        <button class="visit-website">Website &nbsp;<i class="fa fa-comment"></i></button>
+				        <div class="legal">
+					        <button class="terms-of-use">Terms of Use</button>
+					        <button class="privacy-policy">Privacy Policy</button>
+				        </div>
 			        </div>
 		        </div>
 		        <!--// End About //-->
@@ -172,6 +160,7 @@
 			                <ul class="data">
 				                <li><strong>Correction</strong>:&nbsp; Waiting for Data</li>
 				                <li><strong>Bearing</strong>:&nbsp; Waiting for Data</li>
+				                <li><strong>Direction</strong>:&nbsp; Waiting for Data</li>
 			                </ul>
 		                </div>
 

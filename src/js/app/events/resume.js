@@ -9,8 +9,8 @@ app.events.resume = function()
 	if(app.sharing_data && app.io.space && app.io.mode)
 	{
 		// Startup Hardware
-		app.hardware.start();
+		setTimeout(function(){
+			app.hardware.start();
+		}, 2500);
 	}
-
-	// @TODO: Make sure socket reconnects since failed heartbeat will likely cause a timeout
 };

@@ -21,6 +21,8 @@ app.initialize = function()
 		}
 	}
 
+	gui.resize();
+
 	app.locale.init();
 	app.stats.init();
 	app.store.init();

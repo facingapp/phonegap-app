@@ -29,14 +29,22 @@ gui.prepareDevice = function()
 		$('.information').css({ 'bottom': '60px', 'height': '60px' });
 	}
 
+	var dev_button = null;
+
+	$('.devonly').addClass('toggle-dev');
+
 	if(config.app.env === 'dev')
 	{
 		$('.content').append('<div class="dev" id="dev-btn"><\/div>');
-		$('#dev-btn').on(gui.touchEvents, function()
-		{
-			$('#navToggle').trigger('mousedown');
-			$('#trigger-console').trigger('mousedown');
-			return false;
-		});
+		dev_button = $('#dev-btn');
 	}
+	else
+	{
+		$('.content').append('<div class="dev-enable" id="dev-btn-enable"><\/div>');
+		dev_button = $('#dev-btn-enable');
+	}
+
+	dev_button.hammer().bind('press', function() {
+		$('.toggle-dev').toggleClass('devonly');
+	});
 };

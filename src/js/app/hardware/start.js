@@ -7,38 +7,38 @@ app.hardware.start = function()
 		app.hardware.compass.start();
 		app.hardware.geolocation.start();
 
-		clearTimeout(app.hardware.timer);
+		// fill in missing accelerometer data ( for development )
+		if(typeof app.user_data.acceleration === 'undefined')
+		{
+			app.user_data.acceleration = (app.io.mode === 'guest') ?
+				fake_data.guest.user_data.acceleration :
+				fake_data.host.user_data.acceleration;
+		}
 
-		app.hardware.timer = setTimeout(function(){
+		// fill in missing compass data ( for development )
+		if(typeof app.user_data.compass === 'undefined')
+		{
+			app.user_data.compass = (app.io.mode === 'guest') ?
+				fake_data.guest.user_data.compass :
+				fake_data.host.user_data.compass;
+		}
 
-			// fill in missing accelerometer data ( for development )
-			if(typeof app.user_data.acceleration === 'undefined')
+		// fill in missing geolocation data ( for development )
+		if(typeof app.user_data.geolocation === 'undefined')
+		{
+			app.user_data.geolocation = (app.io.mode === 'guest') ?
+				fake_data.guest.user_data.geolocation :
+				fake_data.host.user_data.geolocation;
+		}
+
+		app.hardware.timer = setInterval(function(){
+
+			if(app.sharing_data)
 			{
-				app.user_data.acceleration = (app.io.mode === 'guest') ?
-					fake_data.guest.user_data.acceleration :
-					fake_data.host.user_data.acceleration;
+				app.socket.emit('send', JSON.stringify(app.user_data));
 			}
 
-			// fill in missing compass data ( for development )
-			if(typeof app.user_data.compass === 'undefined')
-			{
-				app.user_data.compass = (app.io.mode === 'guest') ?
-					fake_data.guest.user_data.compass :
-					fake_data.host.user_data.compass;
-			}
-
-			// fill in missing geolocation data ( for development )
-			if(typeof app.user_data.geolocation === 'undefined')
-			{
-				app.user_data.geolocation = (app.io.mode === 'guest') ?
-					fake_data.guest.user_data.geolocation :
-					fake_data.host.user_data.geolocation;
-			}
-
-			// send data
-			app.socket.emit('send', JSON.stringify(app.user_data));
-
-		}, 250);
+		}, 100);
 	}
 	else if(app.legal.accepted.location_sharing === 'disagreed')
 	{

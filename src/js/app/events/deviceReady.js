@@ -32,6 +32,11 @@ app.events.deviceReady = function()
 		app.io.name = app.uuid;
 		app.io.mode = 'guest';
 
+		// Startup Hardware
+		setTimeout(function(){
+			app.hardware.start();
+		}, 2500);
+
 		gui.initialize();
 
 		app.testflight.init(config.test_flight.app_token);

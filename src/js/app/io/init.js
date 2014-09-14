@@ -4,7 +4,6 @@ app.io.init = function()
 
 	app.socket.on('connect', function()
 	{
-
 		clearTimeout(app.timeout.io);
 		app.timeout.io = setTimeout(function()
 		{
@@ -141,6 +140,96 @@ app.io.init = function()
 		}
 	});
 
+	// We Received an Confirmation that Someone Left the Private Space
+	app.socket.on('leftSpace', function(space, name, mode)
+	{
+		app.util.debug('warn', name + ' has left ' + space + ' as ' + mode);
+
+		// Host Left Their Own App
+		if(space === app.io.space && name === app.io.name && mode === 'host')
+		{
+			app.util.debug('warn', 'Host Left Their Own App');
+
+//			if(app.sharing_data)
+//			{
+//				app.notification.alert(
+//					app.locale.dict('notification', 'self_left_message'),
+//					function(){
+//						gui.reset();
+//					},
+//					app.locale.dict('notification', 'self_left_title'),
+//					app.locale.dict('button', 'ok')
+//				);
+//			}
+
+			app.sharing_data = false;
+		}
+		// Host Left Guests App
+		else if(space === app.io.space && name !== app.io.name && mode === 'host')
+		{
+			app.util.debug('warn', 'Host Left Guests App');
+
+			if(app.sharing_data)
+			{
+				app.notification.alert(
+					app.locale.dict('notification', 'host_left_message'),
+					function(){
+						gui.reset();
+					},
+					app.locale.dict('notification', 'host_left_title'),
+					app.locale.dict('button', 'ok')
+				);
+			}
+
+			app.sharing_data = false;
+		}
+
+		// Guest Left Their Own App
+		if(space === app.io.space && name === app.io.name && mode === 'guest')
+		{
+			app.util.debug('warn', 'Guest Left Their Own App');
+
+//			if(app.sharing_data)
+//			{
+//				app.notification.alert(
+//					app.locale.dict('notification', 'self_left_message'),
+//					function(){
+//						gui.reset();
+//					},
+//					app.locale.dict('notification', 'self_left_title'),
+//					app.locale.dict('button', 'ok')
+//				);
+//			}
+
+			app.sharing_data = false;
+		}
+		// Guest Left Hosts App
+		else if(space === app.io.space && name !== app.io.name && mode === 'guest')
+		{
+			app.util.debug('warn', 'Guest Left Hosts App');
+
+			if(app.sharing_data)
+			{
+				app.notification.alert(
+					app.locale.dict('notification', 'guest_left_message'),
+					function(){
+						gui.reset();
+					},
+					app.locale.dict('notification', 'guest_left_title'),
+					app.locale.dict('button', 'ok')
+				);
+			}
+
+			app.sharing_data = false;
+		}
+	});
+
+	// We Received an Update from the server
+	app.socket.on('update', function(message)
+	{
+		app.util.debug('info', 'SOCKET: ' + message);
+	});
+
 	app.socket.on('receiveData', function(user, data)
 	{
 		/**
@@ -178,15 +267,12 @@ app.io.init = function()
 			app.io.location.host = obj;
 		}
 
-		if((user.user_mode === 'guest' && app.io.mode === 'guest') || (user.user_mode === 'host' && app.io.mode === 'host'))
-		{
-			gui.render.self.draw();
-			gui.render.self.debug();
-		}
-		else
-		{
-			gui.render.friend.draw();
-			gui.render.friend.debug();
-		}
+		// Update Self
+		gui.render.self.draw();
+		gui.render.self.debug();
+
+//		// Update Friend
+//		gui.render.friend.draw();
+//		gui.render.friend.debug();
 	});
 };

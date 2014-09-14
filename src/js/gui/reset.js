@@ -8,9 +8,14 @@ gui.reset = function()
 
 	app.ad.remove.banner();
 
+	gui.render.self.notice.gps = null;
+	gui.render.self.notice.distance = null;
+	gui.render.self.notice.direction = null;
+
 	if($('#home .background').hasClass('blurIn'))
 	{
 		$('#home .background').removeClass('blurIn blurOut').addClass('blurOut');
+		$('#home .clouds').removeClass('blurIn blurOut').addClass('blurOut');
 	}
 
 	$('.reset-gui').fadeOut();
@@ -26,10 +31,13 @@ gui.reset = function()
 	$('.friend .compass ul').html('');
 	$('.welcome').removeClass('animated fadeInUp fadeOutDown').hide();
 	$('.location-marker').fadeOut();
+	$('.connection').hide();
+	clearInterval(gui.timeout.connectionStatus);
 
 	setTimeout(function()
 	{
 		$('#home .background').removeClass('blurIn blurOut');
+		$('#home .clouds').removeClass('blurIn blurOut');
 		$('.find-a-friend').addClass('default animated flipInX');
 		$('.logo').removeClass('fadeLogo fadeLogoGuidance').addClass('animated fadeInDown').show();
 	}, 100);

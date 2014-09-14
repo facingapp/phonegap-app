@@ -104,6 +104,22 @@
             font-weight: 500;
             overflow: hidden;
 
+            li
+            {
+                @include backface-visibility(hidden);
+                @include transform(translate3d(0,0,0));
+
+                &.show
+                {
+                    display: inline-block;
+                }
+
+                &.hide
+                {
+                    display: none;
+                }
+            }
+
             .signal-strength
             {
                 display: inline-block;
@@ -272,6 +288,23 @@
     right: 0;
     overflow: hidden;
     z-index: -9999;
+    opacity: 0.5;
+
+    @include filter(blur(0));
+
+    &.blurIn
+    {
+        @include transform(translate3d(0,0,0));
+        @include animation(blurIn 0.5s ease-in);
+        @include filter(blur(3px));
+    }
+
+    &.blurOut
+    {
+        @include transform(translate3d(0,0,0));
+        @include animation(blurOut 0.5s ease-out);
+        @include filter(blur(0));
+    }
 
     .cloud1
     {
@@ -281,9 +314,7 @@
         top: -300px;
         left: 0;
         background: url(../img/cloud/1.png) top center no-repeat;
-        @include transform(translate3d(0,0,0));
-        @include animation(cloud1 400s linear infinite);
-        opacity: 0.33;
+        @include animation(cloud 400s linear infinite);
     }
     .cloud2
     {
@@ -293,9 +324,7 @@
         top: -200px;
         left: 0;
         background: url(../img/cloud/2.png) top center no-repeat;
-        @include transform(translate3d(0,0,0));
-        @include animation(cloud2 800s linear infinite);
-        opacity: 0.33;
+        @include animation(cloud 800s linear infinite);
     }
     .cloud3
     {
@@ -305,19 +334,17 @@
         top: -300px;
         left: 0;
         background: url(../img/cloud/3.png) top center no-repeat;
-        @include transform(translate3d(0,0,0));
-        @include animation(cloud3 1200s linear infinite);
-        opacity: 0.33;
+        @include animation(cloud 1200s linear infinite);
     }
 }
-@media only screen and (max-width: 599px)
+@media only screen and (max-width: 499px)
 {
     .location-marker {
         width: 24px;
         height: 24px;
     }
 }
-@media only screen and (min-width: 600px)
+@media only screen and (min-width: 500px)
 {
     .find-a-friend {
         width: $size-friend-large !important;

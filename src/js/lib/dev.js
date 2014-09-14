@@ -14,7 +14,8 @@ var fake_data = {
 				latitude: 40.71965838912204,
 				longitude: -74.0066714632712,
 				altitude: '40 Feet',
-				accuracy: '30 Feet',
+				accuracy: 30,
+				accuracy_formatted: '',
 				heading: '--',
 				speed: '0 MPH'
 			}

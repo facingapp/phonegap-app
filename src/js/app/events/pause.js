@@ -11,6 +11,4 @@ app.events.pause = function()
 		// Startup Hardware
 		app.hardware.stop();
 	}
-
-	// @TODO: Make sure socket reconnects since failed heartbeat will likely cause a timeout
 };

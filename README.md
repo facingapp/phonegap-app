@@ -90,7 +90,6 @@ cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.device-motion
 cordova plugin add org.apache.cordova.device-orientation
 cordova plugin add org.apache.cordova.dialogs
-cordova plugin add org.apache.cordova.geolocation
 cordova plugin add org.apache.cordova.globalization
 cordova plugin add org.apache.cordova.inappbrowser
 cordova plugin add org.apache.cordova.network-information
