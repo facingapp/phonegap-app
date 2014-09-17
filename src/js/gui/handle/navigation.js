@@ -20,17 +20,32 @@ gui.handle.navigation = function()
 
 			if(app.testflight.supported)
 			{
-				app.notification.alert('Thanks for sending your feedback. You are Awesome.', function(){}, 'Feedback Sent', 'OK');
+				app.notification.alert(
+					app.locale.dict('feedback', 'sent_message'),
+					function(){},
+					app.locale.dict('feedback', 'alert_sent'),
+					app.locale.dict('button', 'ok')
+				);
 			}
 			else
 			{
-				app.notification.alert('Thanks for the Feedback. We\'re going to open a pre-populated email message now... just hit send :)', function(){}, 'Feedback Sent', 'High Five');
+				app.notification.alert(
+					app.locale.dict('feedback', 'sent_message_email'),
+					function(){},
+					app.locale.dict('feedback', 'alert_sent_prepared'),
+					app.locale.dict('button', 'ok')
+				);
 			}
 
 		}
 		else
 		{
-			app.notification.alert('Looks like the Feedback was left blank. Once there is a message, we\'ll send it.', function(){}, 'Missing Feedback', 'OK');
+			app.notification.alert(
+				app.locale.dict('feedback', 'missing_title'),
+				function(){},
+				app.locale.dict('feedback', 'missing_text'),
+				app.locale.dict('button', 'ok')
+			);
 		}
 
 		app.stats.event('Navigation', 'Button', 'Feedback Sent');
@@ -151,14 +166,14 @@ gui.handle.navigation = function()
 			$('#facing-home').addClass('active');
 			$('#home').addClass('active');
 
-			$('#navToggle').trigger(gui.touchEvents);
+			$('#navToggle').trigger('press');
 			return false;
 		}
 
 		// Do nothing if user clicks tab for current panel
 		if(panel === gui.currentPanel)
 		{
-			$('#navToggle').trigger(gui.touchEvents);
+			$('#navToggle').trigger('press');
 			return false;
 		}
 
@@ -174,7 +189,7 @@ gui.handle.navigation = function()
 
 		$('header .label').html(label);
 
-		$('#navToggle').trigger(gui.touchEvents);
+		$('#navToggle').trigger('press');
 
 		if(panel === 'home')
 		{

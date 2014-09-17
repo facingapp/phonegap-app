@@ -161,8 +161,6 @@ app.io.init = function()
 //					app.locale.dict('button', 'ok')
 //				);
 //			}
-
-			app.sharing_data = false;
 		}
 		// Host Left Guests App
 		else if(space === app.io.space && name !== app.io.name && mode === 'host')
@@ -180,8 +178,6 @@ app.io.init = function()
 					app.locale.dict('button', 'ok')
 				);
 			}
-
-			app.sharing_data = false;
 		}
 
 		// Guest Left Their Own App
@@ -200,8 +196,6 @@ app.io.init = function()
 //					app.locale.dict('button', 'ok')
 //				);
 //			}
-
-			app.sharing_data = false;
 		}
 		// Guest Left Hosts App
 		else if(space === app.io.space && name !== app.io.name && mode === 'guest')
@@ -219,9 +213,9 @@ app.io.init = function()
 					app.locale.dict('button', 'ok')
 				);
 			}
-
-			app.sharing_data = false;
 		}
+
+		app.sharing_data = false;
 	});
 
 	// We Received an Update from the server

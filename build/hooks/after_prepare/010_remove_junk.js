@@ -15,14 +15,27 @@ if (rootdir)
         "platforms/ios/www/README.md",
         "platforms/ios/www/package.json",
         "platforms/ios/www/assets/js/config.dist.js",
-        "platforms/ios/www/assets/js/cordova.fake.js"
+        "platforms/ios/www/assets/js/cordova.fake.js",
+
+        "platforms/android/assets/www/Gruntfile.js",
+        "platforms/android/assets/www/LICENSE",
+        "platforms/android/assets/www/README.md",
+        "platforms/android/assets/www/package.json",
+        "platforms/android/assets/www/assets/js/config.dist.js",
+        "platforms/android/assets/www/assets/js/cordova.fake.js"
     ];
 
     // Development Folders not needed in Native Mobile App
     var remove_folders = [
         "platforms/ios/www/node_modules",
         "platforms/ios/www/shell_scripts",
-        "platforms/ios/www/src"
+        "platforms/ios/www/src",
+        "platforms/ios/www/build",
+
+        "platforms/android/assets/www/node_modules",
+        "platforms/android/assets/www/shell_scripts",
+        "platforms/android/assets/www/src",
+        "platforms/android/assets/www/build"
     ];
 
     // Loop through each file and remove it
@@ -56,8 +69,7 @@ if (rootdir)
  * Remove Directory and Files Recursively
  * @param string dirPath Absolute Path to Directory
  */
-function rmDir(dirPath)
-{
+function rmDir(dirPath) {
     try {
         var files = fs.readdirSync(dirPath);
     }
@@ -65,10 +77,9 @@ function rmDir(dirPath)
     {
         return;
     }
-
     if (files.length > 0)
     {
-        for (var i=0; i<files.length; i++)
+        for (var i = 0; i < files.length; i++)
         {
             var filePath = dirPath + '/' + files[i];
 
@@ -86,4 +97,4 @@ function rmDir(dirPath)
     }
 
     fs.rmdirSync(dirPath);
-}
+};

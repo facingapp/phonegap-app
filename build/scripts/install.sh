@@ -54,6 +54,7 @@ cordova plugin add org.apache.cordova.device
 cordova plugin add org.apache.cordova.device-motion
 cordova plugin add org.apache.cordova.device-orientation
 cordova plugin add org.apache.cordova.dialogs
+cordova plugin add org.apache.cordova.geolocation
 cordova plugin add org.apache.cordova.globalization
 cordova plugin add org.apache.cordova.inappbrowser
 cordova plugin add org.apache.cordova.network-information
@@ -76,14 +77,16 @@ cp -R www/build/hooks/* hooks/
 chmod 755 hooks/*/*.js
 
 echo " "
-echo "Replace iOS Build Files ( modified from default ):"
+echo "Replace iOS & Android Build Files ( modified from default ):"
 echo " "
 
 rm platforms/ios/Facing/Resources/icons/*.png
 rm platforms/ios/Facing/Resources/splash/*.png
+rm -fr platforms/android/res/drawable*
 
-cp www/assets/img/icon/ios/*.png platforms/ios/Facing/Resources/icons/
-cp www/assets/img/screen/ios/*.png platforms/ios/Facing/Resources/splash/
+cp www/assets/img/ios/icon/*.png platforms/ios/Facing/Resources/icons/
+cp www/assets/img/ios/screen/*.png platforms/ios/Facing/Resources/splash/
+cp -R www/assets/img/android/* platforms/android/res/
 
 rm platforms/ios/Facing/Facing-Info.plist
 cp www/build/ios/Facing-Info.plist platforms/ios/Facing/Facing-Info.plist

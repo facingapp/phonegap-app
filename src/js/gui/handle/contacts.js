@@ -41,6 +41,10 @@ gui.handle.contacts = function()
 			app.stats.event('Navigation', 'Contact Error', 'Device Does Not Support Contacts');
 			app.util.debug('debug', 'Generating Fake Contact for Dev Purposes');
 
+			fake_data.contact.name.givenName = app.locale.dict('tour', 'first_name');
+			fake_data.contact.name.formatted = app.locale.dict('tour', 'full_name');
+			fake_data.contact.name.familyName = app.locale.dict('tour', 'last_name');
+
 			app.io.friend = fake_data.contact;
 
 			gui.render.contact.update(app.io.friend);

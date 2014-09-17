@@ -164,7 +164,7 @@ gui.render.contact = {
 					{
 						gui.render.waitForFiend('Clipboard', invite_code, first_name);
 					},
-					app.locale.dict('notification', 'clipboard_title'),
+					app.locale.dict('home', 'clipboard_title'),
 					app.locale.dict('button', 'ok')
 				);
 			}
