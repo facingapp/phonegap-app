@@ -1,0 +1,13 @@
+html.disable-animation
+{
+    #home
+    {
+        .pulse1, .pulse2, .coulds, .cloud1, .cloud2, .cloud3
+        {
+            display: none;
+            @include transition(none !important);
+            @include transform(none !important);
+            @include animation(none !important);
+        }
+    }
+}

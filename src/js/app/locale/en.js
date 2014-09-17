@@ -1,7 +1,12 @@
+/**
+ * English Language
+ */
 app.locale.en = {
 	unit: {
 		feet: "Feet",
-		meters: "Meters"
+		meters: "Meters",
+		accuracy: "Accuracy",
+		friend_distance: "Your Friend is {{DISTANCE}} Away"
 	},
 	menu: {
 		help: "Help",
@@ -34,15 +39,15 @@ app.locale.en = {
 	notification:
 	{
 		permission_request: "Permission Request",
-		location_sharing_message: "Facing needs permission to share your Location Data with your Friend.",
+		location_sharing_message: "Before we get started, Facing needs permission to securely share your Location Data with your friends.",
 		battery_critical: "Battery Level Critical",
 		offline_title: "Device Offline",
 		offline_message: "You won't be able to use Facing without a Network Connecting.",
 		permission_denied_title: "Permission Denied",
 		permission_denied_message: "Your device settings prevent us from retrieving position information.",
 		bad_signal_title: "Position Unavailable",
-		bad_signal_message: "'We can't get a satellite fix. Perhaps you are in an area with no reception?",
-		sharing_no_choice: "You did not make a choice on whether you agreed to sharing location data. We are unable to continue.",
+		bad_signal_message: "We can't get a satellite fix. Perhaps you are in an area with no reception?",
+		sharing_no_choice: "You did not make a choice on whether you agree to sharing location data. We are unable to continue.",
 		sharing_disagreed: "You disagreed to sharing location data. We are unable to continue.",
 		connection_error_title: "Connection Error",
 		connection_error_message: "Unable to Create Connection.",
@@ -76,7 +81,11 @@ app.locale.en = {
 		facing_title: "Face to Face ...",
 		facing_text: "Now you are Facing your friend :)",
 		end_title: "That's It :)",
-		end_text: "If you ever need to see this again, you can just tap the Help option from the Main Menu."
+		end_text: "If you ever need to see this again, you can just tap the Help option from the Main Menu.",
+		this_is_friend: "This is Your Friend ...",
+		first_name: "Demo",
+		last_name: "User",
+		full_name: "Demo User"
 	},
 	home: {
 		tap_to_choose: "Tap Circle to Choose a Friend",
@@ -93,5 +102,24 @@ app.locale.en = {
 		friend_connected: "{{NAME}} has Connected",
 		you_are_connected: "You are Now Connected",
 		waiting_for_friend: "Waiting for {{NAME}} to Connect"
+	},
+	feedback: {
+		header: "Feedback",
+		placeholder: "Thanks for testing the Facing App. What do you think so far?",
+		support: "Support",
+		submit: "Submit",
+		alert_sent: "Feedback Sent",
+		alert_sent_prepared: "Feedback Prepared",
+		sent_message: "Thanks for sending your feedback. You are Awesome.",
+		sent_message_email: "Thanks for the Feedback. We're going to open a pre-populated email message now... just hit send :)",
+		missing_title: "Missing Feedback",
+		missing_text: "Looks like the Feedback was left blank. Once there is a message, we'll send it."
+	},
+	about: {
+		text: "True 3D Location Tracking in a 100% Open Source iOS & Android App. Use Facing to locate those you can't seem to find, even though they were right next to you.",
+		support: "Support",
+		website: "Website",
+		terms: "Terms of Use",
+		privacy: "Privacy Policy"
 	}
 };

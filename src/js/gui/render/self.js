@@ -172,12 +172,18 @@ gui.render.self = {
 
 		if(show_signal_strength)
 		{
-			message = '<div class="signal-strength"><i class="fa fa-signal over '+ strength_class +'"></i><i class="fa fa-signal under"></i></div>&nbsp; GPS Accuracy <span id="gps-accuracy">'+ app.user_data.geolocation.accuracy_formatted +'</span>';
+			// Fix for Tour
+			var accuracy = (app.user_data.geolocation.accuracy_formatted) ? app.user_data.geolocation.accuracy_formatted : '15 Feet';
+
+			message = '<div class="signal-strength"><i class="fa fa-signal over '+ strength_class +'"></i><i class="fa fa-signal under"></i></div>&nbsp; GPS '+ app.locale.dict('unit', 'accuracy') +' <span id="gps-accuracy">'+ accuracy +'</span>';
 		}
 
 		if(show_distance)
 		{
-			message = 'Your Friend is <span id="distance-away">'+ app.hardware.geolocation.distance(app.calc.geo.data.distance.length) +' Away</span>';
+			// Fix for Tour
+			var distance = (app.calc.geo.data.distance.length) ? app.hardware.geolocation.distance(app.calc.geo.data.distance.length) : '15 Feet';
+
+			message = app.locale.dict('unit', 'friend_distance').replace('{{DISTANCE}}', distance);
 		}
 
 		if(show_direction)

@@ -122,14 +122,12 @@
 			        <div class="header-section about"></div>
 			        <div class="push-header panel-content">
 				        <div class="logo-header"></div>
-				        <div class="about-us">
-					        True 3D Location Tracking in a 100% Open Source iOS & Android App. Use Facing to locate those you can't seem to find, even though they were right next to you.
-				        </div>
-				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; Support</button>
-				        <button class="visit-website">Website &nbsp;<i class="fa fa-comment"></i></button>
+				        <div class="about-us" data-locale="about|text"></div>
+				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; <span data-locale="about|support"></span></button>
+				        <button class="visit-website"><span data-locale="about|website"></span> &nbsp;<i class="fa fa-comment"></i></button>
 				        <div class="legal">
-					        <button class="terms-of-use">Terms of Use</button>
-					        <button class="privacy-policy">Privacy Policy</button>
+					        <button class="terms-of-use" data-locale="about|terms"></button>
+					        <button class="privacy-policy" data-locale="about|privacy"></button>
 				        </div>
 			        </div>
 		        </div>
@@ -138,14 +136,14 @@
 		        <!--// Start Feedback //-->
 		        <div id="feedback" class="panel">
 			        <div class="header-section feedback">
-				        <i class="fa fa-comments fa-fw"></i> Feedback
+				        <i class="fa fa-comments fa-fw"></i> <span data-locale="feedback|header"></span>
 			        </div>
 			        <div class="push-header panel-content feedback">
 				        <div class="feedback">
-					        <textarea placeholder="Thanks for testing the Facing App. What do you think so far?" id="feedback-message"></textarea>
+					        <textarea id="feedback-message" data-locale-placeholder="feedback|placeholder"></textarea>
 				        </div>
-				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; Support</button>
-				        <button class="send-feedback">Submit &nbsp;<i class="fa fa-comment"></i></button>
+				        <button class="support-site"><i class="fa fa-external-link-square"></i>&nbsp; <span data-locale="feedback|support"></span></button>
+				        <button class="send-feedback"><span data-locale="feedback|submit"></span> &nbsp;<i class="fa fa-comment"></i></button>
 			        </div>
 		        </div>
 		        <!--// End Feedback //-->
@@ -297,7 +295,7 @@
 	        </li>
 
 	        <li data-auto-progress='3000' data-el='.self-marker' data-highlight='true' data-scroll-to='false' data-width='220' data-orientation='left' data-align='center'>
-		        <h4 class="no-margin" data-locale="tour|">This is Your Friend ...</h4>
+		        <h4 class="no-margin" data-locale="tour|this_is_friend"></h4>
 	        </li>
 
 	        <li data-el='.find-a-friend' data-highlight='true' data-scroll-to='false' data-width='260' data-orientation='top' data-align='center'>

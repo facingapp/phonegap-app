@@ -21,7 +21,7 @@ app.io.joinSpace = function(roomName, mode)
 	app.io.name = app.uuid;
 	app.io.mode = mode;
 
-	if(app.legal.accepted.location_sharing === 'accepted' && app.socket && app.socket.emit)
+	if(app.socket && app.socket.emit)
 	{
 		app.stats.event('Socket', 'Join', app.io.name + ' joined Server');
 

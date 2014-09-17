@@ -14,6 +14,11 @@ app.tour = {
 			return false;
 		}
 
+		app.giving_tour = true;
+		fake_data.contact.name.givenName = app.locale.dict('tour', 'first_name');
+		fake_data.contact.name.formatted = app.locale.dict('tour', 'full_name');
+		fake_data.contact.name.familyName = app.locale.dict('tour', 'last_name');
+
 		$('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
 
 		$('#tourbus').tourbus({
@@ -80,7 +85,7 @@ app.tour = {
 				}
 				if(leg.index == 5)
 				{
-					gui.render.waitForFiend('Email', '', 'Demo', true);
+					gui.render.waitForFiend('Email', '', app.locale.dict('tour', 'first_name'), true);
 
 					setTimeout(function()
 					{
@@ -150,5 +155,8 @@ app.tour = {
 			app.io.joinSpace(app.launch_invite_code, 'guest');
 			app.launch_invite_code = null;
 		}
+
+		app.giving_tour = false;
+		app.sharing_data = false;
 	}
 };

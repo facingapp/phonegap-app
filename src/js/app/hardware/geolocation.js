@@ -11,6 +11,8 @@ app.hardware.geolocation = {
 	max_fail: 50,
 	start: function()
 	{
+		app.legal.location_sharing_permission();
+
 		if(typeof navigator.geolocation === 'undefined')
 		{
 			app.util.debug('warn', 'No GPS Found');
@@ -50,8 +52,6 @@ app.hardware.geolocation = {
 	},
 	success: function(position)
 	{
-		app.util.debug('log', 'Updating Position');
-
 		app.user_data.geolocation = {
 			latitude: position.coords.latitude,
 			longitude: position.coords.longitude,
