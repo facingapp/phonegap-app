@@ -7,6 +7,8 @@ I have placed a demo on my personal server for those that want to see the app ru
 
 * [Facing App Demo - Desktop](http://lab.peterschmalfeldt.com/facing/mockup/)
 * [Facing App Demo - Mobile Device](http://lab.peterschmalfeldt.com/facing/app/)
+* [Beta Testing Available](http://lab.peterschmalfeldt.com/facing/builds/)
+* [Follow @facingapp for Updates](https://twitter.com/facingapp)
 
 Requirements
 ===
