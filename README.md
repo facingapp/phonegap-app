@@ -1,5 +1,13 @@
 ![Facing Logo](https://raw.githubusercontent.com/facingapp/facing/master/assets/logo/rectangle/logo_rectangle.jpg)
 
+Demo
+===
+
+I have placed a demo on my personal server for those that want to see the app running live:
+
+* [Facing App Demo - Desktop](http://lab.peterschmalfeldt.com/facing/mockup/)
+* [Facing App Demo - Mobile Device](http://lab.peterschmalfeldt.com/facing/app/)
+
 Requirements
 ===
 
@@ -168,6 +176,13 @@ grunt css
 ### \#3. Live Reload:
 
 This project supports Live Reload within the App.  This means that if you are running the device on an emulator, its possible to reload assets without having to relaunch the emulator from scratch.  If you are using the native PhoneGap App, you will not need this functionality as that application already reloads on file change.
+
+Facing App Node.js Server
+===
+
+We have also released our Node.js Server that handles device communication.
+
+* [https://github.com/facingapp/node-server](https://github.com/facingapp/node-server)
 
 License
 ===
