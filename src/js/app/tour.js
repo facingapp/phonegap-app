@@ -94,6 +94,7 @@ app.tour = {
 
 						gui.render.self.draw();
 						gui.render.startGuidance('host');
+						$('.connection-status').html(app.locale.dict('direction', 'right'));
 
 						$('.self-marker').css({ top: '25%', left: (gui.screen.width - ( 25 + $('.self-marker').width() ) ) });
 					}, 2250);
@@ -105,6 +106,22 @@ app.tour = {
 				if(leg.index == 8)
 				{
 					$('.self-marker').addClass('slow-move').css({ top: ((gui.screen.height / 2) - ($('.self-marker').height() / 2)), left: ((gui.screen.width / 2) - ($('.self-marker').width() / 2)) });
+
+					setTimeout(function(){
+						$('.connection-status').html(app.locale.dict('direction', 'right'));
+					}, 0);
+
+					setTimeout(function(){
+						$('.connection-status').html(app.locale.dict('direction', 'slight_right'));
+					}, 1000);
+
+					setTimeout(function(){
+						$('.connection-status').html(app.locale.dict('direction', 'straight_right'));
+					}, 2000);
+
+					setTimeout(function(){
+						$('.connection-status').html(app.locale.dict('direction', 'straight'));
+					}, 3000);
 				}
 				if(leg.index == 10)
 				{

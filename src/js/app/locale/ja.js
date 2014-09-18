@@ -42,7 +42,7 @@ app.locale.ja = {
 		location_sharing_message: "私たちは始める前に、Facing 安全にお友達とあなたの位置データを共有するための許可が必要です。",
 		battery_critical: "電池残量クリティカル",
 		offline_title: "デバイスオフライン",
-		offline_message: "あなたは、接続するネットワークなしで Facing を使用することはできません。",
+		offline_message: "あなたは、ネットワーク接続なしでフェーシングを使用することはできません。",
 		permission_denied_title: "アクセス許可が拒否されました",
 		permission_denied_message: "お使いのデバイスの設定は、位置情報の取得から私たちを防ぐ。",
 		bad_signal_title: "使用できないポジション",
@@ -56,11 +56,9 @@ app.locale.ja = {
 		no_email_title: "メールを送信することができません",
 		no_email_message: "あなたは、電子メールを送信するために、任意の電子メールクライアントの設定を持っていません。",
 		host_left_title: "友達に切断",
-		host_left_message: "あなたを招待友人がその場所の共有を停止することを選択しました。",
+		host_left_message: "あなたの友達は、セッションを終了した。",
 		guest_left_title: "友達に切断",
-		guest_left_message: "あなたが招待友人はその場所の共有を停止することを選択しました。",
-		self_left_title: "あなたが切断している",
-		self_left_message: "私たちは、あなたの友人はあなたがあなたの場所の共有を停止することを選択したことをお知らせします。"
+		guest_left_message: "あなたの友達は、セッションを終了した。"
 	},
 	tour:
 	{

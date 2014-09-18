@@ -42,7 +42,7 @@ app.locale.it = {
 		location_sharing_message: "Prima di iniziare, Facing bisogno del permesso di condividere in modo sicuro i vostri dati di posizione con i tuoi amici.",
 		battery_critical: "Batteria Livello critico",
 		offline_title: "Dispositivo Offline",
-		offline_message: "Non sarà in grado di utilizzare Facing senza una rete di collegamento.",
+		offline_message: "Non sarà in grado di utilizzare Facing senza una connessione di rete.",
 		permission_denied_title: "Permesso Negato",
 		permission_denied_message: "Le impostazioni del dispositivo ci impediscono di recupero di informazioni di posizione.",
 		bad_signal_title: "Posizione Non disponibile",
@@ -56,11 +56,9 @@ app.locale.it = {
 		no_email_title: "Impossibile inviare e-mail",
 		no_email_message: "Non avete alcuna configurazione Client di posta elettronica per inviare e-mail.",
 		host_left_title: "Amico Disconnesso",
-		host_left_message: "L'amico che ti ha invitato ha scelto di smettere di condividere la loro posizione.",
+		host_left_message: "Il tuo amico ha terminato la sessione.",
 		guest_left_title: "Amico Disconnesso",
-		guest_left_message: "L'amico invitato ha scelto di smettere di condividere la loro posizione.",
-		self_left_title: "Stai disconnesso",
-		self_left_message: "Lasceremo il tuo amico sa che avete scelto di fermarti condivisione posizione."
+		guest_left_message: "Il tuo amico ha terminato la sessione."
 	},
 	tour:
 	{

@@ -149,18 +149,6 @@ app.io.init = function()
 		if(space === app.io.space && name === app.io.name && mode === 'host')
 		{
 			app.util.debug('warn', 'Host Left Their Own App');
-
-//			if(app.sharing_data)
-//			{
-//				app.notification.alert(
-//					app.locale.dict('notification', 'self_left_message'),
-//					function(){
-//						gui.reset();
-//					},
-//					app.locale.dict('notification', 'self_left_title'),
-//					app.locale.dict('button', 'ok')
-//				);
-//			}
 		}
 		// Host Left Guests App
 		else if(space === app.io.space && name !== app.io.name && mode === 'host')
@@ -184,18 +172,6 @@ app.io.init = function()
 		if(space === app.io.space && name === app.io.name && mode === 'guest')
 		{
 			app.util.debug('warn', 'Guest Left Their Own App');
-
-//			if(app.sharing_data)
-//			{
-//				app.notification.alert(
-//					app.locale.dict('notification', 'self_left_message'),
-//					function(){
-//						gui.reset();
-//					},
-//					app.locale.dict('notification', 'self_left_title'),
-//					app.locale.dict('button', 'ok')
-//				);
-//			}
 		}
 		// Guest Left Hosts App
 		else if(space === app.io.space && name !== app.io.name && mode === 'guest')
@@ -267,6 +243,6 @@ app.io.init = function()
 
 //		// Update Friend
 //		gui.render.friend.draw();
-//		gui.render.friend.debug();
+		gui.render.friend.debug();
 	});
 };

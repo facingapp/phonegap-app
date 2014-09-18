@@ -63,7 +63,6 @@ cordova plugin add https://github.com/aharris88/phonegap-sms-plugin.git
 cordova plugin add https://github.com/danwilson/google-analytics-plugin.git
 cordova plugin add https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git
 cordova plugin add https://github.com/EddyVerbruggen/LaunchMyApp-PhoneGap-Plugin.git --variable URL_SCHEME=facing
-cordova plugin add https://github.com/firassouki/com.cleartag.plugins.EnableBackgroundLocation.git
 cordova plugin add https://github.com/katzer/cordova-plugin-email-composer.git
 cordova plugin add https://github.com/mkuklis/phonegap-websocket
 cordova plugin add https://github.com/phonegap-build/StatusBarPlugin.git

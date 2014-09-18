@@ -23,12 +23,6 @@ gui.reset = function()
 	$('.find-a-friend').attr('style', '').removeClass('animated flipInX no-image contact');
 	$('.contact-options').removeClass('fadeOut').hide();
 	gui.render.status('', true);
-	$('.me .acceleration ul').html('');
-	$('.me .geolocation ul').html('');
-	$('.me .compass ul').html('');
-	$('.friend .acceleration ul').html('');
-	$('.friend .geolocation ul').html('');
-	$('.friend .compass ul').html('');
 	$('.welcome').removeClass('animated fadeInUp fadeOutDown').hide();
 	$('.location-marker').fadeOut();
 	$('.connection').hide();
@@ -40,6 +34,9 @@ gui.reset = function()
 		$('#home .clouds').removeClass('blurIn blurOut');
 		$('.find-a-friend').addClass('default animated flipInX');
 		$('.logo').removeClass('fadeLogo fadeLogoGuidance').addClass('animated fadeInDown').show();
+		$('.location-marker').hide();
+		$('.self-marker').hide();
+		$('.friend-marker').hide();
 	}, 100);
 
 	gui.animate();

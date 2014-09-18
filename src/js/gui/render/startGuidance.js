@@ -7,9 +7,18 @@ gui.render.startGuidance = function(user)
 			return false;
 		}
 
+		// Setup initial data
+		var name = contact.name.formatted;
+		var first_name = contact.name.givenName;
+
+		if(first_name === null)
+		{
+			first_name = name;
+		}
+
 		//
 		app.stats.event('Navigation', 'Contact', 'Starting Guidance');
-		gui.render.status('<i class="fa fa-check fa-fw"></i> '+  app.locale.dict('home', 'friend_connected').replace(/{{NAME}}/g, app.io.friend.name.givenName), true, 1500);
+		gui.render.status('<i class="fa fa-check fa-fw"></i> '+  app.locale.dict('home', 'friend_connected').replace(/{{NAME}}/g, first_name), true, 1500);
 
 		app.ad.remove.banner();
 	}

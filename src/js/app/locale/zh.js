@@ -42,7 +42,7 @@ app.locale.zh = {
 		location_sharing_message: "在我们开始之前，Facing 需要权限才能安全地与你的朋友分享你的位置数据。",
 		battery_critical: "电池电量严重",
 		offline_title: "设备离线",
-		offline_message: "您将无法使用 Facing 没有网络连接。",
+		offline_message: "您将无法使用时面向没有网络连接。",
 		permission_denied_title: "没有权限",
 		permission_denied_message: "您的设备设置阻止我们获取位置信息。",
 		bad_signal_title: "位置不可用",
@@ -56,11 +56,9 @@ app.locale.zh = {
 		no_email_title: "无法发送邮件",
 		no_email_message: "您没有任何电子邮件客户端设置发送电子邮件。",
 		host_left_title: "朋友断开",
-		host_left_message: "邀请您的朋友也选择停止共享他们的位置。",
+		host_left_message: "你的朋友已经结束了会议。",
 		guest_left_title: "朋友断开",
-		guest_left_message: "邀请你的朋友却选择了停止共享他们的位置。",
-		self_left_title: "你断开连接",
-		self_left_message: "我们将让你的朋友知道你已经选择停止共享您的位置。"
+		guest_left_message: "你的朋友已经结束了会议。"
 	},
 	tour:
 	{

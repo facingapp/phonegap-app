@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <widget id = "com.manifestinteractive.facing"
-        version = "0.8.2"
+        version = "0.8.3"
         xmlns = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
@@ -102,9 +102,6 @@
     <!-- Documentation: https://build.phonegap.com/plugins/842 -->
     <gap:plugin name="nl.x-services.plugins.insomnia" version="4.0.1" />
 
-    <!-- IOS Background Location Enabler -->
-    <!-- Documentation: https://build.phonegap.com/plugins/291 -->
-    <gap:plugin name="com.cleartag.plugins.enablebackgroundlocation" version="3.0" />
 
     <!-- Custom URL Scheme Support ( facing:// ) -->
     <!-- Documentation: https://build.phonegap.com/plugins/844 -->
