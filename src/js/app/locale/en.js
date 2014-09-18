@@ -42,7 +42,7 @@ app.locale.en = {
 		location_sharing_message: "Before we get started, Facing needs permission to securely share your Location Data with your friends.",
 		battery_critical: "Battery Level Critical",
 		offline_title: "Device Offline",
-		offline_message: "You won't be able to use Facing without a Network Connecting.",
+		offline_message: "You won't be able to use Facing without a Network Connection.",
 		permission_denied_title: "Permission Denied",
 		permission_denied_message: "Your device settings prevent us from retrieving position information.",
 		bad_signal_title: "Position Unavailable",
@@ -56,11 +56,9 @@ app.locale.en = {
 		no_email_title: "Unable to Send Email",
 		no_email_message: "You do not have any Email Clients setup to send Email.",
 		host_left_title: "Friend Disconnected",
-		host_left_message: "The friend that invited you has chosen to stop sharing their location.",
+		host_left_message: "Your friend has ended the session.",
 		guest_left_title: "Friend Disconnected",
-		guest_left_message: "The friend you invited has chosen to stop sharing their location.",
-		self_left_title: "You're Disconnected",
-		self_left_message: "We'll let your friend know that you have chosen to stop sharing you location."
+		guest_left_message: "Your friend has ended the session."
 	},
 	tour:
 	{
@@ -80,7 +78,7 @@ app.locale.en = {
 		move_text: "Move around until Your Friend is in the center of the screen.",
 		facing_title: "Face to Face ...",
 		facing_text: "Now you are Facing your friend :)",
-		end_title: "That's It :)",
+		end_title: "That's it :)",
 		end_text: "If you ever need to see this again, you can just tap the Help option from the Main Menu.",
 		this_is_friend: "This is Your Friend ...",
 		first_name: "Demo",

@@ -19,6 +19,11 @@ gui.render.contact = {
 		var first_name = contact.name.givenName;
 		var invite_code = app.util.generateUID();
 
+		if(first_name === null)
+		{
+			first_name = name;
+		}
+
 		// Allow user to Stop
 		$('.reset-gui').fadeIn();
 

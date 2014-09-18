@@ -108,93 +108,20 @@ gui.render.self = {
 			display: 'block'
 		});
 
-		var strength_class = 'one-bar';
-
-		if(app.user_data.geolocation.accuracy > 300)
-		{
-			strength_class = 'one-bar';
-		}
-		if(app.user_data.geolocation.accuracy > 200)
-		{
-			strength_class = 'two-bars';
-		}
-		if(app.user_data.geolocation.accuracy > 100)
-		{
-			strength_class = 'three-bars';
-		}
-		if(app.user_data.geolocation.accuracy > 25)
-		{
-			strength_class = 'four-bars';
-		}
-		if(app.user_data.geolocation.accuracy > 0)
-		{
-			strength_class = 'five-bars';
+		var highlight = 0.25;
+		var radius = $('.find-a-friend').width() / 2;
+		var distance_from_center = Math.sqrt(Math.pow(center_x - left, 2) + Math.pow(center_y - top, 2));
+		if (distance_from_center <= radius) {
+			highlight = 1 - (distance_from_center / radius);
+			if(highlight < 0.25)
+			{
+				highlight = 0.25;
+			}
 		}
 
-		var message = '';
-		var date = new Date();
-		var now = date.getTime();
+		$('.find-a-friend').css('box-shadow', '0 0 0 10px rgba(255, 255, 255, '+highlight+'), 0 0 0 3px rgba(0, 0, 0, 0.25), inset 0 0 0 10px rgba(0, 0, 0, 0.35)');
 
-		var max_signal_strength = 4;
-		var max_distance = 4;
-		var max_direction = 30;
-		var reset = 30;
-
-		if(gui.render.self.notice.gps === null)
-		{
-			gui.render.self.notice.gps = now;
-		}
-
-		if(gui.render.self.notice.distance === null)
-		{
-			gui.render.self.notice.distance = now;
-		}
-
-		if(gui.render.self.notice.direction === null)
-		{
-			gui.render.self.notice.direction = now;
-		}
-
-		var time_signal_strength = (now - gui.render.self.notice.gps) / 1000;
-		var time_distance = ((now - gui.render.self.notice.distance) / 1000) - max_signal_strength;
-		var time_direction = ((now - gui.render.self.notice.direction) / 1000) - max_distance;
-
-		var show_signal_strength = (time_signal_strength <= max_signal_strength);
-		var show_distance = ( !show_signal_strength && time_distance <= max_distance);
-		var show_direction = ( !show_signal_strength && !show_distance && time_direction <= max_direction);
-
-		if(time_direction >= reset)
-		{
-			gui.render.self.notice.gps = null;
-			gui.render.self.notice.distance = null;
-			gui.render.self.notice.direction = null;
-		}
-
-		if(show_signal_strength)
-		{
-			// Fix for Tour
-			var accuracy = (app.user_data.geolocation.accuracy_formatted) ? app.user_data.geolocation.accuracy_formatted : '15 Feet';
-
-			message = '<div class="signal-strength"><i class="fa fa-signal over '+ strength_class +'"></i><i class="fa fa-signal under"></i></div>&nbsp; GPS '+ app.locale.dict('unit', 'accuracy') +' <span id="gps-accuracy">'+ accuracy +'</span>';
-		}
-
-		if(show_distance)
-		{
-			// Fix for Tour
-			var distance = (app.calc.geo.data.distance.length) ? app.hardware.geolocation.distance(app.calc.geo.data.distance.length) : '15 Feet';
-
-			message = app.locale.dict('unit', 'friend_distance').replace('{{DISTANCE}}', distance);
-		}
-
-		if(show_direction)
-		{
-			message = app.user_data.correction.direction;
-		}
-
-		if(message !== '')
-		{
-			$('.connection-status').html(message);
-		}
+		$('.connection-status').html(app.user_data.correction.direction);
 	},
 	debug: function()
 	{

@@ -42,7 +42,7 @@ app.locale.ko = {
 		location_sharing_message: "우리가 시작하기 전에 Facing 안전하게 친구들과 위치 데이터를 공유 ​​할 수있는 권한이 필요합니다.",
 		battery_critical: "배터리 잔량 중요",
 		offline_title: "장치 오프라인",
-		offline_message: "당신은 연결 네트워크없이 Facing 를 사용할 수 없습니다.",
+		offline_message: "당신은 네트워크 연결없이 페이싱을 사용할 수 없습니다.",
 		permission_denied_title: "권한 거부",
 		permission_denied_message: "당신의 장치 설정은 위치 정보를 검색에서 우리를 방지 할 수 있습니다.",
 		bad_signal_title: "사용할 수없는 위치",
@@ -56,11 +56,9 @@ app.locale.ko = {
 		no_email_title: "이메일을 보낼 수 없습니다",
 		no_email_message: "당신은 이메일을 보낼 수있는 이메일 클라이언트 설정이 없습니다.",
 		host_left_title: "친구 끊김",
-		host_left_message: "초대 친구는 자신의 위치 공유를 중지 선택했습니다.",
+		host_left_message: "당신의 친구는 세션을 종료되었습니다.",
 		guest_left_title: "친구 끊김",
-		guest_left_message: "당신이 초대 친구는 자신의 위치 공유를 중지 선택했다.",
-		self_left_title: "당신은 연결이 해제",
-		self_left_message: "우리는 당신의 친구가 당신에게 위치 공유를 중지 선택했는지 알려 드리겠습니다."
+		guest_left_message: "당신의 친구는 세션을 종료되었습니다."
 	},
 	tour:
 	{

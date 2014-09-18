@@ -53,6 +53,11 @@
         @include transform( translate3d(0, 0, 0) );
         @include transition( all 0.25s );
 
+        &.demo-move
+        {
+            @include transition( all 1s linear );
+        }
+
         &.slow-move
         {
             @include transition( all 5s );

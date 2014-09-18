@@ -42,7 +42,7 @@ app.locale.de = {
 		location_sharing_message: "Bevor wir anfangen, muss Facing Erlaubnis, sicher teilen Sie Ihren Standort Daten mit Ihren Freunden.",
 		battery_critical: "Batteriestands Critical",
 		offline_title: "offline-Gerät",
-		offline_message: "Sie werden nicht in der Lage, Facing ohne Netzwerkverbindungs nutzen.",
+		offline_message: "Sie werden nicht in der Lage, Orientierung ohne Netzwerkverbindung verwenden.",
 		permission_denied_title: "Zugriff verweigert",
 		permission_denied_message: "Ihre Geräteeinstellungen verhindern, dass wir Einholposition Informationen.",
 		bad_signal_title: "Position nicht verfügbar",
@@ -56,11 +56,9 @@ app.locale.de = {
 		no_email_title: "Nicht in der Lage E-Mail senden",
 		no_email_message: "Sie haben keine E-Mail-Clients Setup, um E-Mail zu senden.",
 		host_left_title: "Freund getrennt",
-		host_left_message: "Der Freund, der Sie eingeladen hat sich entschieden, die Freigabe ihrer Lage.",
+		host_left_message: "Ihr Freund hat die Sitzung beendet.",
 		guest_left_title: "Freund getrennt",
-		guest_left_message: "Der eingeladene Freund hat sich entschieden, die Freigabe ihrer Lage.",
-		self_left_title: "Sie sind getrennt",
-		self_left_message: "Wir lassen Ihren Freund wissen, dass Sie sich entschieden haben, beenden Sie die Freigabe Sie Lage."
+		guest_left_message: "Ihr Freund hat die Sitzung beendet."
 	},
 	tour:
 	{

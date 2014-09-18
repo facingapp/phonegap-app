@@ -30,6 +30,7 @@ app.io.joinSpace = function(roomName, mode)
 			if(join_response.success === true)
 			{
 				app.stats.event('Socket', 'Join', app.io.name + ' joined ' + app.io.space + ' as ' + app.io.mode);
+				app.launch_invite_code = null;
 			}
 			else
 			{
@@ -37,7 +38,9 @@ app.io.joinSpace = function(roomName, mode)
 
 				app.notification.alert(
 					join_response.message,
-					function(){},
+					function(){
+						app.launch_invite_code = null;
+					},
 					app.locale.dict('notification', 'connection_error_title'),
 					app.locale.dict('button', 'ok')
 				);
@@ -48,7 +51,9 @@ app.io.joinSpace = function(roomName, mode)
 	{
 		app.notification.alert(
 			app.locale.dict('notification', 'connection_error_message'),
-			function(){},
+			function(){
+				app.launch_invite_code = null;
+			},
 			app.locale.dict('notification', 'connection_error_title'),
 			app.locale.dict('button', 'ok')
 		);
