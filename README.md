@@ -10,6 +10,11 @@ I have placed a demo on my personal server for those that want to see the app ru
 * [Beta Testing Available](http://lab.peterschmalfeldt.com/facing/builds/)
 * [Follow @facingapp for Updates](https://twitter.com/facingapp)
 
+### Our App is also Available, for Free, on iOS & Android
+
+* [Android](http://j.mp/facing-android)
+* [iOS](#) ( Pending Review )
+
 Requirements
 ===
 
