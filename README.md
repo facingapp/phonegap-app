@@ -13,7 +13,7 @@ I have placed a demo on my personal server for those that want to see the app ru
 ### Our App is also Available, for Free, on iOS & Android
 
 * [Android](http://j.mp/facing-android)
-* [iOS](#) ( Pending Review )
+* [iOS](http://j.mp/facing-ios)
 
 Requirements
 ===
